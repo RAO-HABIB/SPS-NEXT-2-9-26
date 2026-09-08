@@ -10,7 +10,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="relative w-full overflow-hidden text-white border-t border-white/10">
+    <footer className="relative w-full overflow-hidden text-white">
       {/* 1. Base dark background & Glowing Orbs (Behind the glass) */}
       <div className="absolute inset-0 z-0 bg-[#020816]" />
       <div className="absolute -left-20 top-0 h-96 w-96 rounded-full bg-blue-600/30 blur-[100px]" />
@@ -20,13 +20,13 @@ export default function Footer() {
       <div className="absolute inset-0 z-0 bg-[#03122F]/40 backdrop-blur-3xl saturate-150" />
       
       {/* 3. Glossy Glass reflections and inner borders */}
-      <div className="absolute inset-0 z-0 shadow-[inset_0_1px_2px_rgba(255,255,255,0.3),inset_0_0_30px_rgba(255,255,255,0.05)]" />
+      <div className="absolute inset-0 z-0 shadow-[inset_0_0_30px_rgba(255,255,255,0.03)]" />
       
       {/* Diagonal gloss reflection on the surface */}
       <div className="absolute inset-0 z-0 bg-linear-to-tr from-white/5 via-transparent to-white/5 pointer-events-none" />
       
       {/* Top outer glowing edge */}
-      <div className="absolute inset-x-0 top-0 h-[1px] bg-linear-to-r from-transparent via-cyan-400/40 to-transparent shadow-[0_0_20px_rgba(34,211,238,0.6)]" />
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/25 to-transparent pointer-events-none" />
       
       <div className="relative z-10 w-full">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-10 sm:py-12 md:py-14">

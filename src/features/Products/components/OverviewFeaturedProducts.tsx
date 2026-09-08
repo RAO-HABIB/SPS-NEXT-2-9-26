@@ -90,7 +90,7 @@ export default function OverviewFeaturedProducts() {
                       <div className="size-16 sm:size-20 rounded-full bg-slate-50 border border-slate-100 shadow-sm flex items-center justify-center p-3 sm:p-4 group-hover:shadow-md group-hover:border-[#00a7e1]/30 transition-all mb-3 sm:mb-4">
                         <div className="relative w-full h-full opacity-70 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0">
                            {/* Replace with actual partner logos */}
-                           <Image src={item.logo} alt={item.name} fill className="object-contain" />
+                           <Image src={item.logo} alt={item.name} fill sizes="80px" className="object-contain" />
                         </div>
                       </div>
                       <p className="text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-[#00a7e1] transition-colors">{item.name}</p>

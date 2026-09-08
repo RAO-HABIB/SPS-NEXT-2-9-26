@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { Icon as IconifyIcon } from "@iconify-icon/react";
+import { BusinessStrategyEssentials1 } from "@/components/ui/illustrations";
 
 export default function OverviewWhyChoose() {
   return (
@@ -19,14 +19,9 @@ export default function OverviewWhyChoose() {
               Learn more about everything from seamless enterprise integrations to scaling your business with future-proof innovation.
             </p>
 
-            {/* SVG Illustration */}
-            <div className="w-full max-w-md relative aspect-square">
-              <Image
-                src="/images/products/why-choose-us.svg"
-                alt="Why Choose Us"
-                fill
-                className="object-contain"
-              />
+            {/* Business Strategy Vector Illustration (Directly rendered, responsive) */}
+            <div className="w-full max-w-[260px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-md mx-auto lg:mx-0 mt-6 sm:mt-8 lg:mt-10 flex items-center justify-center lg:justify-start">
+              <BusinessStrategyEssentials1 className="w-full h-auto text-[#00a7e1] drop-shadow-xl transition-transform duration-500 hover:scale-105" />
             </div>
           </div>
 

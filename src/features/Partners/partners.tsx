@@ -158,6 +158,7 @@ export default function Partners() {
         src="/images/Hero/Hero8.png"
         alt=""
         fill
+        sizes="100vw"
         className="object-fit"
       />
 

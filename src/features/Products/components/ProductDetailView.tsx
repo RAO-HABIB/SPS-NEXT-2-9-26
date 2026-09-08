@@ -11,6 +11,7 @@ import OverviewTestimonials from "./OverviewTestimonials";
 import OverviewPricing from "./OverviewPricing";
 import OverviewPoweringBusiness from "./OverviewPoweringBusiness";
 import OverviewFeaturedProducts from "./OverviewFeaturedProducts";
+import RequestQuoteButton from "./ui/RequestQuoteButton";
 
 export default function ProductDetailView({ data }: { data: ProductDetailData }) {
   return (
@@ -21,10 +22,11 @@ export default function ProductDetailView({ data }: { data: ProductDetailData })
           src="/images/Hero/Hero8.png"
           alt="Our Products-Background-Image"
           fill
-          className="object-fit object-center opacity-60 mix-blend-screen"
+          sizes="100vw"
+          className="object-cover object-center opacity-60 mix-blend-screen"
         />
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40 relative z-10 text-center flex flex-col items-center justify-center min-h-[400px] sm:min-h-[450px]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-24 sm:pt-36 sm:pb-32 lg:pt-44 lg:pb-40 relative z-10 text-center flex flex-col items-center justify-center min-h-[400px] sm:min-h-[450px]">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4">
             {data.hero.title}
           </h1>
@@ -47,12 +49,9 @@ export default function ProductDetailView({ data }: { data: ProductDetailData })
           </div>
         </div>
 
-        {/* Floating CTA Button overlapping section below - Positioned bottom right */}
-        <div className="absolute bottom-0 right-4 sm:right-12 lg:right-24 translate-y-1/2 z-30 bg-white p-2 sm:p-3 rounded-full shadow-2xl flex items-center">
-          <button className="flex items-center gap-3 bg-[#00a7e1] hover:bg-[#008dbf] text-white px-6 py-3 sm:px-10 sm:py-4 rounded-full font-bold shadow-lg transition-transform hover:scale-105 text-base sm:text-lg">
-            <IconifyIcon icon="lucide:phone" width={22} />
-            Request a Quote
-          </button>
+        {/* Curved Cutout CTA Button at bottom of Hero Section */}
+        <div className="absolute bottom-[-20px] left-1/2 -translate-x-1/2 z-30 flex justify-center">
+          <RequestQuoteButton />
         </div>
       </section>
 
@@ -82,7 +81,7 @@ export default function ProductDetailView({ data }: { data: ProductDetailData })
                   {data.featuredSolutions.items.map((item, idx) => (
                     <div key={idx} className="group flex flex-col bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all hover:-translate-y-1 duration-300">
                       <div className="relative w-full h-48 bg-[#031B3D] overflow-hidden">
-                        <Image src={item.image} alt={item.title} fill className="object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500" />
+                        <Image src={item.image} alt={item.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500" />
                       </div>
                       <div className="p-6 flex flex-col flex-1">
                         <h3 className="text-xl font-bold text-[#031B3D] mb-3">{item.title}</h3>
@@ -110,7 +109,7 @@ export default function ProductDetailView({ data }: { data: ProductDetailData })
                   <div className="relative w-full max-w-md mx-auto lg:max-w-full">
                     <div className="relative aspect-square rounded-[3rem] overflow-hidden bg-gradient-to-tr from-[#0057B8] to-[#00a7e1] p-1">
                       <div className="relative w-full h-full rounded-[2.9rem] overflow-hidden bg-[#031B3D]">
-                        <Image src={data.whyChoose.image} alt="Why Choose Us" fill className="object-cover opacity-90" />
+                        <Image src={data.whyChoose.image} alt="Why Choose Us" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover opacity-90" />
                       </div>
                     </div>
                     {/* Floating Badge */}
@@ -173,7 +172,7 @@ export default function ProductDetailView({ data }: { data: ProductDetailData })
                       {data.testimonials.title}
                     </h2>
                     <div className="relative w-full max-w-sm mx-auto lg:mx-0 h-[400px] rounded-3xl overflow-hidden shadow-2xl mask-image-b">
-                      <Image src={data.testimonials.image} alt="Testimonial Impact" fill className="object-cover" />
+                      <Image src={data.testimonials.image} alt="Testimonial Impact" fill sizes="(max-width: 1024px) 100vw, 400px" className="object-cover" />
                     </div>
                   </div>
 
@@ -245,7 +244,7 @@ export default function ProductDetailView({ data }: { data: ProductDetailData })
               <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 <div className="relative rounded-[3rem] overflow-hidden bg-[#031B3D] flex flex-col md:flex-row items-center justify-between p-10 sm:p-16 shadow-2xl">
                   <div className="absolute inset-0 z-0">
-                    <Image src={data.cta.image} alt="Background" fill className="object-cover opacity-20 mix-blend-overlay" />
+                    <Image src={data.cta.image} alt="Background" fill sizes="(max-width: 1024px) 100vw, 1152px" className="object-cover opacity-20 mix-blend-overlay" />
                     <div className="absolute inset-0 bg-gradient-to-r from-[#031B3D] via-[#031B3D]/90 to-transparent" />
                   </div>
 

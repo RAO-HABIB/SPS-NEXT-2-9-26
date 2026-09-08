@@ -346,7 +346,7 @@ function ProductCard({
           <div className="mb-4 sm:mb-5 flex items-center justify-between sm:mb-6">
             {product.image ? (
               <div className="relative h-10 w-10 sm:h-14 sm:w-14 transition-transform duration-300 group-hover:scale-105">
-                <Image src={product.image} alt={product.name} fill className="object-contain" />
+                <Image src={product.image} alt={product.name} fill sizes="(max-width: 640px) 40px, 56px" className="object-contain" />
               </div>
             ) : (
               <div

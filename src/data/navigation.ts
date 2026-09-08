@@ -33,20 +33,20 @@ export const NAV: NavItem[] = [
       {
         label: "SPS",
         items: [
-          { label: "MYID Self Verify", href: "#" },
-          { label: "Azalio", href: "#" },
-          { label: "Fabrico", href: "#" },
-          { label: "BMS", href: "#" },
-          { label: "CSM", href: "#" },
+          { label: "MYID Self Verify", href: "https://www.myidselfverify.com/" },
+          { label: "Azalio", href: "https://www.azal.io/" },
+          { label: "Fabrico", href: "https://fabrico.spsnet.com/" },
+          { label: "BMS", href: "/products/sps/bms" },
+          { label: "CSM", href: "/products/sps/csm" },
         ],
       },
       {
         label: "IBM",
         items: [
-          { label: "Automation", href: "#" },
-          { label: "Data & AI", href: "#" },
-          { label: "Security", href: "#" },
-          { label: "Sustainability", href: "#" },
+          { label: "Automation", href: "/products/ibm/automation" },
+          { label: "Data & AI", href: "/products/ibm/data-ai" },
+          { label: "Security", href: "/products/ibm/security" },
+          { label: "Sustainability", href: "/products/ibm/sustainability" },
         ],
       },
       {
@@ -64,38 +64,41 @@ export const NAV: NavItem[] = [
   // ===== MEGA MENU =====
   {
     label: "Services",
-    href: "/",
+    href: "/services",
     promo: {
       description:
         "From Cybersecurity to Cloud, AI & Training  we deliver scalable services that drive measurable business outcomes.",
       image: "/images/products/services.webp",
       ctaLabel: "Explore Services",
-      ctaHref: "/Services",
+      ctaHref: "/services",
     },
     groups: [
       {
         label: "Cybersecurity",
+        href: "/services/cybersecurity",
         items: [
-          { label: "Network Security", href: "#" },
-          { label: "SMaaS", href: "#" },
-          { label: "GRC", href: "#" },
-          { label: "Identity & Access", href: "#" },
-          { label: "Threat Management", href: "#" },
-          { label: "Data Security", href: "#" },
+          { label: "Network Security", href: "/services/cybersecurity/network-security" },
+          { label: "SMaaS", href: "/services/cybersecurity/smaas" },
+          { label: "GRC", href: "/services/cybersecurity/grc" },
+          { label: "Identity & Access", href: "/services/cybersecurity/iam" },
+          { label: "Threat Management", href: "/services/cybersecurity/threat-management" },
+          { label: "Data Security", href: "/services/cybersecurity/data-security" },
         ],
       },
       {
         label: "Cloud",
+        href: "/services/cloud",
         items: [
-          { label: "DevOps", href: "#" },
-          { label: "Migration Services", href: "#" },
+          { label: "DevOps", href: "/services/cloud" },
+          { label: "Migration Services", href: "/services/cloud" },
         ],
       },
       {
         label: "AI & Automation",
+        href: "/services/ai-automation",
         items: [
-          { label: "Data Science", href: "#" },
-          { label: "Automation", href: "#" },
+          { label: "Data Science", href: "/services/ai-automation" },
+          { label: "Automation", href: "/services/ai-automation" },
         ],
       },
       {

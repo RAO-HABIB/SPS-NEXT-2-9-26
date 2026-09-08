@@ -1,18 +1,28 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { PRODUCTS_DATA } from "@/data/products-data";
-import ProductDetailView from "@/features/Products/components/ProductDetailView";
+import ProductDetailRenderer from "@/features/Products/components/ProductDetailRenderer";
 import Navbar from "@/components/layout/Navbar/navbar";
 import Footer from "@/components/layout/Footer/footer";
 
 type PageProps = {
-  params: {
+  params: Promise<{
     category: string;
     slug: string;
-  };
+  }>;
 };
 
-export default function ProductDetailPage({ params }: PageProps) {
-  const { category, slug } = params;
+const SPS_EXTERNAL_REDIRECTS: Record<string, string> = {
+  "myid-self-verify": "https://www.myidselfverify.com/",
+  "azalio": "https://www.azal.io/",
+  "fabrico": "https://fabrico.spsnet.com/",
+};
+
+export default async function ProductDetailPage({ params }: PageProps) {
+  const { category, slug } = await params;
+
+  if (category === "sps" && SPS_EXTERNAL_REDIRECTS[slug]) {
+    redirect(SPS_EXTERNAL_REDIRECTS[slug]);
+  }
 
   const categoryData = PRODUCTS_DATA[category];
   if (!categoryData) {
@@ -27,7 +37,7 @@ export default function ProductDetailPage({ params }: PageProps) {
   return (
     <>
       <Navbar />
-      <ProductDetailView data={productData} />
+      <ProductDetailRenderer category={category} slug={slug} data={productData} />
       <Footer />
     </>
   );

@@ -37,7 +37,7 @@ export default function TestimonialSlider({ items }: { items: Testimonial[] }) {
 
               <div className="flex items-center gap-4">
                 <div className="relative w-14 h-14 rounded-full overflow-hidden bg-slate-100 border-2 border-slate-200 shrink-0">
-                  <Image src={item.avatar} alt={item.author} fill className="object-cover" />
+                  <Image src={item.avatar} alt={item.author} fill sizes="56px" className="object-cover" />
                 </div>
                 <div>
                   <h4 className="text-[#031B3D] font-bold text-lg">{item.author}</h4>

@@ -31,7 +31,7 @@ export const PRODUCTS: Product[] = [
     icon: "lucide:users-round",
     image: "/images/products/azalio.webp",
     accentColor: "from-blue-500 to-cyan-400",
-    href: "/",
+    href: "https://www.azal.io/",
   },
   {
     id: "myid",
@@ -41,7 +41,7 @@ export const PRODUCTS: Product[] = [
     icon: "lucide:fingerprint",
     image: "/images/products/myid.webp",
     accentColor: "from-cyan-500 to-teal-400",
-    href: "/",
+    href: "https://www.myidselfverify.com/",
   },
   {
     id: "csm",
@@ -51,7 +51,7 @@ export const PRODUCTS: Product[] = [
     icon: "lucide:shield-check",
     image: "/images/products/csm.webp",
     accentColor: "from-indigo-500 to-blue-400",
-    href: "/",
+    href: "/products/sps/csm",
   },
   {
     id: "bms",
@@ -61,6 +61,6 @@ export const PRODUCTS: Product[] = [
     icon: "lucide:bar-chart-3",
     image: "/images/products/bms.webp",
     accentColor: "from-sky-500 to-blue-400",
-    href: "/",
+    href: "/products/sps/bms",
   },
 ];

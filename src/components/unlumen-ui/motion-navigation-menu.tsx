@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { cva } from "class-variance-authority";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { ChevronDownIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -44,10 +44,10 @@ const MotionNavigationMenuContext =
 const MotionNavigationMenuItemContext =
   React.createContext<MotionNavigationMenuItemContextValue | null>(null);
 
-const contentVariants = {
-  initial: (direction: number) => ({ x: `${100 * direction}%`, opacity: 0 }),
-  active: { x: "0%", opacity: 1 },
-  exit: (direction: number) => ({ x: `${-100 * direction}%`, opacity: 0 }),
+const contentVariants: Variants = {
+  initial: { opacity: 0 },
+  active: { opacity: 1, transition: { duration: 0.15, ease: "easeOut" } },
+  exit: { opacity: 0, transition: { duration: 0.1, ease: "easeIn" } },
 };
 
 type MotionNavigationMenuProps = Omit<
@@ -539,12 +539,10 @@ function MotionNavigationMenuContent({
         <motion.div
           data-slot="navigation-menu-content"
           key={value}
-          custom={context.direction}
           variants={contentVariants}
           initial="initial"
           animate="active"
           exit="exit"
-          transition={context.spring}
           className={cn(
             "bg-background/90 text-popover-foreground absolute top-full left-0 z-50 mt-1.5 rounded-md border p-2 pr-2.5 shadow",
             className,
@@ -672,12 +670,10 @@ function MotionNavigationMenuViewport({
             <motion.div
               data-slot="navigation-menu-content"
               key={context.activeValue}
-              custom={context.direction}
               variants={contentVariants}
               initial="initial"
               animate="active"
               exit="exit"
-              transition={context.spring}
               className={cn("p-2 pr-2.5", activeContent.className)}
             >
               <MotionNavigationMenuContentInner

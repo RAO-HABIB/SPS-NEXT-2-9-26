@@ -68,7 +68,7 @@ export default function Hero() {
 
       <button
         onClick={prevSlide}
-        className="absolute left-2 sm:left-4 lg:left-6 top-1/2 -translate-y-1/2 z-40 p-2 text-white/90 hover:text-white transition-colors"
+        className="absolute left-2 sm:left-4 lg:left-6 top-1/2 -translate-y-1/2 mt-12 sm:mt-16 lg:mt-20 z-40 p-2 text-white/90 hover:text-white transition-colors"
         aria-label="Previous Slide"
       >
         <Icon icon="ph:caret-left-light" className="text-2xl sm:text-3xl md:text-4xl" />
@@ -76,13 +76,13 @@ export default function Hero() {
 
       <button
         onClick={nextSlide}
-        className="absolute right-2 sm:right-4 lg:right-6 top-1/2 -translate-y-1/2 z-40 p-2 text-white/90 hover:text-white transition-colors"
+        className="absolute right-2 sm:right-4 lg:right-6 top-1/2 -translate-y-1/2 mt-12 sm:mt-16 lg:mt-20 z-40 p-2 text-white/90 hover:text-white transition-colors"
         aria-label="Next Slide"
       >
         <Icon icon="ph:caret-right-light" className="text-2xl sm:text-3xl md:text-4xl" />
       </button>
 
-      <div className="relative z-30 mx-auto flex w-full max-w-7xl flex-col items-center gap-6 sm:gap-8 px-8 sm:px-12 md:px-16 lg:px-24 pb-12 sm:pb-14 pt-20 sm:pt-24 lg:flex-row lg:gap-16 lg:pb-20 lg:pt-28">
+      <div className="relative z-30 mx-auto flex w-full max-w-7xl flex-col items-center gap-6 sm:gap-8 px-8 sm:px-12 md:px-16 lg:px-24 py-16 sm:py-20 lg:py-24 mt-12 sm:mt-16 lg:mt-20 lg:flex-row lg:gap-10 lg:justify-between">
         <div className="flex-1 max-w-2xl w-full text-center lg:text-left">
           <div key={currentSlide.id} className="animate-fade-in">
             <div className="inline-flex items-center gap-2 rounded-full bg-cyan-400/15 px-3 sm:px-4 py-1 sm:py-1.5 text-xs sm:text-sm font-semibold text-cyan-300">
@@ -131,8 +131,8 @@ export default function Hero() {
         </div>
 
         {/* ============ RIGHT — Video Slider Card ============ */}
-        <div className="hidden lg:flex w-full max-w-[300px] lg:max-w-[320px] xl:max-w-[340px] shrink-0 justify-end">
-          <div className="relative aspect-[2/3] w-full overflow-hidden rounded-3xl shadow-2xl ring-1 ring-white/10 group">
+        <div className="hidden lg:flex w-full max-w-[360px] lg:max-w-[420px] xl:max-w-[480px] shrink-0 justify-end">
+          <div className="relative h-[450px] lg:h-[480px] xl:h-[510px] w-full overflow-hidden rounded-3xl shadow-2xl ring-1 ring-white/10 group">
             {/* Video slides */}
             {HERO_SLIDES.map((s, i) => (
               <video

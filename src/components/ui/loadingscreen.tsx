@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -46,59 +45,11 @@ export function LoadingScreen() {
 
   return (
     <div className="fixed inset-0 z-9999 flex items-center justify-center bg-linear-to-b from-[#F4F8FC] to-[#E8F2FA]">
-      <div className="relative flex flex-col items-center justify-center gap-6">
-        {/* Animated gradient ring */}
-        <div className="relative h-40 w-40">
-          {/* Outer rotating ring */}
-          <div className="absolute inset-0 animate-spin rounded-full border-2 border-transparent border-t-[#0057B8] border-r-[#0BB4D4]" />
-          {/* Inner pulsing ring */}
-          <div className="absolute inset-2 animate-pulse rounded-full border border-[#0057B8]/20" />
-
-          {/* Logo in center */}
-          <div className="absolute inset-6 flex items-center justify-center">
-            <Image
-              src="/images/logo/logo.png"
-              alt="SPS Loading"
-              width={100}
-              height={100}
-              quality={75}
-              className="h-24 w-24 rounded-full object-cover shadow-lg shadow-[#0057B8]/20"
-              priority
-            />
-          </div>
-        </div>
-
-        {/* Loading text */}
-        <div className="flex flex-col items-center gap-2">
-          <h2 className="text-xl font-bold text-[#003e85]">SPS Digital</h2>
-          <p className="text-sm text-[#0057B8]">Loading experience...</p>
-        </div>
-
-        {/* Animated dots */}
-        <div className="flex gap-1.5">
-          <span className="block h-1.5 w-1.5 rounded-full bg-[#0057B8] animate-bounce" style={{ animationDelay: "0s" }} />
-          <span className="block h-1.5 w-1.5 rounded-full bg-[#0BB4D4] animate-bounce" style={{ animationDelay: "0.2s" }} />
-          <span className="block h-1.5 w-1.5 rounded-full bg-[#0057B8] animate-bounce" style={{ animationDelay: "0.4s" }} />
-        </div>
+      <div className="relative w-40 h-40 rounded-full animate-spin">
+        <div className="absolute top-0 left-0 w-full h-full border-t-8 border-black rounded-full"></div>
+        <div className="absolute top-0 left-0 w-full h-full border-r-8 border-blue-900 rounded-full"></div>
+        <div className="absolute top-0 left-0 w-full h-full border-b-8 border-cyan-500 rounded-full"></div>
       </div>
-
-      {/* Prevent interaction during load */}
-      <style jsx>{`
-        @keyframes sps-gradient-shift {
-          0% {
-            border-top-color: #0057b8;
-            border-right-color: #0bb4d4;
-          }
-          50% {
-            border-top-color: #0bb4d4;
-            border-right-color: #003e85;
-          }
-          100% {
-            border-top-color: #0057b8;
-            border-right-color: #0bb4d4;
-          }
-        }
-      `}</style>
     </div>
   );
 }
