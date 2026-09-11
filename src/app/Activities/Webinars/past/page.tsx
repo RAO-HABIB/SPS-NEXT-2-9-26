@@ -49,7 +49,9 @@ export default function PastWebinarsPage() {
 
       <main id="main-content" tabIndex={-1}>
         <WebinarHero
-          title="Webinars"
+          title="Past Webinars"
+          badgeText="Webinar Archive"
+          subtitle="Explore on-demand session recordings, architectural playbooks, and key takeaways from our past enterprise webinars."
           breadcrumb={[
             { label: "Home", href: "/" },
             { label: "Webinars Past Events" },

@@ -249,11 +249,11 @@ function FilterSelect({ label, options }: { label: string; options: string[] }) 
 function InstructorTab() {
     const partners = [
         { name: "AWS", logo: "/images/partners/aws.webp" },
-        { name: "Google Cloud", logo: "/images/partners/google-cloud.webp" },
+        { name: "Google Cloud", logo: "/images/partners/google.webp" },
         { name: "IBM", logo: "/images/partners/ibm.webp" },
         { name: "Microsoft", logo: "/images/partners/microsoft.webp" },
         { name: "Red Hat", logo: "/images/partners/redhat.webp" },
-        { name: "Apple", logo: "/images/partners/apple.webp" },
+        { name: "Apple", logo: "/images/partners/snowflake.webp" },
     ];
 
     return (

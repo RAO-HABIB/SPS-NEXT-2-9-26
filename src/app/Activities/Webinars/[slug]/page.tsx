@@ -152,6 +152,7 @@ export default async function WebinarDetailPage({ params }: Props) {
         {/* HERO */}
         <WebinarHero
           title={webinar.title}
+          badgeText={isPast ? "On-Demand Session" : "Upcoming Webinar"}
           breadcrumb={[
             { label: "Home", href: "/" },
             { label: "Webinars", href: backHref },
