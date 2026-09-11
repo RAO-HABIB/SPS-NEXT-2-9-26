@@ -19,7 +19,7 @@ export default function ProductDetailView({ data }: { data: ProductDetailData })
       {/* 1. Hero Section */}
       <section className="relative w-full bg-[#031B3D]">
         <Image
-          src="/images/Hero/Hero8.png"
+          src="/images/Hero/Hero8.webp"
           alt="Our Products-Background-Image"
           fill
           sizes="100vw"

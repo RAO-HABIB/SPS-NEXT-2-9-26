@@ -186,7 +186,7 @@ export default function IbmAutomationLayout({ data }: { data: ProductDetailData 
         {/* Background Image: Identical to CSM Hero */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/Hero/Hero8.png"
+            src="/images/Hero/Hero8.webp"
             alt="IBM Automation Hero Background"
             fill
             sizes="100vw"

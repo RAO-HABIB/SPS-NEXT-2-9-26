@@ -1,6 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Icon } from "@iconify-icon/react";
+import { Phone, Mail, Clock } from "lucide-react";
+import { FaLinkedinIn, FaXTwitter, FaFacebookF, FaYoutube } from "react-icons/fa6";
+
+const iconMap: Record<string, React.ElementType> = {
+  "lucide:phone": Phone,
+  "lucide:mail": Mail,
+  "lucide:clock": Clock,
+  "lucide:linkedin": FaLinkedinIn,
+  "lucide:twitter": FaXTwitter,
+  "lucide:facebook": FaFacebookF,
+  "lucide:youtube": FaYoutube,
+};
 import {
   FOOTER_CONTACT,
   FOOTER_ABOUT,
@@ -15,33 +26,32 @@ export default function Footer() {
       <div className="absolute inset-0 z-0 bg-[#020816]" />
       <div className="absolute -left-20 top-0 h-96 w-96 rounded-full bg-blue-600/30 blur-[100px]" />
       <div className="absolute right-10 bottom-0 h-96 w-96 rounded-full bg-cyan-400/20 blur-[120px]" />
-      
+
       {/* 2. The Glass Layer itself */}
       <div className="absolute inset-0 z-0 bg-[#03122F]/40 backdrop-blur-3xl saturate-150" />
-      
+
       {/* 3. Glossy Glass reflections and inner borders */}
       <div className="absolute inset-0 z-0 shadow-[inset_0_0_30px_rgba(255,255,255,0.03)]" />
-      
+
       {/* Diagonal gloss reflection on the surface */}
       <div className="absolute inset-0 z-0 bg-linear-to-tr from-white/5 via-transparent to-white/5 pointer-events-none" />
-      
+
       {/* Top outer glowing edge */}
       <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/25 to-transparent pointer-events-none" />
-      
+
       <div className="relative z-10 w-full">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-10 sm:py-12 md:py-14">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10">
             <div className="sm:col-span-2">
               <Link href="/" className="inline-flex items-center gap-2 sm:gap-3">
                 <Image
-                  src="/images/logo/logo.jpg"
+                  src="/images/logo/logo.webp"
                   alt="SPS"
                   width={60}
                   height={60}
                   quality={75}
-                  className="rounded-xl shadow-lg ring-1 ring-white/20 h-12 w-12 sm:h-[60px] sm:w-[60px]"
+                  className="rounded-xl shadow-lg ring-1 ring-white/20 h-12 w-12 sm:h-[60px] sm:w-[60px] bg-white"
                 />
-                <span className="text-lg sm:text-xl font-extrabold tracking-wide text-white">SPS</span>
               </Link>
 
               <p className="mt-4 sm:mt-5 max-w-sm text-xs sm:text-sm leading-relaxed text-white/90">
@@ -49,18 +59,21 @@ export default function Footer() {
               </p>
 
               <div className="mt-5 sm:mt-6 flex flex-wrap gap-2 sm:gap-3">
-                {FOOTER_SOCIALS.map((s, i) => (
-                  <Link
-                    key={i}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Follow us on ${s.icon.split(':')[1]}`}
-                    className="group grid h-9 w-9 sm:h-10 sm:w-10 place-items-center rounded-xl bg-white/10 border border-white/20 text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-blue-600 hover:shadow-[0_0_20px_rgba(255,255,255,0.4)]"
-                  >
-                    <Icon icon={s.icon} width={18} className="transition-transform duration-300 group-hover:scale-110 w-4 sm:w-[18px]" />
-                  </Link>
-                ))}
+                {FOOTER_SOCIALS.map((s, i) => {
+                  const SocialIcon = iconMap[s.icon];
+                  return (
+                    <Link
+                      key={i}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Follow us on ${s.icon.split(':')[1]}`}
+                      className="group grid h-9 w-9 sm:h-10 sm:w-10 place-items-center rounded-xl bg-white/10 border border-white/20 text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-blue-600 hover:shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+                    >
+                      {SocialIcon && <SocialIcon className="transition-transform duration-300 group-hover:scale-110 w-4 h-4 sm:w-[18px] sm:h-[18px]" />}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
 
@@ -87,10 +100,11 @@ export default function Footer() {
 
           <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-4 sm:gap-6 border-t border-white/20 pt-8 sm:pt-10 md:grid-cols-2 lg:grid-cols-3">
             {FOOTER_CONTACT.map((item) => {
+              const ContactIcon = iconMap[item.icon];
               const content = (
                 <div className="group flex items-center gap-3 sm:gap-4">
                   <div className="grid h-10 w-10 sm:h-12 sm:w-12 shrink-0 place-items-center rounded-2xl bg-white/10 border border-white/20 transition-colors duration-300 group-hover:bg-white group-hover:border-white">
-                    <Icon icon={item.icon} width={20} className="text-white group-hover:text-blue-600 transition-colors duration-300 w-[18px] sm:w-[20px]" />
+                    {ContactIcon && <ContactIcon className="text-white group-hover:text-blue-600 transition-colors duration-300 w-[18px] h-[18px] sm:w-[20px] sm:h-[20px]" />}
                   </div>
                   <div>
                     <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-white/90">{item.label}</p>

@@ -20,7 +20,7 @@ export const PARTNERS: Partner[] = [
   {
     id: "ibm",
     name: "IBM Security",
-    logo: "/images/partners/ibm.png",
+    logo: "/images/partners/ibm.webp",
     tagline: "Identity • Access • Zero Trust",
     description:
       "Enterprise-grade identity, access management and zero trust security solutions for the modern hybrid workforce.",
@@ -30,7 +30,7 @@ export const PARTNERS: Partner[] = [
   {
     id: "microsoft",
     name: "Microsoft",
-    logo: "/images/partners/microsoft.png",
+    logo: "/images/partners/microsoft.webp",
     tagline: "Cloud • Security • Productivity",
     description:
       "Azure cloud infrastructure, Microsoft 365 productivity and Defender security suite for end-to-end enterprise needs.",
@@ -40,7 +40,7 @@ export const PARTNERS: Partner[] = [
   {
     id: "redhat",
     name: "Red Hat",
-    logo: "/images/partners/redhat.png",
+    logo: "/images/partners/redhat.webp",
     tagline: "Open Source Cloud",
     description:
       "OpenShift, RHEL and Ansible — open source platforms powering hybrid cloud and automation at scale.",
@@ -50,7 +50,7 @@ export const PARTNERS: Partner[] = [
   {
     id: "sap",
     name: "SAP",
-    logo: "/images/partners/sap.png",
+    logo: "/images/partners/sap.webp",
     tagline: "Enterprise Resource Planning",
     description:
       "S/4HANA, SuccessFactors and Ariba — intelligent enterprise applications unifying finance, HR and supply chain.",
@@ -60,7 +60,7 @@ export const PARTNERS: Partner[] = [
   {
     id: "lenovo",
     name: "Lenovo",
-    logo: "/images/partners/lenovo.png",
+    logo: "/images/partners/lenovo.webp",
     tagline: "Devices • Infrastructure • Computing",
     description:
       "ThinkPad, ThinkSystem servers and edge computing devices powering the modern workplace.",
@@ -70,7 +70,7 @@ export const PARTNERS: Partner[] = [
   {
     id: "google",
     name: "Google Cloud",
-    logo: "/images/partners/google.png",
+    logo: "/images/partners/google.webp",
     tagline: "Cloud • AI • Data Analytics",
     description:
       "GCP, Vertex AI and BigQuery — accelerating cloud-native development and AI-driven analytics.",
@@ -80,7 +80,7 @@ export const PARTNERS: Partner[] = [
   {
     id: "aws",
     name: "AWS",
-    logo: "/images/partners/aws.png",
+    logo: "/images/partners/aws.webp",
     tagline: "Scalable Cloud Infrastructure",
     description:
       "Amazon Web Services — the world's most comprehensive and broadly adopted cloud platform.",
@@ -90,7 +90,7 @@ export const PARTNERS: Partner[] = [
   {
     id: "cisco",
     name: "Cisco",
-    logo: "/images/partners/cisco.png",
+    logo: "/images/partners/cisco.webp",
     tagline: "Networking & Security",
     description:
       "Networking, collaboration and security solutions for connecting and protecting enterprises globally.",

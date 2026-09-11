@@ -22,7 +22,7 @@ export default function ServiceDetailView({
       {/* 1. Hero Section */}
       <section className="relative w-full bg-[#031B3D]">
         <Image
-          src="/images/Hero/Hero8.png"
+          src="/images/Hero/Hero8.webp"
           alt="Our Services Background"
           fill
           sizes="100vw"
@@ -266,11 +266,10 @@ export default function ServiceDetailView({
                   {data.pricing.plans.map((plan, idx) => (
                     <div
                       key={idx}
-                      className={`relative flex flex-col rounded-3xl p-8 sm:p-10 transition-transform hover:-translate-y-2 duration-300 ${
-                        plan.isPopular
+                      className={`relative flex flex-col rounded-3xl p-8 sm:p-10 transition-transform hover:-translate-y-2 duration-300 ${plan.isPopular
                           ? "bg-[#031B3D] text-white shadow-2xl scale-105 z-10 border-2 border-[#00a7e1]"
                           : "bg-white text-[#031B3D] border border-slate-200 shadow-xl"
-                      }`}
+                        }`}
                     >
                       {plan.isPopular && (
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#00a7e1] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-md">
@@ -279,25 +278,22 @@ export default function ServiceDetailView({
                       )}
 
                       <h3
-                        className={`text-xl font-bold mb-4 ${
-                          plan.isPopular ? "text-white" : "text-[#031B3D]"
-                        }`}
+                        className={`text-xl font-bold mb-4 ${plan.isPopular ? "text-white" : "text-[#031B3D]"
+                          }`}
                       >
                         {plan.name}
                       </h3>
                       <div className="flex items-end gap-1 mb-8">
                         <span
-                          className={`text-4xl sm:text-5xl font-black ${
-                            plan.isPopular ? "text-white" : "text-[#031B3D]"
-                          }`}
+                          className={`text-4xl sm:text-5xl font-black ${plan.isPopular ? "text-white" : "text-[#031B3D]"
+                            }`}
                         >
                           {plan.price}
                         </span>
                         {plan.price !== "Free" && plan.price !== "Custom" && (
                           <span
-                            className={`text-sm font-semibold mb-1 ${
-                              plan.isPopular ? "text-slate-400" : "text-slate-500"
-                            }`}
+                            className={`text-sm font-semibold mb-1 ${plan.isPopular ? "text-slate-400" : "text-slate-500"
+                              }`}
                           >
                             /month
                           </span>
@@ -306,11 +302,10 @@ export default function ServiceDetailView({
 
                       <Link
                         href="/contact"
-                        className={`w-full py-3.5 rounded-xl font-bold mb-8 transition-colors text-center inline-block ${
-                          plan.isPopular
+                        className={`w-full py-3.5 rounded-xl font-bold mb-8 transition-colors text-center inline-block ${plan.isPopular
                             ? "bg-[#00a7e1] hover:bg-[#008dbf] text-white"
                             : "bg-[#F4F7FA] hover:bg-slate-200 text-[#031B3D]"
-                        }`}
+                          }`}
                       >
                         Get Started
                       </Link>
@@ -319,11 +314,10 @@ export default function ServiceDetailView({
                         {plan.features.map((feature, fIdx) => (
                           <li key={fIdx} className="flex items-center gap-3">
                             <div
-                              className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center ${
-                                feature.included
+                              className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center ${feature.included
                                   ? "bg-[#00a7e1]/20 text-[#00a7e1]"
                                   : "bg-transparent text-slate-300"
-                              }`}
+                                }`}
                             >
                               {feature.included ? (
                                 <IconifyIcon
@@ -344,17 +338,15 @@ export default function ServiceDetailView({
                               )}
                             </div>
                             <span
-                              className={`text-sm font-medium ${
-                                !feature.included &&
+                              className={`text-sm font-medium ${!feature.included &&
                                 (plan.isPopular
                                   ? "text-slate-500"
                                   : "text-slate-400")
-                              } ${
-                                feature.included &&
+                                } ${feature.included &&
                                 (plan.isPopular
                                   ? "text-slate-200"
                                   : "text-slate-600")
-                              }`}
+                                }`}
                             >
                               {feature.name}
                             </span>

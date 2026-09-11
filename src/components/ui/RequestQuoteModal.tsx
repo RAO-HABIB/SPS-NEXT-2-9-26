@@ -81,7 +81,7 @@ export default function RequestQuoteModal({
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12 overflow-y-auto">
           {/* Frosted Glass Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -89,7 +89,7 @@ export default function RequestQuoteModal({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             onClick={onClose}
-            className="fixed inset-0 bg-[#020e24]/75 backdrop-blur-md transition-all"
+            className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-all"
           />
 
           {/* Modal Dialog Card */}
@@ -98,24 +98,22 @@ export default function RequestQuoteModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 10 }}
             transition={{ type: "spring", duration: 0.45, bounce: 0.15 }}
-            className="relative w-full max-w-xl bg-white rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.35)] border border-slate-100 overflow-hidden z-10 my-8"
+            className="relative w-full max-w-[95%] sm:max-w-lg md:max-w-xl lg:max-w-2xl bg-white/60 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-white/60 overflow-hidden z-10 my-4 sm:my-8 ring-1 ring-black/5"
           >
-            {/* Top Accent Gradient Line */}
-            <div className="h-1.5 w-full bg-gradient-to-r from-[#00a7e1] via-[#021b3d] to-[#00a7e1]" />
 
             {/* Modal Header */}
-            <div className="px-6 sm:px-8 pt-7 pb-4 flex items-start justify-between border-b border-slate-100">
+            <div className="px-5 sm:px-8 md:px-10 pt-6 sm:pt-7 md:pt-8 pb-4 sm:pb-5 flex items-start justify-between border-b border-white/40">
               <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-[11px] font-bold tracking-widest text-[#00a7e1] uppercase">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1 sm:mb-2">
+                  <span className="text-[10px] sm:text-[11px] md:text-xs font-bold tracking-widest text-cyan-600 uppercase">
                     Direct Consultation
                   </span>
-                  <span className="size-1 rounded-full bg-slate-300" />
-                  <span className="text-xs text-slate-400 font-medium truncate max-w-[220px]">
+                  <span className="hidden sm:block size-1 rounded-full bg-slate-400" />
+                  <span className="text-[11px] sm:text-xs md:text-sm text-slate-800 font-medium line-clamp-1 max-w-[200px] sm:max-w-[240px] md:max-w-[320px]">
                     {serviceTitle}
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold text-[#031B3D] tracking-tight">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#031B3D] tracking-tight">
                   Request a Quote
                 </h3>
               </div>
@@ -124,15 +122,15 @@ export default function RequestQuoteModal({
               <button
                 type="button"
                 onClick={onClose}
-                className="size-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition-colors flex items-center justify-center -mr-1"
+                className="size-8 sm:size-9 md:size-10 rounded-full bg-white/50 hover:bg-white/80 border border-white/60 shadow-sm text-slate-500 hover:text-slate-800 transition-all flex items-center justify-center shrink-0 -mr-1 sm:-mr-2"
                 aria-label="Close dialog"
               >
-                <X className="size-5" />
+                <X className="size-4 sm:size-5" />
               </button>
             </div>
 
             {/* Modal Body */}
-            <div className="px-6 sm:px-8 py-6">
+            <div className="px-5 sm:px-8 md:px-10 py-5 sm:py-6 md:py-8">
               {isSubmitted ? (
                 /* Success State */
                 <motion.div
@@ -167,10 +165,10 @@ export default function RequestQuoteModal({
                   )}
 
                   {/* Name & Email (2 columns) */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
-                        <User className="size-3.5 text-slate-400" />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
+                    <div className="space-y-1.5 md:space-y-2">
+                      <label className="text-xs md:text-sm font-semibold text-slate-700 flex items-center gap-1.5">
+                        <User className="size-3.5 md:size-4 text-slate-400" />
                         Full Name <span className="text-rose-500">*</span>
                       </label>
                       <input
@@ -179,13 +177,13 @@ export default function RequestQuoteModal({
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="John Doe"
-                        className="w-full px-3.5 py-2.5 text-sm bg-slate-50/70 border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#00a7e1] focus:ring-2 focus:ring-[#00a7e1]/15 transition-all outline-none"
+                        className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm md:text-base bg-white/40 backdrop-blur-md border border-white/60 shadow-sm rounded-xl text-slate-900 placeholder:text-slate-500 focus:bg-white/80 focus:border-[#00a7e1] focus:ring-2 focus:ring-[#00a7e1]/20 transition-all outline-none"
                       />
                     </div>
 
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
-                        <Mail className="size-3.5 text-slate-400" />
+                    <div className="space-y-1.5 md:space-y-2">
+                      <label className="text-xs md:text-sm font-semibold text-slate-700 flex items-center gap-1.5">
+                        <Mail className="size-3.5 md:size-4 text-slate-400" />
                         Email Address <span className="text-rose-500">*</span>
                       </label>
                       <input
@@ -194,15 +192,15 @@ export default function RequestQuoteModal({
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="name@company.com"
-                        className="w-full px-3.5 py-2.5 text-sm bg-slate-50/70 border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#00a7e1] focus:ring-2 focus:ring-[#00a7e1]/15 transition-all outline-none"
+                        className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm md:text-base bg-white/40 backdrop-blur-md border border-white/60 shadow-sm rounded-xl text-slate-900 placeholder:text-slate-500 focus:bg-white/80 focus:border-[#00a7e1] focus:ring-2 focus:ring-[#00a7e1]/20 transition-all outline-none"
                       />
                     </div>
                   </div>
 
                   {/* Phone */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
-                      <Phone className="size-3.5 text-slate-400" />
+                  <div className="space-y-1.5 md:space-y-2">
+                    <label className="text-xs md:text-sm font-semibold text-slate-700 flex items-center gap-1.5">
+                      <Phone className="size-3.5 md:size-4 text-slate-400" />
                       Phone Number
                     </label>
                     <input
@@ -210,14 +208,14 @@ export default function RequestQuoteModal({
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="+1 (555) 000-0000"
-                      className="w-full px-3.5 py-2.5 text-sm bg-slate-50/70 border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#00a7e1] focus:ring-2 focus:ring-[#00a7e1]/15 transition-all outline-none"
+                      className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm md:text-base bg-white/40 backdrop-blur-md border border-white/60 shadow-sm rounded-xl text-slate-900 placeholder:text-slate-500 focus:bg-white/80 focus:border-[#00a7e1] focus:ring-2 focus:ring-[#00a7e1]/20 transition-all outline-none"
                     />
                   </div>
 
                   {/* Requirements (Textarea) */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
-                      <FileText className="size-3.5 text-slate-400" />
+                  <div className="space-y-1.5 md:space-y-2">
+                    <label className="text-xs md:text-sm font-semibold text-slate-700 flex items-center gap-1.5">
+                      <FileText className="size-3.5 md:size-4 text-slate-400" />
                       Project Requirements
                     </label>
                     <textarea
@@ -225,59 +223,60 @@ export default function RequestQuoteModal({
                       value={formData.requirements}
                       onChange={(e) => setFormData({ ...formData, requirements: e.target.value })}
                       placeholder="Describe your current infrastructure, timeline, or specific operational requirements..."
-                      className="w-full px-3.5 py-2.5 text-sm bg-slate-50/70 border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#00a7e1] focus:ring-2 focus:ring-[#00a7e1]/15 transition-all outline-none resize-none"
+                      className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm md:text-base bg-white/40 backdrop-blur-md border border-white/60 shadow-sm rounded-xl text-slate-900 placeholder:text-slate-500 focus:bg-white/80 focus:border-[#00a7e1] focus:ring-2 focus:ring-[#00a7e1]/20 transition-all outline-none resize-none"
                     />
                   </div>
 
                   {/* Clean Verification Checkbox */}
-                  <div className="pt-1">
+                  <div className="pt-2 sm:pt-4">
                     <div
                       onClick={() => setIsRobotVerified(!isRobotVerified)}
-                      className="inline-flex items-center gap-3.5 px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/80 hover:bg-slate-100/70 cursor-pointer select-none transition-colors"
+                      className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 px-3 sm:px-5 py-3 sm:py-3.5 rounded-xl border border-white/60 bg-white/40 hover:bg-white/60 backdrop-blur-md shadow-sm cursor-pointer select-none transition-all w-full sm:w-auto"
                     >
-                      <div
-                        className={`size-5 rounded-md border flex items-center justify-center transition-all ${
-                          isRobotVerified
+                      <div className="flex items-center gap-3 w-full sm:w-auto">
+                        <div
+                          className={`size-5 sm:size-6 rounded-md border flex items-center justify-center shrink-0 transition-all ${isRobotVerified
                             ? "bg-[#00a7e1] border-[#00a7e1] text-white shadow-xs"
                             : "border-slate-300 bg-white"
-                        }`}
-                      >
-                        {isRobotVerified && <CheckCircle2 className="size-4 stroke-[2.5]" />}
+                            }`}
+                        >
+                          {isRobotVerified && <CheckCircle2 className="size-3.5 sm:size-4 stroke-[2.5]" />}
+                        </div>
+                        <span className="text-xs sm:text-sm font-medium text-slate-700">
+                          I'm not a robot
+                        </span>
                       </div>
-                      <span className="text-xs font-medium text-slate-700">
-                        I&apos;m not a robot
-                      </span>
-                      <div className="ml-4 pl-3 border-l border-slate-200 flex items-center gap-1 text-[11px] text-slate-400">
-                        <ShieldCheck className="size-3.5 text-[#00a7e1]" />
+                      <div className="pl-8 sm:pl-4 sm:ml-0 border-l-0 sm:border-l border-white/50 flex items-center gap-1.5 text-[10px] sm:text-[11px] md:text-xs text-slate-500">
+                        <ShieldCheck className="size-3 sm:size-3.5 md:size-4 text-[#00a7e1]" />
                         <span>SPS Verified</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Submit Button */}
-                  <div className="pt-3 flex items-center justify-end gap-3">
+                  <div className="pt-4 sm:pt-6 flex flex-col sm:flex-row items-center justify-end gap-3 w-full">
                     <Button
                       type="button"
                       variant="ghost"
                       onClick={onClose}
-                      className="text-slate-600 hover:text-slate-900 text-sm px-4"
+                      className="w-full sm:w-auto text-slate-600 hover:text-slate-900 text-sm md:text-base px-4 py-2.5 sm:py-2 order-2 sm:order-1"
                     >
                       Cancel
                     </Button>
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="bg-[#00a7e1] hover:bg-[#008dbf] text-white px-7 py-2.5 rounded-xl text-sm font-semibold shadow-md shadow-[#00a7e1]/25 hover:shadow-lg transition-all hover:scale-[1.02]"
+                      className="w-full sm:w-auto bg-[#00a7e1] hover:bg-[#008dbf] text-white px-6 sm:px-8 py-3.5 sm:py-3 rounded-xl text-sm md:text-base font-semibold shadow-md shadow-[#00a7e1]/25 hover:shadow-lg transition-all hover:scale-[1.02] order-1 sm:order-2"
                     >
                       {isSubmitting ? (
                         <>
-                          <Loader2 className="size-4 animate-spin mr-2" />
+                          <Loader2 className="size-4 md:size-5 animate-spin mr-2" />
                           Sending...
                         </>
                       ) : (
                         <>
                           Send Message
-                          <ArrowRight className="size-4 ml-1.5" />
+                          <ArrowRight className="size-4 md:size-5 ml-1.5 sm:ml-2" />
                         </>
                       )}
                     </Button>

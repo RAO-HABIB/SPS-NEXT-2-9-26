@@ -29,7 +29,7 @@ export default async function CategoryOverviewPage({ params }: CategoryPageProps
         <section className="relative w-full min-h-[520px] sm:min-h-[580px] pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 flex items-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/Hero/Hero8.png"
+              src="/images/Hero/Hero8.webp"
               alt="IBM Enterprise Ecosystem Background"
               fill
               sizes="100vw"

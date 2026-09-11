@@ -42,7 +42,7 @@ c:\New folder\sps\
 │   ├── hero.ts           # Hero slide definitions
 │   └── ...               # (Other content data files)
 ├── public/               # Static assets (images, videos, logo)
-│   ├── logo/             # Logo files (logo.png, etc.)
+│   ├── logo/             # Logo files (logo.webp, etc.)
 │   └── videos/           # Heavy background videos (e.g., hero-bg2.mp4)
 ├── Document.md           # This documentation file
 └── package.json          # Project metadata and dependencies
@@ -99,5 +99,5 @@ To run the project locally or build for production:
 
 ## 🔧 Maintenance Notes
 1. **Adding New Links:** If you need to add a new page, make sure to update the corresponding data array in the `lib/` folder. All links currently point to `#` by default to prevent 404s until actual pages are built.
-2. **Logo Updates:** The logo is currently referenced as `/logo/logo.png`. If a new format is uploaded, update the `src` attribute in `components/Navbar/navbar.tsx`.
+2. **Logo Updates:** The logo is currently referenced as `/logo/logo.webp`. If a new format is uploaded, update the `src` attribute in `components/Navbar/navbar.tsx`.
 3. **Lottie Dependencies:** The project relies on the named export `{ Lottie }` from `"lottie-react"`, using the `src` prop instead of `animationData` due to recent library updates. Keep this in mind when upgrading `lottie-react`.

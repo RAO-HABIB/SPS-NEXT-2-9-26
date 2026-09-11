@@ -43,7 +43,7 @@ export default function BmsLayout({ data }: { data: ProductDetailData }) {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/Hero/Hero8.png"
+            src="/images/Hero/Hero8.webp"
             alt="Hero Background"
             fill
             sizes="100vw"

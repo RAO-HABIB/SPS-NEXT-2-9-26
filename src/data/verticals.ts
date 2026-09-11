@@ -30,7 +30,7 @@ export const VERTICALS: Vertical[] = [
       "Healthcare – Mid Atl",
       "County Government",
     ],
-    href: "/",
+    href: "/verticals/public-sector",
     image: "/images/verticals/public.jpg",
   },
   {
@@ -40,7 +40,7 @@ export const VERTICALS: Vertical[] = [
     description:
       "Many industrial enterprises are prime for analytics and automation to drive efficiency.",
     items: ["Manufacturing", "Textile", "Utilities"],
-    href: "/",
+    href: "/verticals/industrials",
     image: "/images/verticals/industrial.jpg",
   },
   {
@@ -57,7 +57,7 @@ export const VERTICALS: Vertical[] = [
       "Health Systems Interoperability",
       "Retail",
     ],
-    href: "/",
+    href: "/verticals/healthcare",
     image: "/images/verticals/health.jpg",
   },
   {
@@ -73,7 +73,7 @@ export const VERTICALS: Vertical[] = [
       "Omni-channel Operations",
       "Convenience Stores",
     ],
-    href: "/",
+    href: "/verticals/retail",
     image: "/images/verticals/retail.jpg",
   },
   {
@@ -83,7 +83,7 @@ export const VERTICALS: Vertical[] = [
     description:
       "In today's changing energy landscape, business leaders need agile, data-driven operations.",
     items: ["Electric", "Oil & Gas"],
-    href: "/",
+    href: "/verticals/energy",
     image: "/images/verticals/energy.jpg",
   },
   {
@@ -93,7 +93,7 @@ export const VERTICALS: Vertical[] = [
     description:
       "Financial services firms require real-time modernization to stay competitive and secure.",
     items: ["Insurance", "Banking"],
-    href: "/",
+    href: "/verticals/financial",
     image: "/images/verticals/financial.jpg",
   },
   {
@@ -103,7 +103,7 @@ export const VERTICALS: Vertical[] = [
     description:
       "Telecommunications is experiencing a seismic shift — we power next-gen network transformation.",
     items: ["Telcos"],
-    href: "/",
+    href: "/verticals/telecom",
     image: "/images/verticals/telecom.jpg",
   },
 ];

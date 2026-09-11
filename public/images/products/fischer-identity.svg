@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" fill="none" className="w-full max-w-[280px] h-auto">
+  <!-- Fischer Identity Stylized F Ribbon / Chevrons Mark -->
+  <g transform="translate(10, 15)">
+    <!-- Top ribbon segment (Teal / Cyan) -->
+    <path d="M45 10 L85 32 L45 54 L15 36 Z" fill="#00A7E1" />
+    <path d="M45 10 L15 36 L15 24 L45 0 Z" fill="#0080B0" opacity="0.8" />
+    
+    <!-- Middle ribbon segment (Greenish Teal) -->
+    <path d="M45 46 L85 68 L45 90 L15 72 Z" fill="#00B894" />
+    <path d="M45 46 L15 72 L15 60 L45 36 Z" fill="#009475" opacity="0.8" />
+
+    <!-- Bottom ribbon segment (Navy / Blue) -->
+    <path d="M45 82 L85 104 L45 126 L15 108 Z" fill="#0984E3" />
+    <path d="M45 82 L15 108 L15 96 L45 72 Z" fill="#06528D" opacity="0.8" />
+
+    <!-- Left spine connecting accents -->
+    <path d="M15 24 L28 32 L28 116 L15 108 Z" fill="#031B3D" opacity="0.15" />
+  </g>
+
+  <!-- FISCHER Text -->
+  <text x="120" y="72" font-family="system-ui, -apple-system, sans-serif" font-size="38" font-weight="900" fill="#2D3748" letter-spacing="2">
+    FISCHER
+  </text>
+  
+  <!-- IDENTITY Text -->
+  <text x="122" y="104" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#4A5568" letter-spacing="7">
+    IDENTITY
+  </text>
+</svg>

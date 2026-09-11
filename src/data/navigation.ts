@@ -1,3 +1,5 @@
+import { spinnLabsSubItems } from "./spinnlabs-data";
+
 export type SubItem = { label: string; href: string };
 export type SubGroup = { label: string; href?: string; items: SubItem[] };
 export type NavPromo = {
@@ -124,71 +126,78 @@ export const NAV: NavItem[] = [
   // ===== MEGA MENU =====
   {
     label: "Verticals",
-    href: "/",
+    href: "/verticals",
     promo: {
       description:
         "Tailored solutions for Public Sector, Healthcare, Energy, Retail, Finance & more — built for your industry's unique needs.",
       image: "/images/products/head.webp",
       ctaLabel: "All Verticals",
-      ctaHref: "/Verticals",
+      ctaHref: "/verticals",
     },
     groups: [
       {
         label: "Public Sector",
+        href: "/verticals/public-sector",
         items: [
-          { label: "Government", href: "#" },
-          { label: "Public Safety", href: "#" },
-          { label: "Education", href: "#" },
-          { label: "Healthcare - Mid Atl", href: "#" },
-          { label: "County Government", href: "#" },
+          { label: "Government", href: "/verticals/public-sector/government" },
+          { label: "Public Safety", href: "/verticals/public-sector/public-safety" },
+          { label: "Education", href: "/verticals/public-sector/education" },
+          { label: "Healthcare - Mid Atl", href: "/verticals/public-sector/healthcare-mid-atl" },
+          { label: "County Government", href: "/verticals/public-sector/county-government" },
         ],
       },
       {
         label: "Industrials",
+        href: "/verticals/industrials",
         items: [
-          { label: "Manufacturing", href: "#" },
-          { label: "Textile", href: "#" },
-          { label: "Utilities", href: "#" },
+          { label: "Manufacturing", href: "/verticals/industrials" },
+          { label: "Textile", href: "/verticals/industrials" },
+          { label: "Utilities", href: "/verticals/industrials" },
         ],
       },
       {
         label: "Healthcare",
+        href: "/verticals/healthcare",
         items: [
-          { label: "Compliance", href: "#" },
-          { label: "Interoperability", href: "#" },
-          { label: "Multi-Clinic", href: "#" },
-          { label: "Patient Experience", href: "#" },
-          { label: "Telehealth", href: "#" },
+          { label: "Compliance", href: "/verticals/healthcare" },
+          { label: "Interoperability", href: "/verticals/healthcare" },
+          { label: "Multi-Clinic", href: "/verticals/healthcare" },
+          { label: "Patient Experience", href: "/verticals/healthcare" },
+          { label: "Telehealth", href: "/verticals/healthcare" },
         ],
       },
       {
         label: "Retail",
+        href: "/verticals/retail",
         items: [
-          { label: "Convenience Store", href: "#" },
-          { label: "Marketing", href: "#" },
-          { label: "Omni-channel", href: "#" },
-          { label: "Personalization", href: "#" },
-          { label: "Supply Chain", href: "#" },
+          { label: "Convenience Store", href: "/verticals/retail" },
+          { label: "Marketing", href: "/verticals/retail" },
+          { label: "Omni-channel", href: "/verticals/retail" },
+          { label: "Personalization", href: "/verticals/retail" },
+          { label: "Supply Chain", href: "/verticals/retail" },
         ],
       },
       {
         label: "Energy",
+        href: "/verticals/energy",
         items: [
-          { label: "Electric", href: "#" },
-          { label: "Oil & Gas", href: "#" },
+          { label: "Electric", href: "/verticals/energy" },
+          { label: "Oil & Gas", href: "/verticals/energy" },
         ],
       },
       {
         label: "Financial",
+        href: "/verticals/financial",
         items: [
-          { label: "Banking", href: "#" },
-          { label: "Insurance", href: "#" },
+          { label: "Banking", href: "/verticals/financial" },
+          { label: "Insurance", href: "/verticals/financial" },
         ],
       },
       {
         label: "Telecommunications",
+        href: "/verticals/telecom",
         items: [
-          { label: "Telcos", href: "#" },
+          { label: "Telcos", href: "/verticals/telecom" },
         ],
       },
     ],
@@ -196,84 +205,81 @@ export const NAV: NavItem[] = [
 
   {
     label: "SpinnLabs",
-    href: "#",
-    items: [
-      { label: "Overview", href: "#" },
-      { label: "Academia", href: "#" },
-      { label: "Industry", href: "#" },
-      { label: "Centers of Expertise", href: "#" },
-      { label: "Startups", href: "#" },
-    ],
+    href: "/spinnlabs/overview",
+    items: spinnLabsSubItems.map((item) => ({
+      label: item.title,
+      href: item.href,
+    })),
   },
   {
     label: "Activities",
-    href: "#",
+    href: "/Activities",
     groups: [
       {
         label: "Roundtables",
-        href: "#",
+        href: "/Activities/Rountable",
         items: [
           {
             label: "VISO Roundtable Series",
-            href: "#",
+            href: "/Activities/Rountable/viso-virginia",
           },
         ],
       },
       {
         label: "Webinars",
-        href: "#",
+        href: "/Activities/Webinars",
         items: [
-          { label: "Upcoming Webinars", href: "#" },
-          { label: "Past Webinars", href: "#" },
+          { label: "Upcoming Webinars", href: "/Activities/Webinars/upcoming" },
+          { label: "Past Webinars", href: "/Activities/Webinars/past" },
         ],
       },
       {
         label: "Workshops",
-        href: "#",
+        href: "/Activities/workshops",
         items: [
-          { label: "Upcoming Workshops", href: "#" },
-          { label: "Past Workshops", href: "#" },
+          { label: "Upcoming Workshops", href: "/Activities/workshops/upcoming" },
+          { label: "Past Workshops", href: "/Activities/workshops/past" },
         ],
       },
       {
         label: "Special Interest Groups",
-        href: "#",
+        href: "/Activities/special-interest-groups",
         items: [
-          { label: "AI SIG", href: "#" },
-          { label: "Cybersecurity SIG", href: "#" },
+          { label: "AI SIG", href: "/Activities/special-interest-groups/ai" },
+          { label: "Cybersecurity SIG", href: "/Activities/special-interest-groups/cybersecurity" },
         ],
       },
       {
         label: "Training",
-        href: "#",
+        href: "/Activities/training",
         items: [],
       },
       {
         label: "Internship Program 2026",
-        href: "#",
+        href: "/Activities/Internship",
         items: [],
       },
     ],
   },
   {
     label: "About Us",
-    href: "#",
+    href: "/About",
     items: [
-      { label: "Our Story", href: "#" },
-      { label: "Careers", href: "#" },
+      { label: "Our Story", href: "/About/Story" },
+      { label: "Careers", href: "/About/Careers" },
     ],
   },
   {
     label: "Contracts",
-    href: "#",
+    href: "/Contracts/VITA/pricing",
     groups: [
       {
         label: "VITA",
-        href: "#", // Click karne par kahin navigate na ho
+        href: "/Contracts/VITA/pricing",
         items: [
           {
             label: "Pricing",
-            href: "#",
+            href: "/Contracts/VITA/pricing",
           },
         ],
       },
@@ -281,6 +287,6 @@ export const NAV: NavItem[] = [
   },
   {
     label: "Contact Us",
-    href: "#",
+    href: "/Contact",
   },
 ];

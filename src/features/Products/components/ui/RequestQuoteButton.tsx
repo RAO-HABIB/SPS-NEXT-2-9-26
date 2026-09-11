@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { PhoneCallIcon, type PhoneCallIconHandle } from "@/components/ui/phone-call";
 
-export default function RequestQuoteButton() {
+export default function RequestQuoteButton({ onClick }: { onClick?: () => void } = {}) {
   const iconRef = useRef<PhoneCallIconHandle>(null);
 
   return (
@@ -26,6 +26,7 @@ export default function RequestQuoteButton() {
       <div className="relative z-10 pt-[10px]">
         <button
           type="button"
+          onClick={onClick}
           onMouseEnter={() => iconRef.current?.startAnimation()}
           onMouseLeave={() => iconRef.current?.stopAnimation()}
           className="group flex items-center w-[210px] h-[48px] bg-[#00a7e1] hover:bg-[#0092c4] text-white pl-1.5 pr-4 rounded-full transition-all duration-300 hover:scale-[1.02] cursor-pointer shadow-sm"
