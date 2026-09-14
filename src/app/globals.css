@@ -75,17 +75,6 @@
     display: none;
   }
 
-  /* Animations */
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
-  }
-
   @keyframes slide-in-left {
     from {
       transform: translateX(-100%);
@@ -96,13 +85,20 @@
     }
   }
 
-  .animate-fade-in {
-    animation: fade-in 0.2s ease-out;
-  }
-
   .animate-slide-in-left {
     animation: slide-in-left 0.3s cubic-bezier(0.32, 0.72, 0, 1);
   }
+}
+
+/* ===== SWIPER WILL-CHANGE (PREVENTS FORCED REFLOW) ===== */
+.swiper, .swiper-wrapper {
+  will-change: transform;
+}
+
+/* ===== PERFORMANCE: DEFER OFF-SCREEN RENDERING ===== */
+.below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -264,4 +260,43 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* ===== HERO CSS FADE (eliminates framer-motion delay for LCP) ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-fade {
+  animation: fadeInUp 0.3s ease-out both;
+}
+
+/* ===== SWIPER BULLETS ACCESSIBILITY (24x24px touch target) ===== */
+.swiper-pagination-bullet {
+  width: 24px !important;
+  height: 24px !important;
+  background: transparent !important;
+  opacity: 1 !important;
+  position: relative;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.swiper-pagination-bullet::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #cbd5e1;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+.swiper-pagination-bullet-active::after {
+  width: 20px;
+  background: #0077b6;
 }

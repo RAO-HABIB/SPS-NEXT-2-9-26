@@ -3,7 +3,7 @@
 import * as React from "react";
 import { cva } from "class-variance-authority";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
-import { ChevronDownIcon } from "lucide-react";
+import { ChevronDown as ChevronDownIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Highlight, HighlightItem } from "@/components/unlumen-ui/primitives/effects/highlight";

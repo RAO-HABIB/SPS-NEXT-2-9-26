@@ -1,8 +1,6 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { Icon } from "@iconify-icon/react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { NEWS_ITEMS, NEWS_INTRO } from "@/data/news";
 import type { NewsItem } from "@/data/news";
 
@@ -12,7 +10,7 @@ export default function NewsInsights() {
   const item3 = NEWS_ITEMS[2];
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#F8FAFC] px-4 sm:px-6 md:px-8 py-16 sm:py-20 lg:py-28">
+    <section className="below-fold relative w-full overflow-hidden bg-[#F8FAFC] px-4 sm:px-6 md:px-8 py-16 sm:py-20 lg:py-28">
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
         <div className="absolute right-0 top-0 h-[400px] w-[400px] sm:h-[500px] sm:w-[500px] lg:h-[600px] lg:w-[600px] translate-x-1/3 -translate-y-1/3 rounded-full bg-[#00a7e1]/5 blur-[80px] sm:blur-[100px] lg:blur-[120px]" />
         <div className="absolute bottom-0 left-0 h-[400px] w-[400px] sm:h-[500px] sm:w-[500px] lg:h-[600px] lg:w-[600px] -translate-x-1/3 translate-y-1/3 rounded-full bg-[#0057B8]/5 blur-[80px] sm:blur-[100px] lg:blur-[120px]" />
@@ -34,7 +32,7 @@ export default function NewsInsights() {
           >
             {NEWS_INTRO.cta.label}
             <span className="flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-lg bg-white text-[#0057B8] transition-transform duration-300 group-hover:translate-x-0.5">
-              <Icon icon="lucide:arrow-right" width={16} />
+              <ArrowRight className="w-4 h-4" />
             </span>
           </Link>
         </div>
@@ -66,7 +64,7 @@ function LargeCard({ item }: { item: NewsItem }) {
   return (
     <article className="group relative h-full w-full overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
       <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 33vw" quality={75} />
-      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent" />
       
       <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-8">
         <div className="self-start rounded-full bg-white px-3 py-1 text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-[#031B3D]">
@@ -82,11 +80,11 @@ function LargeCard({ item }: { item: NewsItem }) {
           
           <Link
             href={item.href}
-            className="group/btn relative z-10 inline-flex items-center gap-3 rounded-xl bg-[#00a7e1] py-2.5 pl-5 pr-2.5 text-sm font-bold text-white shadow-md transition-all duration-300 hover:bg-[#008dbf] hover:shadow-lg"
+            className="group/btn relative z-10 inline-flex items-center gap-3 rounded-xl bg-[#0077b6] py-2.5 pl-5 pr-2.5 text-sm font-bold text-white shadow-md transition-all duration-300 hover:bg-[#005f94] hover:shadow-lg"
           >
             Read More
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white text-[#00a7e1] transition-transform duration-300 group-hover/btn:translate-x-1">
-              <Icon icon="lucide:arrow-right" width={16} />
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white text-[#0077b6] transition-transform duration-300 group-hover/btn:translate-x-1">
+              <ArrowRight className="w-4 h-4" />
             </span>
           </Link>
         </div>
@@ -98,8 +96,8 @@ function LargeCard({ item }: { item: NewsItem }) {
 function MiddleCard({ item }: { item: NewsItem }) {
   return (
     <article className="group relative h-full w-full overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
-      <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 1024px) 50vw, 33vw" quality={75} />
-      <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/10 to-transparent" />
+      <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 33vw" quality={75} />
+      <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent" />
       
       <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-8">
         <div className="self-start rounded-full bg-white px-3 py-1 text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-[#031B3D]">
@@ -113,7 +111,7 @@ function MiddleCard({ item }: { item: NewsItem }) {
             </Link>
           </h3>
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#031B3D] transition-transform duration-300 group-hover:scale-110 shadow-lg">
-            <Icon icon="lucide:arrow-up-right" width={20} />
+            <ArrowUpRight className="w-5 h-5" />
           </div>
         </div>
       </div>
@@ -139,7 +137,7 @@ function SmallImageCard({ item }: { item: NewsItem }) {
             </Link>
           </h3>
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#031B3D] transition-transform duration-300 group-hover:scale-110 shadow-lg">
-            <Icon icon="lucide:arrow-up-right" width={16} />
+            <ArrowUpRight className="w-4 h-4" />
           </div>
         </div>
       </div>
@@ -156,7 +154,7 @@ function ExploreCard() {
         </h3>
       </Link>
       <div className="self-end flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#03122F] transition-transform duration-300 group-hover:scale-110 shadow-lg mt-4">
-        <Icon icon="lucide:arrow-up-right" width={20} />
+        <ArrowUpRight className="w-5 h-5" />
       </div>
     </article>
   );

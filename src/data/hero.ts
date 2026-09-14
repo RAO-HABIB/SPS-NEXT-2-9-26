@@ -6,6 +6,8 @@ export type HeroSlide = {
   bullets?: string[];
   description?: string;
   video: string;
+  webmVideo: string;
+  poster: string;
   primaryCta: { label: string; href: string };
   secondaryCta: { label: string; href: string };
 };
@@ -20,7 +22,9 @@ export const HERO_SLIDES: HeroSlide[] = [
       "Modernize legacy systems, enhance identity management, and secure your environment with a managed 24x7 SOC and automated compliance artifacts.",
     primaryCta: { label: "Request Consultation", href: "/" },
     secondaryCta: { label: "How can we help you today", href: "/" },
-    video: "/videos/hero-bg3.mp4",
+    video: "/videos/hero-bg3-hero.mp4",
+    webmVideo: "/videos/hero-bg3-hero.webm",
+    poster: "/images/posters/hero-bg3.webp",
   },
   {
     id: "cybersecurity",
@@ -31,7 +35,9 @@ export const HERO_SLIDES: HeroSlide[] = [
       "End-to-end protection across networks, identities & data — powered by 24x7 SOC, GRC and Threat Management.",
     primaryCta: { label: "Explore Security", href: "/" },
     secondaryCta: { label: "View Solutions", href: "/" },
-    video: "/videos/cybersecurity2.mp4",
+    video: "/videos/cybersecurity2-720.mp4",
+    webmVideo: "/videos/cybersecurity2.webm",
+    poster: "/images/posters/cybersecurity2.webp",
   },
   {
     id: "ai",
@@ -42,7 +48,9 @@ export const HERO_SLIDES: HeroSlide[] = [
       "Harness AI, Data Science & Automation to unlock insights and accelerate business growth at scale.",
     primaryCta: { label: "Discover AI", href: "/" },
     secondaryCta: { label: "Learn More", href: "/" },
-    video: "/videos/ai1.mp4",
+    video: "/videos/ai1-720.mp4",
+    webmVideo: "/videos/ai1.webm",
+    poster: "/images/posters/ai1.webp",
   },
   {
     id: "cloud",
@@ -53,6 +61,8 @@ export const HERO_SLIDES: HeroSlide[] = [
       "Cloud migration, DevOps & modernization services designed for performance, security and cost efficiency.",
     primaryCta: { label: "View Cloud Services", href: "/" },
     secondaryCta: { label: "Learn More", href: "/" },
-    video: "/videos/cloud1.mp4",
+    video: "/videos/cloud1-720.mp4",
+    webmVideo: "/videos/cloud1.webm",
+    poster: "/images/posters/cloud1.webp",
   },
 ];

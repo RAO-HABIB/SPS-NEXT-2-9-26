@@ -1,13 +1,11 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { Icon } from "@iconify-icon/react";
+import { ArrowUpRight } from "lucide-react";
 import { STARTUPS, STARTUPS_INTRO } from "@/data/startups";
 
 export default function Startups() {
   return (
-    <section className="relative w-full">
+    <section className="below-fold relative w-full">
       <div className="relative overflow-hidden bg-[#03122F] px-4 sm:px-6 md:px-8 py-12 sm:py-16 lg:py-20 text-white">
         <div
           className="pointer-events-none absolute inset-0 opacity-10"
@@ -44,7 +42,7 @@ export default function Startups() {
 
 function StartupCard({ startup }: { startup: (typeof STARTUPS)[number] }) {
   return (
-    <article className="group relative flex h-full min-h-[300px] sm:min-h-[360px] cursor-pointer flex-col justify-between rounded-2xl border border-slate-200/70 bg-[#f1f6f8] p-6 sm:p-8 text-left shadow-[0_0_20px_rgba(0,0,0,0.15)] transition-all duration-500 ease-out hover:-translate-y-1 sm:hover:-translate-y-2 hover:bg-[#00a7e1] hover:shadow-[0_0_20px_rgba(0,0,0,0.25)]">
+    <article className="group relative flex h-full min-h-[300px] sm:min-h-[360px] cursor-pointer flex-col justify-between rounded-2xl border border-slate-200/70 bg-[#f1f6f8] p-6 sm:p-8 text-left shadow-[0_0_20px_rgba(0,0,0,0.15)] transition-all duration-500 ease-out hover:-translate-y-1 sm:hover:-translate-y-2 hover:bg-[#0077b6] hover:shadow-[0_0_20px_rgba(0,0,0,0.25)]">
 
       <div>
         <div className="mb-3 sm:mb-4 relative h-12 w-12 sm:h-14 sm:w-14 transition-transform duration-300 group-hover:scale-110">
@@ -68,7 +66,7 @@ function StartupCard({ startup }: { startup: (typeof STARTUPS)[number] }) {
 
       <div className="flex items-center justify-between pt-4 mt-auto">
         <div className="flex items-center gap-1.5 sm:gap-2">
-          <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-[#00a7e1] transition-colors duration-300 group-hover:bg-white" />
+          <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-[#0077b6] transition-colors duration-300 group-hover:bg-white" />
           <span className="text-[11px] sm:text-xs font-semibold text-slate-700 transition-colors duration-300 group-hover:text-white">
             Read More
           </span>
@@ -77,9 +75,9 @@ function StartupCard({ startup }: { startup: (typeof STARTUPS)[number] }) {
         <Link
           href={startup.href}
           aria-label={`Open ${startup.name}`}
-          className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-white text-[#00a7e1] shadow-sm opacity-0 translate-x-2 translate-y-2 sm:translate-x-4 sm:translate-y-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"
+          className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-white text-[#0077b6] shadow-sm opacity-0 translate-x-2 translate-y-2 sm:translate-x-4 sm:translate-y-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"
         >
-          <Icon icon="lucide:arrow-up-right" className="text-lg sm:text-xl font-bold" />
+          <ArrowUpRight className="w-5 h-5 font-bold" />
         </Link>
       </div>
     </article>

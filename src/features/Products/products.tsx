@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Icon } from "@iconify-icon/react";
+import { LucideIcon } from "@/components/LucideIcon";
+import { ShieldCheck, ArrowLeft, ArrowRight } from "lucide-react";
 import { A11y, Autoplay, Keyboard, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperClass } from "swiper";
@@ -46,7 +47,7 @@ export default function Products() {
 
   return (
     <section
-      className="sps-products relative w-full overflow-hidden bg-[#03122F] px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20 lg:py-24"
+      className="below-fold sps-products relative w-full overflow-hidden bg-[#03122F] px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20 lg:py-24"
       aria-labelledby="products-heading"
     >
       <script
@@ -79,7 +80,7 @@ export default function Products() {
           <div className="order-2 lg:order-1">
             <header>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-2.5 sm:px-3 py-1 text-[10px] sm:text-[11px] font-semibold tracking-wide text-cyan-300">
-                <Icon icon="lucide:shield-check" width={13} aria-hidden="true" />
+                <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
                 {PRODUCTS_INTRO.eyebrow.toUpperCase()}
               </span>
 
@@ -151,18 +152,18 @@ export default function Products() {
                   onClick={handlePrev}
                   disabled={!PRODUCTS.length || (isBeginning && !(PRODUCTS.length > 2))}
                   aria-label="Previous product"
-                  className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full border border-white/15 bg-white/5 text-white/90 transition-all duration-200 hover:border-cyan-400/60 hover:bg-cyan-400/10 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#03122F] disabled:cursor-not-allowed disabled:opacity-40"
+                  className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full border border-white/15 bg-white/5 text-white/90 transition-all duration-200 hover:border-cyan-400/60 hover:bg-cyan-400/10 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#03122F] disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
                 >
-                  <Icon icon="lucide:arrow-left" width={18} className="w-[16px] sm:w-[18px]" aria-hidden="true" />
+                  <ArrowLeft className="w-4 h-4 sm:w-4.5 sm:h-4.5" aria-hidden="true" />
                 </button>
                 <button
                   type="button"
                   onClick={handleNext}
                   disabled={!PRODUCTS.length || (isEnd && !(PRODUCTS.length > 2))}
                   aria-label="Next product"
-                  className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full border border-white/15 bg-white/5 text-white/90 transition-all duration-200 hover:border-cyan-400/60 hover:bg-cyan-400/10 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#03122F] disabled:cursor-not-allowed disabled:opacity-40"
+                  className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full border border-white/15 bg-white/5 text-white/90 transition-all duration-200 hover:border-cyan-400/60 hover:bg-cyan-400/10 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#03122F] disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
                 >
-                  <Icon icon="lucide:arrow-right" width={18} className="w-[16px] sm:w-[18px]" aria-hidden="true" />
+                  <ArrowRight className="w-4 h-4 sm:w-4.5 sm:h-4.5" aria-hidden="true" />
                 </button>
               </div>
             </div>
@@ -177,8 +178,7 @@ export default function Products() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 640px) 280px, (max-width: 1024px) 380px, 440px"
-                  quality={50}
-                  priority
+                  quality={60}
                 />
               </div>
               <StatBadge prefersReducedMotion={prefersReducedMotion} />
@@ -340,7 +340,7 @@ function ProductCard({
       <Link
         href={product.href}
         className="group relative flex h-full flex-col justify-between overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/10 hover:shadow-2xl hover:shadow-cyan-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#03122F] sm:p-8"
-        aria-label={`Explore details for ${product.name}`}
+        aria-label={`${product.name} — Explore details`}
       >
         <div>
           <div className="mb-4 sm:mb-5 flex items-center justify-between sm:mb-6">
@@ -357,7 +357,7 @@ function ProductCard({
                 }}
                 aria-hidden="true"
               >
-                <Icon icon={product.icon} width={22} className="text-white w-[18px] sm:w-[22px] lg:w-[24px]" />
+                <LucideIcon name={product.icon} className="text-white w-[18px] sm:w-[22px] lg:w-[24px] h-[18px] sm:h-[22px] lg:h-[24px]" />
               </div>
             )}
           </div>
@@ -373,10 +373,8 @@ function ProductCard({
 
         <div className="mt-4 sm:mt-5 flex items-center gap-2 text-[11px] sm:text-xs font-semibold text-cyan-300 sm:mt-6 sm:text-sm">
           <span>Learn more</span>
-          <Icon
-            icon="lucide:arrow-right"
-            width={16}
-            className="transition-transform group-hover:translate-x-1 w-[14px] sm:w-[16px]"
+          <ArrowRight
+            className="transition-transform group-hover:translate-x-1 w-3.5 h-3.5 sm:w-4 sm:h-4"
             aria-hidden="true"
           />
         </div>

@@ -1,8 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { Icon } from "@iconify-icon/react";
+import { Check, ArrowRight } from "lucide-react";
 import { HOW_INTRO, STEPS, type Step } from "@/data/howitworks";
 
 type Stat = {
@@ -15,7 +13,7 @@ export default function HowItWorks() {
   const thumbImage: string = STEPS[0]?.image ?? HOW_INTRO.image;
 
   return (
-    <section className="relative isolate overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
+    <section className="below-fold relative isolate overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
@@ -31,9 +29,9 @@ export default function HowItWorks() {
                   alt={HOW_INTRO.title}
                   width={567}
                   height={592}
-                  quality={50}
+                  sizes="(max-width: 640px) 380px, 500px"
+                  quality={60}
                   className="h-[320px] sm:h-[460px] lg:h-[500px] w-full object-cover"
-                  priority
                 />
               </div>
 
@@ -101,7 +99,7 @@ export default function HowItWorks() {
               {STEPS.map((step: Step) => (
                 <li key={step.number} className="flex items-start gap-2.5 sm:gap-3">
                   <span className="mt-0.5 sm:mt-1 flex h-4 w-4 sm:h-5 sm:w-5 shrink-0 items-center justify-center rounded-full bg-[#0057B8] text-white">
-                    <Icon icon="mdi:check" width={10} className="sm:w-[12px]" />
+                    <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                   </span>
 
                   <div>
@@ -127,7 +125,7 @@ export default function HowItWorks() {
               >
                 <span>{HOW_INTRO.cta.label}</span>
                 <span className="flex h-7 w-7 sm:h-9 sm:w-10 items-center justify-center rounded-full bg-white text-[#03122F]">
-                  <Icon icon="lucide:arrow-right" width={14} className="sm:w-[18px]" />
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5" />
                 </span>
               </Link>
             </div>

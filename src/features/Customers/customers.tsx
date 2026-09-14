@@ -21,11 +21,43 @@ const CUSTOMERS = [
 export default function Customers() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const isDragging = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
+  const cachedSetWidth = useRef(0);
+
+  // Only animate when the section is actually visible in the viewport
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { rootMargin: "100px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Measure scrollWidth once on resize, not on every rAF frame
+  useEffect(() => {
+    const measure = () => {
+      if (containerRef.current) {
+        cachedSetWidth.current = containerRef.current.scrollWidth / 4;
+      }
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
 
   useEffect(() => {
+    if (!isVisible || isHovered) return;
+
     let animationId: number;
     let lastTime = performance.now();
 
@@ -33,24 +65,24 @@ export default function Customers() {
       const delta = time - lastTime;
       lastTime = time;
 
-      if (containerRef.current && !isHovered && !isDragging.current) {
-        containerRef.current.scrollLeft += delta * 0.05; // Base scroll speed
-        
-        const scrollWidth = containerRef.current.scrollWidth;
-        const setWidth = scrollWidth / 4; // 4 sets total
-        
-        // Infinite loop wrap-around logic
-        if (containerRef.current.scrollLeft >= setWidth * 2) {
-           containerRef.current.scrollLeft -= setWidth;
-        } else if (containerRef.current.scrollLeft <= setWidth) {
-           containerRef.current.scrollLeft += setWidth;
+      if (containerRef.current && !isDragging.current) {
+        containerRef.current.scrollLeft += delta * 0.05;
+
+        const setWidth = cachedSetWidth.current;
+        if (setWidth > 0) {
+          if (containerRef.current.scrollLeft >= setWidth * 2) {
+            containerRef.current.scrollLeft -= setWidth;
+          } else if (containerRef.current.scrollLeft <= setWidth) {
+            containerRef.current.scrollLeft += setWidth;
+          }
         }
       }
       animationId = requestAnimationFrame(scroll);
     };
+
     animationId = requestAnimationFrame(scroll);
     return () => cancelAnimationFrame(animationId);
-  }, [isHovered]);
+  }, [isVisible, isHovered]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     isDragging.current = true;
@@ -86,17 +118,18 @@ export default function Customers() {
     containerRef.current.scrollLeft = scrollLeft.current - walk;
     
     // Check bounds during manual drag
-    const scrollWidth = containerRef.current.scrollWidth;
-    const setWidth = scrollWidth / 4;
-    if (containerRef.current.scrollLeft >= setWidth * 2) {
+    const setWidth = cachedSetWidth.current;
+    if (setWidth > 0) {
+      if (containerRef.current.scrollLeft >= setWidth * 2) {
         containerRef.current.scrollLeft -= setWidth;
-    } else if (containerRef.current.scrollLeft <= setWidth) {
+      } else if (containerRef.current.scrollLeft <= setWidth) {
         containerRef.current.scrollLeft += setWidth;
+      }
     }
   };
 
   return (
-    <section className="w-full">
+    <section className="below-fold w-full">
       <div className="bg-[#031B3D] px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20 lg:py-24 text-center">
         <div className="mx-auto max-w-5xl">
           <h2 className="mb-4 sm:mb-6 text-lg sm:text-xl md:text-2xl lg:text-[28px] font-bold leading-relaxed sm:leading-loose text-white">

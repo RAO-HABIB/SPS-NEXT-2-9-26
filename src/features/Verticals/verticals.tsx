@@ -1,13 +1,11 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { Icon } from "@iconify-icon/react";
+import { CheckCircle2 } from "lucide-react";
 import { VERTICALS, VERTICALS_INTRO, type Vertical } from "@/data/verticals";
 
 export default function Verticals() {
   return (
-    <section className="relative w-full overflow-hidden bg-blue-50 px-6 py-20 lg:px-8 lg:py-24">
+    <section className="below-fold relative w-full overflow-hidden bg-blue-50 px-6 py-20 lg:px-8 lg:py-24">
       <div className="relative mx-auto max-w-7xl">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <span className="text-xs font-bold uppercase tracking-widest text-[#0057B8]">
@@ -21,8 +19,8 @@ export default function Verticals() {
 
         {/* ============ Cards Grid ============ */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {VERTICALS.map((v, i) => (
-            <VerticalCard key={v.id} vertical={v} priority={i < 4} />
+          {VERTICALS.map((v) => (
+            <VerticalCard key={v.id} vertical={v} />
           ))}
         </div>
       </div>
@@ -31,15 +29,9 @@ export default function Verticals() {
 }
 
 /* ====================== Vertical Card ====================== */
-function VerticalCard({
-  vertical,
-  priority,
-}: {
-  vertical: Vertical;
-  priority?: boolean;
-}) {
+function VerticalCard({ vertical }: { vertical: Vertical }) {
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-slate-200 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:bg-red-500">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-slate-200 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl">
       {/* ===== BACKGROUND IMAGE (absolute, behind content) ===== */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
         <Image
@@ -47,8 +39,7 @@ function VerticalCard({
           alt=""
           aria-hidden="true"
           fill
-          priority={priority}
-          loading={priority ? undefined : "lazy"}
+          loading="lazy"
           sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="scale-110 object-cover opacity-0 transition-all duration-700 ease-out group-hover:scale-100 group-hover:opacity-100 group-focus-within:scale-100 group-focus-within:opacity-100"
         />
@@ -84,11 +75,9 @@ function VerticalCard({
               key={item}
               className="flex items-start gap-2 text-sm text-slate-700 transition-colors duration-500 group-hover:text-white/95 group-focus-within:text-white/95"
             >
-              <Icon
-                icon="lucide:check-circle-2"
-                width={16}
+              <CheckCircle2
                 aria-hidden="true"
-                className="mt-0.5 shrink-0 text-[#0057B8] transition-colors duration-500 group-hover:text-cyan-200 group-focus-within:text-cyan-200"
+                className="mt-0.5 w-4 h-4 shrink-0 text-[#0057B8] transition-colors duration-500 group-hover:text-cyan-200 group-focus-within:text-cyan-200"
               />
               <span>{item}</span>
             </li>

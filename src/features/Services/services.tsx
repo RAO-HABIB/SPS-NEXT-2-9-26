@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { Icon } from "@iconify-icon/react";
+import { LucideIcon } from "@/components/LucideIcon";
 import { SERVICE_TABS } from "@/data/services";
 
 export default function Services() {
@@ -68,7 +68,7 @@ export default function Services() {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-white py-12 sm:py-16 md:py-20 lg:py-24">
+    <section className="below-fold relative w-full overflow-hidden bg-white py-12 sm:py-16 md:py-20 lg:py-24">
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="sr-only">Our Services</h2>
         <div className="mb-6 sm:mb-8 md:mb-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
@@ -80,15 +80,17 @@ export default function Services() {
                 type="button"
                 onClick={() => setActiveTabId(tab.id)}
                 aria-pressed={isActive}
-                className={`inline-flex items-center gap-2 sm:gap-2.5 rounded-xl border px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 cursor-pointer ${isActive
-                  ? "bg-[#00a7e1] text-white border-[#00a7e1] shadow-sm"
-                  : "bg-white text-slate-700 border-slate-200 hover:border-[#00a7e1] hover:text-[#00a7e1]"
-                  }`}
+                className={`inline-flex items-center gap-2 sm:gap-2.5 rounded-xl border px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 cursor-pointer ${
+                  isActive
+                    ? tab.id === "cybersecurity"
+                      ? "bg-[#006699] text-white border-[#006699] shadow-sm"
+                      : "bg-[#0077b6] text-white border-[#0077b6] shadow-sm"
+                    : "bg-white text-slate-700 border-slate-200 hover:border-[#0077b6] hover:text-[#0077b6]"
+                }`}
               >
-                <Icon
-                  icon={tab.icon}
-                  width={18}
-                  className={`${isActive ? "text-white" : "text-slate-600"} w-[14px] sm:w-[16px] md:w-[18px]`}
+                <LucideIcon
+                  name={tab.icon}
+                  className={`${isActive ? "text-white" : "text-slate-600"} w-[14px] sm:w-[16px] md:w-[18px] h-[14px] sm:h-[16px] md:h-[18px]`}
                 />
                 {tab.title}
               </button>
@@ -117,11 +119,11 @@ export default function Services() {
             {activeTab.slides.map((slide, index) => (
               <div key={`${slide.id}-${index}`} className="carousel-item px-2 sm:px-4 py-6 sm:py-8">
                 <div
-                  className="group relative flex h-[340px] sm:h-[360px] w-[260px] sm:w-[280px] flex-col justify-between rounded-2xl border border-slate-200/70 bg-[#f1f6f8] p-6 sm:p-8 text-left shadow-[0_0_20px_rgba(0,0,0,0.15)] transition-all duration-500 ease-out hover:-translate-y-1 sm:hover:-translate-y-2 hover:bg-[#00a7e1] hover:shadow-[0_0_20px_rgba(0,0,0,0.25)]"
+                  className="group relative flex h-[340px] sm:h-[360px] w-[260px] sm:w-[280px] flex-col justify-between rounded-2xl border border-slate-200/70 bg-[#f1f6f8] p-6 sm:p-8 text-left shadow-[0_0_20px_rgba(0,0,0,0.15)] transition-all duration-500 ease-out hover:-translate-y-1 sm:hover:-translate-y-2 hover:bg-[#0077b6] hover:shadow-[0_0_20px_rgba(0,0,0,0.25)]"
                 >
                   <div>
-                    <div className="mb-3 sm:mb-4 text-[#00a7e1] transition-colors duration-300 group-hover:text-white">
-                      <Icon icon={slide.icon} className="text-3xl sm:text-4xl" />
+                    <div className="mb-3 sm:mb-4 text-[#0077b6] transition-colors duration-300 group-hover:text-white">
+                      <LucideIcon name={slide.icon} className="w-8 h-8 sm:w-10 sm:h-10" />
                     </div>
 
                     <h3 className="mb-1.5 sm:mb-2 text-base sm:text-lg lg:text-xl font-bold text-slate-900 transition-colors duration-300 group-hover:text-white line-clamp-2">
@@ -135,7 +137,7 @@ export default function Services() {
 
                   <div className="flex items-center justify-between pt-3 sm:pt-4 border-t sm:border-t-0 border-transparent">
                     <div className="flex items-center gap-1.5 sm:gap-2">
-                      <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-[#00a7e1] transition-colors duration-300 group-hover:bg-white" />
+                      <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-[#0077b6] transition-colors duration-300 group-hover:bg-white" />
                       <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-slate-700 transition-colors duration-300 group-hover:text-white">
                         Read More
                       </span>
@@ -144,9 +146,9 @@ export default function Services() {
                     <Link
                       href={slide.href}
                       aria-label={`Read more about ${slide.title}`}
-                      className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-white text-[#00a7e1] shadow-sm opacity-0 translate-x-2 translate-y-2 sm:translate-x-4 sm:translate-y-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"
+                      className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-white text-[#0077b6] shadow-sm opacity-0 translate-x-2 translate-y-2 sm:translate-x-4 sm:translate-y-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"
                     >
-                      <Icon icon="lucide:arrow-up-right" className="text-lg sm:text-xl font-bold" />
+                      <LucideIcon name="lucide:arrow-up-right" className="w-5 h-5 font-bold" />
                     </Link>
                   </div>
                 </div>
