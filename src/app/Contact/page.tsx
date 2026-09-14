@@ -88,7 +88,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <main className="bg-white mt-16 lg:mt-24 pt-8">
+      <section className="bg-white pt-16 lg:pt-24 pb-20 lg:pb-32">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <div className="mb-12 max-w-3xl">
             <h2 className="mb-5 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl lg:text-6xl">
@@ -103,7 +103,7 @@ export default function ContactPage() {
 
           <ContactClientSection />
         </div>
-      </main>
+      </section>
 
       <Footer />
     </>
