@@ -144,41 +144,40 @@ export default function Navbar() {
                                     {chunkGroupsIntoRows(item.groups ?? [], columns).map((row, rowIdx) => (
                                       <div
                                         key={rowIdx}
-                                        className={`grid gap-x-6 gap-y-6 ${gridColsClass} ${
-                                          rowIdx === 0 ? "" : "mt-6 border-t border-white/10 pt-6"
-                                        }`}
+                                        className={`grid gap-x-6 gap-y-6 ${gridColsClass} ${rowIdx === 0 ? "" : "mt-6 border-t border-white/10 pt-6"
+                                          }`}
                                       >
-                                    {row.map((group) => (
-                                      <div key={group.label}>
-                                        {group.href ? (
-                                          <Link
-                                            href={group.href}
-                                            onClick={closeAll}
-                                            className="mb-4 block text-base font-bold text-white outline-none hover:text-cyan-400 focus-visible:ring-2 focus-visible:ring-cyan-500"
-                                          >
-                                            {group.label}
-                                          </Link>
-                                        ) : (
-                                          <p className="mb-4 text-base font-bold text-white">
-                                            {group.label}
-                                          </p>
-                                        )}
-                                        <ul className="space-y-2.5">
-                                          {(group.items ?? []).map((sub) => (
-                                            <li key={sub.label}>
+                                        {row.map((group) => (
+                                          <div key={group.label}>
+                                            {group.href ? (
                                               <Link
-                                                href={sub.href}
+                                                href={group.href}
                                                 onClick={closeAll}
-                                                aria-current={isActive(sub.href) ? "page" : undefined}
-                                                className="block text-sm text-gray-300 outline-none hover:text-cyan-400 focus-visible:ring-2 focus-visible:ring-cyan-500"
+                                                className="mb-4 block text-base font-bold text-white outline-none hover:text-cyan-400 focus-visible:ring-2 focus-visible:ring-cyan-500"
                                               >
-                                                {sub.label}
+                                                {group.label}
                                               </Link>
-                                            </li>
-                                          ))}
-                                        </ul>
-                                      </div>
-                                    ))}
+                                            ) : (
+                                              <p className="mb-4 text-base font-bold text-white">
+                                                {group.label}
+                                              </p>
+                                            )}
+                                            <ul className="space-y-2.5">
+                                              {(group.items ?? []).map((sub) => (
+                                                <li key={sub.label}>
+                                                  <Link
+                                                    href={sub.href}
+                                                    onClick={closeAll}
+                                                    aria-current={isActive(sub.href) ? "page" : undefined}
+                                                    className="block text-sm text-gray-300 outline-none hover:text-cyan-400 focus-visible:ring-2 focus-visible:ring-cyan-500"
+                                                  >
+                                                    {sub.label}
+                                                  </Link>
+                                                </li>
+                                              ))}
+                                            </ul>
+                                          </div>
+                                        ))}
                                       </div>
                                     ))}
                                   </div>
@@ -223,7 +222,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden shrink-0 items-center gap-3 xl:flex">
             <Link
-              href="/"
+              href="/Activities/Internship"
               className="rounded-lg border-2 border-white/70 px-4 py-1.5 text-sm font-bold text-white transition-all hover:bg-white/10 outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
             >
               Internships
@@ -243,121 +242,121 @@ export default function Navbar() {
               aria-label="Open menu"
               className="rounded p-2 text-white outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 xl:hidden"
             >
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
             </DrawerTrigger>
 
             <DrawerContent className="bg-[#03122F]/80 backdrop-blur-xl shadow-2xl border-white/10 text-white flex flex-col">
               <DrawerTitle className="sr-only">Mobile Menu</DrawerTitle>
               <div className="overflow-y-auto px-4 py-6 flex flex-col flex-1">
                 <ul className="space-y-1 flex-1">
-              {NAV.map((item) => {
-                const open = openMobileItem === item.label;
-                if (!hasChildren(item)) {
-                  return (
-                    <li key={item.label}>
-                      <Link
-                        href={item.href}
-                        onClick={closeAll}
-                        aria-current={isActive(item.href) ? "page" : undefined}
-                        className="block rounded px-3 py-2 font-medium text-white outline-none hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-cyan-400"
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  );
-                }
-                return (
-                  <li key={item.label} className="border-b border-white/10 last:border-0">
-                    <button
-                      type="button"
-                      aria-expanded={open}
-                      aria-controls={`mobile-submenu-${item.label}`}
-                      onClick={() => setOpenMobileItem(open ? null : item.label)}
-                      className="flex w-full items-center justify-between rounded px-3 py-2 text-left font-medium text-white outline-none hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-cyan-400"
-                    >
-                      {item.label}
-                      <span aria-hidden="true" className="text-cyan-300">
-                        {open ? "−" : "+"}
-                      </span>
-                    </button>
+                  {NAV.map((item) => {
+                    const open = openMobileItem === item.label;
+                    if (!hasChildren(item)) {
+                      return (
+                        <li key={item.label}>
+                          <Link
+                            href={item.href}
+                            onClick={closeAll}
+                            aria-current={isActive(item.href) ? "page" : undefined}
+                            className="block rounded px-3 py-2 font-medium text-white outline-none hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-cyan-400"
+                          >
+                            {item.label}
+                          </Link>
+                        </li>
+                      );
+                    }
+                    return (
+                      <li key={item.label} className="border-b border-white/10 last:border-0">
+                        <button
+                          type="button"
+                          aria-expanded={open}
+                          aria-controls={`mobile-submenu-${item.label}`}
+                          onClick={() => setOpenMobileItem(open ? null : item.label)}
+                          className="flex w-full items-center justify-between rounded px-3 py-2 text-left font-medium text-white outline-none hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-cyan-400"
+                        >
+                          {item.label}
+                          <span aria-hidden="true" className="text-cyan-300">
+                            {open ? "−" : "+"}
+                          </span>
+                        </button>
 
-                    {open && (
-                      <div id={`mobile-submenu-${item.label}`} className="pb-2 pl-4">
-                        {item.groups && item.groups.length > 0
-                          ? item.groups.map((group) => {
-                            const groupHasItems = group.items && group.items.length > 0;
-                            const renderAsLink = group.href && !groupHasItems;
+                        {open && (
+                          <div id={`mobile-submenu-${item.label}`} className="pb-2 pl-4">
+                            {item.groups && item.groups.length > 0
+                              ? item.groups.map((group) => {
+                                const groupHasItems = group.items && group.items.length > 0;
+                                const renderAsLink = group.href && !groupHasItems;
 
-                            return (
-                              <div key={group.label} className="mt-2">
-                                {renderAsLink ? (
-                                  <Link
-                                    href={group.href!}
-                                    onClick={closeAll}
-                                    className="block px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-300 hover:text-cyan-100"
-                                  >
-                                    {group.label}
-                                  </Link>
-                                ) : (
-                                  <p className="px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-300">
-                                    {group.label}
-                                  </p>
-                                )}
-                                <ul>
-                                  {(group.items ?? []).map((sub) => (
-                                    <li key={sub.label}>
+                                return (
+                                  <div key={group.label} className="mt-2">
+                                    {renderAsLink ? (
                                       <Link
-                                        href={sub.href}
+                                        href={group.href!}
                                         onClick={closeAll}
-                                        aria-current={isActive(sub.href) ? "page" : undefined}
-                                        className="block rounded px-3 py-1.5 text-sm text-white/90 outline-none hover:bg-white/10 hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-400"
+                                        className="block px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-300 hover:text-cyan-100"
                                       >
-                                        {sub.label}
+                                        {group.label}
                                       </Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            );
-                          })
-                          : (item.items ?? []).map((sub) => (
-                            <Link
-                              key={sub.label}
-                              href={sub.href}
-                              onClick={closeAll}
-                              aria-current={isActive(sub.href) ? "page" : undefined}
-                              className="block rounded px-3 py-1.5 text-sm text-white/90 outline-none hover:bg-white/10 hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-400"
-                            >
-                              {sub.label}
-                            </Link>
-                          ))}
-                      </div>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
+                                    ) : (
+                                      <p className="px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-300">
+                                        {group.label}
+                                      </p>
+                                    )}
+                                    <ul>
+                                      {(group.items ?? []).map((sub) => (
+                                        <li key={sub.label}>
+                                          <Link
+                                            href={sub.href}
+                                            onClick={closeAll}
+                                            aria-current={isActive(sub.href) ? "page" : undefined}
+                                            className="block rounded px-3 py-1.5 text-sm text-white/90 outline-none hover:bg-white/10 hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-400"
+                                          >
+                                            {sub.label}
+                                          </Link>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                );
+                              })
+                              : (item.items ?? []).map((sub) => (
+                                <Link
+                                  key={sub.label}
+                                  href={sub.href}
+                                  onClick={closeAll}
+                                  aria-current={isActive(sub.href) ? "page" : undefined}
+                                  className="block rounded px-3 py-1.5 text-sm text-white/90 outline-none hover:bg-white/10 hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-400"
+                                >
+                                  {sub.label}
+                                </Link>
+                              ))}
+                          </div>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
 
-            <Link
-              href="/"
-              onClick={closeAll}
-              className="mt-6 block w-full rounded-lg bg-blue-600 px-4 py-3 text-center font-semibold text-white outline-none hover:bg-blue-700 focus-visible:ring-2 focus-visible:ring-cyan-400"
-            >
-              Internship
-            </Link>
+                <Link
+                  href="/"
+                  onClick={closeAll}
+                  className="mt-6 block w-full rounded-lg bg-blue-600 px-4 py-3 text-center font-semibold text-white outline-none hover:bg-blue-700 focus-visible:ring-2 focus-visible:ring-cyan-400"
+                >
+                  Internship
+                </Link>
               </div>
             </DrawerContent>
           </Drawer>
