@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
       'react-icons',
       'date-fns',
       'lodash',
+      'swiper',
+      'lottie-react',
+      'react-data-table-component'
     ],
   },
   compiler: {

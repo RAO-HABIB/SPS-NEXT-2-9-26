@@ -47,7 +47,7 @@ export default function Customers() {
   useEffect(() => {
     const measure = () => {
       if (containerRef.current) {
-        cachedSetWidth.current = containerRef.current.scrollWidth / 4;
+        cachedSetWidth.current = containerRef.current.scrollWidth / 2;
       }
     };
     measure();
@@ -66,16 +66,19 @@ export default function Customers() {
       lastTime = time;
 
       if (containerRef.current && !isDragging.current) {
-        containerRef.current.scrollLeft += delta * 0.05;
+        let currentScroll = containerRef.current.scrollLeft;
+        currentScroll += delta * 0.05;
 
         const setWidth = cachedSetWidth.current;
         if (setWidth > 0) {
-          if (containerRef.current.scrollLeft >= setWidth * 2) {
-            containerRef.current.scrollLeft -= setWidth;
-          } else if (containerRef.current.scrollLeft <= setWidth) {
-            containerRef.current.scrollLeft += setWidth;
+          if (currentScroll >= setWidth * 1.5) {
+            currentScroll -= setWidth;
+          } else if (currentScroll <= 0) {
+            currentScroll += setWidth;
           }
         }
+        
+        containerRef.current.scrollLeft = currentScroll;
       }
       animationId = requestAnimationFrame(scroll);
     };
@@ -169,7 +172,7 @@ export default function Customers() {
             onMouseMove={handleMouseMove}
             style={{ scrollBehavior: 'auto' }}
           >
-            {[...CUSTOMERS, ...CUSTOMERS, ...CUSTOMERS, ...CUSTOMERS].map((customer, idx) => (
+            {[...CUSTOMERS, ...CUSTOMERS].map((customer, idx) => (
               <div
                 key={idx}
                 className="flex h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 lg:h-36 lg:w-36 shrink-0 items-center justify-center rounded-full bg-white shadow-[0_8px_30px_rgb(0,0,0,0.06)] p-4 sm:p-5 lg:p-6 transition-transform duration-300 hover:scale-[1.02] sm:hover:scale-105 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]"

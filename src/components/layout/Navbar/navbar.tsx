@@ -70,6 +70,7 @@ export default function Navbar() {
               alt="SPS - go to homepage"
               className="h-18 w-auto object-contain"
               priority
+              fetchPriority="high"
             />
           </Link>
 

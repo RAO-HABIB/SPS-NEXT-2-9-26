@@ -161,7 +161,7 @@ export default function Hero() {
               src={currentSlide.video}
               webmSrc={currentSlide.webmVideo}
               poster={currentSlide.poster}
-              autoPlay={true}
+              autoPlay={active !== 0}
               muted
               loop
               playsInline
