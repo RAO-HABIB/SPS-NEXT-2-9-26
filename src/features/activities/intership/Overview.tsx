@@ -18,7 +18,7 @@ export default function Overview() {
             <div className="absolute -inset-4 bg-[#1BA6C7]/10 rounded-3xl rotate-3 transition-transform group-hover:rotate-6 pointer-events-none" />
             <div className="relative w-full overflow-hidden rounded-3xl shadow-2xl z-10" style={{ height: '460px', width: '100%' }}>
               <Image
-                src="/images/activities/overview.jpg"
+                src="/images/activities/overview.webp"
                 alt="Overview"
                 width={800}
                 height={550}

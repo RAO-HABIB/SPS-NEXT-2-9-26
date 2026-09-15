@@ -51,7 +51,7 @@ function FramerServicesSection({ section2 }: { section2: DetailedServiceSection2
                   />
                   {/* Subtle dark vignette overlay for high contrast */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#02122c]/90 via-[#02122c]/20 to-transparent" />
-                  
+
                   {/* Floating Caption on Image */}
                   <div className="absolute bottom-6 left-6 right-6 text-white z-10">
                     <span className="inline-block text-[11px] font-mono tracking-widest uppercase text-[#00a7e1] bg-[#02122c]/90 px-3 py-1 rounded-full border border-[#00a7e1]/40 backdrop-blur-sm mb-2">
@@ -81,9 +81,8 @@ function FramerServicesSection({ section2 }: { section2: DetailedServiceSection2
                     {/* Number: Monospace font (Roboto Mono) */}
                     <div className="mb-2">
                       <span
-                        className={`font-mono text-xs sm:text-sm tracking-wider transition-colors duration-300 ${
-                          isActive ? "text-[#00a7e1] font-bold" : "text-slate-400"
-                        }`}
+                        className={`font-mono text-xs sm:text-sm tracking-wider transition-colors duration-300 ${isActive ? "text-[#00a7e1] font-bold" : "text-slate-400"
+                          }`}
                       >
                         0{idx + 1}
                       </span>
@@ -92,20 +91,18 @@ function FramerServicesSection({ section2 }: { section2: DetailedServiceSection2
                     {/* Title + Arrow Row */}
                     <div className="flex items-center justify-between gap-4">
                       <h3
-                        className={`text-xl sm:text-2xl lg:text-[25px] font-semibold tracking-tight transition-colors duration-300 ${
-                          isActive ? "text-[#031B3D]" : "text-slate-500 group-hover:text-slate-800"
-                        }`}
+                        className={`text-xl sm:text-2xl lg:text-[25px] font-semibold tracking-tight transition-colors duration-300 ${isActive ? "text-[#031B3D]" : "text-slate-500 group-hover:text-slate-800"
+                          }`}
                       >
                         {item.title}
                       </h3>
 
                       {/* Arrow Icon in circular button */}
                       <div
-                        className={`size-10 rounded-full flex items-center justify-center transition-all duration-300 shrink-0 ${
-                          isActive
+                        className={`size-10 rounded-full flex items-center justify-center transition-all duration-300 shrink-0 ${isActive
                             ? "bg-[#00a7e1] text-white rotate-45 shadow-md shadow-[#00a7e1]/30"
                             : "bg-slate-100 text-slate-400 group-hover:bg-slate-200 group-hover:text-slate-700"
-                        }`}
+                          }`}
                       >
                         <ArrowUpRight className="size-5 transition-transform duration-300" />
                       </div>
@@ -138,11 +135,11 @@ function FramerServicesSection({ section2 }: { section2: DetailedServiceSection2
   );
 }
 
-export default function ServiceDetailTemplate({ 
+export default function ServiceDetailTemplate({
   data,
   category = "cybersecurity",
   slug = "network-security",
-}: { 
+}: {
   data: DetailedServiceData;
   category?: string;
   slug?: string;
@@ -163,7 +160,7 @@ export default function ServiceDetailTemplate({
           {/* Abstract Diamond Grid Background */}
           <div className="absolute inset-0 opacity-40 mix-blend-screen pointer-events-none">
             <Image
-              src={data.hero.bgImage || "/images/Hero/Hero4.jpg"}
+              src={data.hero.bgImage || "/images/Hero/Hero4.webp"}
               alt="Hero Background"
               fill
               className="object-cover"
@@ -171,7 +168,7 @@ export default function ServiceDetailTemplate({
             />
             <div className="absolute inset-0 bg-gradient-to-br from-[#02122c]/90 via-[#0a2540]/80 to-[#02122c]/90" />
           </div>
-          
+
           <div className="container relative z-10 mx-auto px-4 md:px-8 max-w-7xl">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -206,7 +203,7 @@ export default function ServiceDetailTemplate({
               <p className="text-sm md:text-base text-slate-300 font-light leading-relaxed mb-8 max-w-3xl">
                 {data.hero.subtitle}
               </p>
-              <button 
+              <button
                 onClick={() => setIsQuoteModalOpen(true)}
                 className="inline-flex items-center justify-center bg-[#00a7e1] hover:bg-[#0090c1] text-white px-8 py-6 rounded-full text-base font-semibold shadow-lg shadow-cyan-500/20 transition-all hover:scale-105 cursor-pointer"
               >
@@ -320,7 +317,7 @@ export default function ServiceDetailTemplate({
           {/* Abstract Diamond Grid Background */}
           <div className="absolute inset-0 opacity-40 mix-blend-screen pointer-events-none">
             <Image
-              src={data.hero.bgImage || "/images/Hero/Hero4.jpg"}
+              src={data.hero.bgImage || "/images/Hero/Hero4.webp"}
               alt="Hero Background"
               fill
               className="object-cover"
@@ -363,7 +360,7 @@ export default function ServiceDetailTemplate({
               <p className="text-sm md:text-base text-slate-300 font-light leading-relaxed mb-8">
                 {data.hero.subtitle}
               </p>
-              <button 
+              <button
                 onClick={() => setIsQuoteModalOpen(true)}
                 className="inline-flex items-center justify-center bg-[#00a7e1] hover:bg-[#0090c1] text-white px-8 py-6 rounded-full text-base font-semibold shadow-lg shadow-cyan-500/20 transition-all hover:scale-105 cursor-pointer"
               >
@@ -424,7 +421,7 @@ export default function ServiceDetailTemplate({
         {/* Abstract Diamond Grid Background */}
         <div className="absolute inset-0 opacity-40 mix-blend-screen pointer-events-none">
           <Image
-            src={data.hero.bgImage || "/images/Hero/Hero4.jpg"}
+            src={data.hero.bgImage || "/images/Hero/Hero4.webp"}
             alt="Hero Background"
             fill
             className="object-cover"
@@ -433,7 +430,7 @@ export default function ServiceDetailTemplate({
           {/* Overlay gradient to match design */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#02122c]/90 via-[#0a2540]/80 to-[#02122c]/90" />
         </div>
-        
+
         <div className="container relative z-10 mx-auto px-4 md:px-8 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -468,7 +465,7 @@ export default function ServiceDetailTemplate({
             <p className="text-base md:text-lg text-slate-300 max-w-3xl font-light leading-relaxed mb-8">
               {data.hero.subtitle}
             </p>
-            <button 
+            <button
               onClick={() => setIsQuoteModalOpen(true)}
               className="inline-flex items-center justify-center bg-[#00a7e1] hover:bg-[#0090c1] text-white px-8 py-6 rounded-full text-base font-semibold shadow-lg shadow-cyan-500/20 transition-all hover:scale-105 cursor-pointer"
             >
@@ -485,7 +482,7 @@ export default function ServiceDetailTemplate({
           <div className="container mx-auto px-4 md:px-8 max-w-7xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               {/* Left: Images */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}

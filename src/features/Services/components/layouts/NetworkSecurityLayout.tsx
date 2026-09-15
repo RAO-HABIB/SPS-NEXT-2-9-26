@@ -258,7 +258,7 @@ export default function NetworkSecurityLayout() {
         {/* Hero Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/Hero/Hero4.jpg"
+            src="/images/Hero/Hero4.webp"
             alt="Network Security Hero Background"
             fill
             sizes="100vw"

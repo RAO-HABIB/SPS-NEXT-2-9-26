@@ -16,9 +16,6 @@ import {
 import { DetailedVerticalData, DetailedVerticalSection2 } from "@/data/detailed-verticals";
 import RequestQuoteModal from "@/components/ui/RequestQuoteModal";
 
-/* =========================================================================
-   Interactive Framer-Style Capabilities Component (matching Services List)
-   ========================================================================= */
 function FramerVerticalSection({ section2 }: { section2: DetailedVerticalSection2 }) {
   const [activeIdx, setActiveIdx] = useState(0);
   const highlights = section2.highlights || [];
@@ -91,9 +88,8 @@ function FramerVerticalSection({ section2 }: { section2: DetailedVerticalSection
                     {/* Number */}
                     <div className="mb-2">
                       <span
-                        className={`font-mono text-xs sm:text-sm tracking-wider transition-colors duration-300 ${
-                          isActive ? "text-[#0057B8] font-bold" : "text-slate-400"
-                        }`}
+                        className={`font-mono text-xs sm:text-sm tracking-wider transition-colors duration-300 ${isActive ? "text-[#0057B8] font-bold" : "text-slate-400"
+                          }`}
                       >
                         0{idx + 1}
                       </span>
@@ -102,19 +98,17 @@ function FramerVerticalSection({ section2 }: { section2: DetailedVerticalSection
                     {/* Title + Arrow Row */}
                     <div className="flex items-center justify-between gap-4">
                       <h3
-                        className={`text-xl sm:text-2xl lg:text-[25px] font-semibold tracking-tight transition-colors duration-300 ${
-                          isActive ? "text-[#031B3D]" : "text-slate-500 group-hover:text-slate-800"
-                        }`}
+                        className={`text-xl sm:text-2xl lg:text-[25px] font-semibold tracking-tight transition-colors duration-300 ${isActive ? "text-[#031B3D]" : "text-slate-500 group-hover:text-slate-800"
+                          }`}
                       >
                         {item.title}
                       </h3>
 
                       <div
-                        className={`flex items-center justify-center size-10 sm:size-11 rounded-full transition-all duration-300 shrink-0 ${
-                          isActive
+                        className={`flex items-center justify-center size-10 sm:size-11 rounded-full transition-all duration-300 shrink-0 ${isActive
                             ? "bg-[#0057B8] text-white shadow-md rotate-45"
                             : "bg-slate-100 text-slate-400 group-hover:bg-slate-200 group-hover:text-slate-700"
-                        }`}
+                          }`}
                       >
                         <ArrowUpRight className="size-5" />
                       </div>
@@ -122,11 +116,10 @@ function FramerVerticalSection({ section2 }: { section2: DetailedVerticalSection
 
                     {/* Expandable Description */}
                     <div
-                      className={`grid transition-all duration-300 ease-in-out ${
-                        isActive
+                      className={`grid transition-all duration-300 ease-in-out ${isActive
                           ? "grid-rows-[1fr] opacity-100 mt-3 sm:mt-4"
                           : "grid-rows-[0fr] opacity-0"
-                      }`}
+                        }`}
                     >
                       <div className="overflow-hidden">
                         <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl">

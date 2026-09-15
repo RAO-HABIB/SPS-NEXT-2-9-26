@@ -7,8 +7,8 @@ interface Area {
 
 const areas: Area[] = [
   { title: 'Human Resources (HR) / Quality / Compliance', img: '/images/internship/area1.webp' },
-  { title: 'IT & Software Development & Data Science', img: '/images/internship/area2.jpg' },
-  { title: 'Business Development & Sales', img: '/images/internship/area3.jpg' },
+  { title: 'IT & Software Development & Data Science', img: '/images/internship/area2.webp' },
+  { title: 'Business Development & Sales', img: '/images/internship/area3.webp' },
 ];
 
 export default function AreasOfInternship() {

@@ -427,16 +427,13 @@ export default function PublicSafetyLayout() {
         {/* Ambient Subtle Tech / Cyber Grid Texture in Background */}
         <div className="absolute inset-0 z-0 opacity-25 pointer-events-none mix-blend-screen">
           <Image
-            src="/images/verticals/tabs.jpg"
+            src="/images/verticals/public.jpg"
             alt="Public Safety Tech Backdrop"
             fill
             className="object-cover object-right"
             priority
           />
         </div>
-
-        {/* Ambient Gradient Lighting */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#031B3D] via-[#031B3D]/95 to-[#031B3D]/80 z-0 pointer-events-none" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -526,10 +523,10 @@ export default function PublicSafetyLayout() {
                     <Link
                       href={item.href}
                       className={`relative flex items-center gap-1.5 lg:gap-1.5 xl:gap-2 px-2.5 sm:px-3 lg:px-2 xl:px-3.5 2xl:px-4 py-2 rounded-full text-[10.5px] sm:text-[11px] lg:text-[11px] xl:text-xs font-bold tracking-tight xl:tracking-wider uppercase transition-all duration-200 select-none ${isActive
-                          ? "text-white"
-                          : isHovered
-                            ? "text-[#0057B8]"
-                            : "text-slate-600 hover:text-slate-900"
+                        ? "text-white"
+                        : isHovered
+                          ? "text-[#0057B8]"
+                          : "text-slate-600 hover:text-slate-900"
                         }`}
                     >
                       {/* Active / Hover Pill Background using Framer Motion */}
@@ -552,10 +549,10 @@ export default function PublicSafetyLayout() {
                       {/* Icon Circle */}
                       <div
                         className={`size-6.5 sm:size-7 lg:size-6.5 xl:size-7.5 rounded-full flex items-center justify-center transition-colors shrink-0 ${isActive
-                            ? "bg-white/15 text-white"
-                            : isHovered
-                              ? "bg-[#0057B8]/10 text-[#0057B8]"
-                              : "bg-slate-100 text-slate-600"
+                          ? "bg-white/15 text-white"
+                          : isHovered
+                            ? "bg-[#0057B8]/10 text-[#0057B8]"
+                            : "bg-slate-100 text-slate-600"
                           }`}
                       >
                         <Icon className="size-3 sm:size-3.5 xl:size-4" />
@@ -727,8 +724,8 @@ export default function PublicSafetyLayout() {
                         key={svc.id}
                         onClick={() => setActiveServiceId(svc.id)}
                         className={`text-left px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${isSubActive
-                            ? "bg-[#031B3D] text-white shadow-md"
-                            : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                          ? "bg-[#031B3D] text-white shadow-md"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
                           }`}
                       >
                         {svc.title}

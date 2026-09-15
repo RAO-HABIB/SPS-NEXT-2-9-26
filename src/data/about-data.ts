@@ -144,7 +144,7 @@ export const aboutData: AboutData = {
     title: "Who We Are",
     description:
       "At Software Productivity Strategists (SPS), we identify ourselves as an AI-first company where our experienced experts have spent decades building software that transforms businesses. Our expertise includes Artificial Intelligence, Machine Learning, Computer Vision, Natural Language Processing, Cloud Infrastructure, Enterprise Development, and Cybersecurity.",
-    image: "/images/about/story/whoweare.png",
+    image: "/images/about/story/whoweare.webp",
   },
 
   timeline: [
@@ -210,19 +210,19 @@ export const aboutData: AboutData = {
     {
       title: "AVNET Bluemix with IBM",
       subtitle: "Winner",
-      image: "/images/about/story/award1.png",
+      image: "/images/about/story/award1.webp",
       description: "First Prize Winner at the AVNET Bluemix with IBM Watson Hackathon, recognized for architecting innovative cloud-native cognitive solutions.",
     },
     {
       title: "IBM Watson Challenge",
       subtitle: "Winner",
-      image: "/images/about/story/award2.png",
+      image: "/images/about/story/award2.webp",
       description: "Awarded Winner in the global IBM Watson Challenge, demonstrating cutting-edge cognitive computing and enterprise artificial intelligence capabilities.",
     },
     {
       title: "IBM Cognitive Build Challenge",
       subtitle: "Finalist",
-      image: "/images/about/story/award3.png",
+      image: "/images/about/story/award3.webp",
       description: "Honored as a Global Finalist in the IBM Cognitive Build Challenge, pioneering transformative cognitive solutions for modern enterprise ecosystems.",
     },
   ],

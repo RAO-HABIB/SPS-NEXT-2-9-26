@@ -9,7 +9,7 @@ export default function Partners() {
   return (
     <section className="below-fold relative w-full overflow-hidden bg-[#03122F] py-16 lg:py-20">
       <Image
-        src="/images/Hero/Hero8.png"
+        src="/images/Hero/Hero8.webp"
         alt=""
         aria-hidden="true"
         fill

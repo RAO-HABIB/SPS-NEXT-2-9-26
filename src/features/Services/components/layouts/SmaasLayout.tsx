@@ -221,7 +221,7 @@ export default function SmaasLayout() {
         {/* Hero Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/Hero/Hero4.jpg"
+            src="/images/Hero/Hero4.webp"
             alt="SMaaS Hero Background"
             fill
             sizes="100vw"

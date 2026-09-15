@@ -60,6 +60,17 @@ export default function LazyVideo({
     }
   };
 
+  useEffect(() => {
+    const video = localRef.current;
+    if (!video) return;
+
+    if (shouldLoad && autoPlay) {
+      video.play().catch((e) => console.log('LazyVideo play prevented:', e));
+    } else if (shouldLoad && !autoPlay) {
+      video.pause();
+    }
+  }, [shouldLoad, autoPlay]);
+
   return (
     <video
       ref={setRefs}

@@ -2,7 +2,12 @@
 
 import { useEffect, useState } from 'react';
 
-export default function HeroVideoDelayed() {
+interface Props {
+  onEnded?: () => void;
+  onTimeUpdate?: (e: React.SyntheticEvent<HTMLVideoElement, Event>) => void;
+}
+
+export default function HeroVideoDelayed({ onEnded, onTimeUpdate }: Props) {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -32,9 +37,10 @@ export default function HeroVideoDelayed() {
     <video
       autoPlay
       muted
-      loop
       playsInline
       preload="none"
+      onEnded={onEnded}
+      onTimeUpdate={onTimeUpdate}
       poster="/images/posters/hero-bg3.webp"
       className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100"
       aria-hidden="true"

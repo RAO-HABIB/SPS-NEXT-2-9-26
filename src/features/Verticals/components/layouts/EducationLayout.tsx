@@ -461,7 +461,7 @@ export default function EducationLayout() {
         {/* Ambient Subtle Tech / Cyber Grid Texture in Background */}
         <div className="absolute inset-0 z-0 opacity-25 pointer-events-none mix-blend-screen">
           <Image
-            src="/images/verticals/tabs.jpg"
+            src="/images/verticals/industrial.jpg"
             alt="Education Tech Backdrop"
             fill
             className="object-cover object-right"
@@ -469,8 +469,6 @@ export default function EducationLayout() {
           />
         </div>
 
-        {/* Ambient Gradient Lighting */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#031B3D] via-[#031B3D]/95 to-[#031B3D]/80 z-0 pointer-events-none" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -563,13 +561,12 @@ export default function EducationLayout() {
                   >
                     <Link
                       href={item.href}
-                      className={`relative flex items-center gap-1.5 lg:gap-1.5 xl:gap-2 px-2.5 sm:px-3 lg:px-2 xl:px-3.5 2xl:px-4 py-2 rounded-full text-[10.5px] sm:text-[11px] lg:text-[11px] xl:text-xs font-bold tracking-tight xl:tracking-wider uppercase transition-all duration-200 select-none ${
-                        isActive
-                          ? "text-white"
-                          : isHovered
+                      className={`relative flex items-center gap-1.5 lg:gap-1.5 xl:gap-2 px-2.5 sm:px-3 lg:px-2 xl:px-3.5 2xl:px-4 py-2 rounded-full text-[10.5px] sm:text-[11px] lg:text-[11px] xl:text-xs font-bold tracking-tight xl:tracking-wider uppercase transition-all duration-200 select-none ${isActive
+                        ? "text-white"
+                        : isHovered
                           ? "text-[#0057B8]"
                           : "text-slate-600 hover:text-slate-900"
-                      }`}
+                        }`}
                     >
                       {/* Active / Hover Pill Background using Framer Motion */}
                       {isActive && (
@@ -590,13 +587,12 @@ export default function EducationLayout() {
 
                       {/* Icon Circle */}
                       <div
-                        className={`size-6.5 sm:size-7 lg:size-6.5 xl:size-7.5 rounded-full flex items-center justify-center transition-colors shrink-0 ${
-                          isActive
-                            ? "bg-white/15 text-white"
-                            : isHovered
+                        className={`size-6.5 sm:size-7 lg:size-6.5 xl:size-7.5 rounded-full flex items-center justify-center transition-colors shrink-0 ${isActive
+                          ? "bg-white/15 text-white"
+                          : isHovered
                             ? "bg-[#0057B8]/10 text-[#0057B8]"
                             : "bg-slate-100 text-slate-600"
-                        }`}
+                          }`}
                       >
                         <Icon className="size-3 sm:size-3.5 xl:size-4" />
                       </div>
@@ -608,9 +604,8 @@ export default function EducationLayout() {
 
                       {/* Dropdown Indicator */}
                       <ChevronDown
-                        className={`size-2.5 sm:size-3 transition-transform duration-200 shrink-0 ${
-                          isHovered ? "rotate-180 text-cyan-400" : "opacity-40"
-                        }`}
+                        className={`size-2.5 sm:size-3 transition-transform duration-200 shrink-0 ${isHovered ? "rotate-180 text-cyan-400" : "opacity-40"
+                          }`}
                       />
                     </Link>
                   </div>
@@ -715,9 +710,8 @@ export default function EducationLayout() {
                   <button
                     key={tab.id}
                     onClick={() => handleTabChange(tab.id)}
-                    className={`relative flex items-center gap-2.5 px-4 sm:px-6 py-3 text-xs sm:text-sm font-semibold transition-all duration-300 select-none cursor-pointer rounded-t-xl shrink-0 ${
-                      isActive ? "text-white z-10" : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50"
-                    }`}
+                    className={`relative flex items-center gap-2.5 px-4 sm:px-6 py-3 text-xs sm:text-sm font-semibold transition-all duration-300 select-none cursor-pointer rounded-t-xl shrink-0 ${isActive ? "text-white z-10" : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50"
+                      }`}
                   >
                     {/* Active Chrome Tab Background with smooth layoutId animation */}
                     {isActive && (
@@ -747,9 +741,8 @@ export default function EducationLayout() {
 
                     <span className="relative z-10 flex items-center gap-2">
                       <TabIcon
-                        className={`size-4 transition-colors ${
-                          isActive ? "text-[#00a7e1]" : "text-slate-500"
-                        }`}
+                        className={`size-4 transition-colors ${isActive ? "text-[#00a7e1]" : "text-slate-500"
+                          }`}
                       />
                       <span>{tab.label}</span>
                     </span>
@@ -769,11 +762,10 @@ export default function EducationLayout() {
                       <button
                         key={svc.id}
                         onClick={() => setActiveServiceId(svc.id)}
-                        className={`text-left px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
-                          isSubActive
-                            ? "bg-[#031B3D] text-white shadow-md"
-                            : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-                        }`}
+                        className={`text-left px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${isSubActive
+                          ? "bg-[#031B3D] text-white shadow-md"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                          }`}
                       >
                         {svc.title}
                       </button>

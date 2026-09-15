@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How this Next.js project works — SPS Project</title>
+  <style>
+    :root {
+      --navy: #03122F;
+      --navy-2: #031B3D;
+      --teal: #00a7e1;
+      --gold: #0057B8;
+      --paper: #f4f7fa;
+      --ink: #1e293b;
+      --muted: #475569;
+      --line: #cbd5e1;
+      --code: #0f172a;
+      --card: #fff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
+    body {
+      margin: 0;
+      font: 16px/1.6 "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+    .wrap { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+    nav.toc {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto;
+      background: var(--navy);
+      color: #fff;
+      padding: 1.5rem 1rem 2rem;
+    }
+    nav.toc h1 { font-size: 0.95rem; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 1rem; color: #38bdf8; }
+    nav.toc a { display: block; color: #e0f2fe; text-decoration: none; padding: .35rem .5rem; border-radius: 6px; font-size: .9rem; }
+    nav.toc a:hover, nav.toc a.active { background: #ffffff18; color: #fff; }
+    nav.toc .sub { padding-left: .9rem; font-size: .82rem; color: #7dd3fc; }
+    main { padding: 2.2rem 2.4rem 5rem; max-width: 920px; }
+    h2 { color: var(--navy); font-size: 1.7rem; margin: 2.4rem 0 .7rem; }
+    h3 { color: var(--navy-2); font-size: 1.2rem; margin: 1.6rem 0 .5rem; }
+    p, li { color: var(--muted); }
+    strong { color: var(--ink); }
+    code, .path { font-family: Consolas, "Courier New", monospace; font-size: .9em; background: #e2e8f0; padding: .1em .35em; border-radius: 4px; color: var(--navy); }
+    pre {
+      background: var(--code);
+      color: #e2e8f0;
+      padding: 1rem 1.1rem;
+      border-radius: 10px;
+      overflow: auto;
+      font: 13px/1.5 Consolas, "Courier New", monospace;
+    }
+    pre .c { color: #7dd3fc; }
+    pre .k { color: #c4b5fd; }
+    .hero {
+      background: linear-gradient(135deg, var(--navy), #0057B8);
+      color: #fff;
+      padding: 1.8rem 1.8rem 1.5rem;
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 { margin: 0 0 .4rem; font-size: 2rem; }
+    .hero p { color: #e0f2fe; margin: 0; }
+    .badge { display: inline-block; background: #38bdf8; color: var(--navy); font-weight: 700; font-size: .75rem; padding: .2rem .5rem; border-radius: 999px; margin-bottom: .7rem; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      margin: 1rem 0;
+    }
+    .flow {
+      display: grid;
+      gap: .55rem;
+      margin: 1rem 0;
+    }
+    .flow .step {
+      background: #fff;
+      border-left: 4px solid var(--teal);
+      padding: .7rem 1rem;
+      border-radius: 0 10px 10px 0;
+      box-shadow: 0 1px 0 var(--line);
+    }
+    .flow .step b { display: block; color: var(--navy); }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    table { width: 100%; border-collapse: collapse; background: #fff; font-size: .92rem; }
+    th, td { border: 1px solid var(--line); padding: .55rem .7rem; text-align: left; vertical-align: top; }
+    th { background: var(--navy); color: #fff; }
+    .note { background: #fff8e6; border: 1px solid #f1d48a; padding: .8rem 1rem; border-radius: 10px; color: #5c4a12; }
+    .ok { background: #eaf8f4; border: 1px solid #9fd6cc; padding: .8rem 1rem; border-radius: 10px; color: #0f4c46; }
+    .tree { font-family: Consolas, monospace; font-size: .88rem; background: #fff; border: 1px solid var(--line); padding: 1rem; border-radius: 10px; white-space: pre; color: var(--navy); overflow: auto; }
+    .arrow { text-align: center; color: var(--teal); font-weight: 700; margin: .3rem 0; }
+    @media (max-width: 900px) {
+      .wrap { grid-template-columns: 1fr; }
+      nav.toc { position: relative; height: auto; }
+      .grid2 { grid-template-columns: 1fr; }
+      main { padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="toc">
+      <h1>Learn this project</h1>
+      <a href="#start">1. What you are looking at</a>
+      <a href="#folders">2. Folder map</a>
+      <a href="#shell">3. The page shell</a>
+      <a href="#home">4. Homepage</a>
+      <a class="sub" href="#home-order">Section order</a>
+      <a href="#navbar">5. Navbar</a>
+      <a href="#css">6. CSS — how styling works</a>
+      <a href="#data">7. Data — where content lives</a>
+      <a href="#reuse">8. Component Architecture</a>
+      <a href="#practice">9. Practice path</a>
+    </nav>
+
+    <main>
+      <div class="hero">
+        <div class="badge">SPS Next.js App Router · React 19 · Tailwind v4</div>
+        <h1>How this site is built</h1>
+        <p>A complete walkthrough of the exact files in this repository: routing, features architecture, global CSS, and dynamic data binding. Keep matching files open in your editor while reading.</p>
+      </div>
+
+      <div class="ok">
+        <strong>How to use this file:</strong> This explains the actual code in your <code>d:\sps</code> folder. Every file path mentioned below maps 1:1 to the real files in your project.
+      </div>
+
+      <h2 id="start">1. What you are looking at</h2>
+      <p>This is a modern <strong>Next.js App Router</strong> project using <strong>TypeScript</strong>. The architecture separates UI routes, reusable features, shared components, and static data into distinct folders.</p>
+      <p><code>@/</code> is a shortcut for <code>src/</code>. So <code>import { HERO_SLIDES } from "@/data/hero"</code> means <code>src/data/hero.ts</code>.</p>
+      <div class="grid2">
+        <div class="card">
+          <strong>Server components (default)</strong>
+          <p>Files in <code>src/app/</code> without <code>"use client"</code> render on the server. They are fast, great for SEO, and combine smaller feature components to build the page.</p>
+        </div>
+        <div class="card">
+          <strong>Client components</strong>
+          <p>Files starting with <code>"use client"</code> (like the Navbar, Swipers, Framer Motion animations) run in the browser to handle interactivity, clicks, and state.</p>
+        </div>
+      </div>
+
+      <h2 id="folders">2. Folder map</h2>
+      <div class="tree">sps/
+├── src/
+│   ├── app/                  ← The Routes (URLs) & Shell
+│   │   ├── layout.tsx        ← Global wrapper (Fonts, CSS, Nav, Footer)
+│   │   ├── page.tsx          ← Homepage (/)
+│   │   ├── globals.css       ← Tailwind v4 & Global CSS
+│   │   ├── About/            ← /About routes
+│   │   ├── Activities/       ← /Activities routes
+│   │   ├── Contact/          ← /Contact routes
+│   │   └── ... 
+│   ├── components/           ← Shared / Global UI
+│   │   ├── layout/           ← Navbar & Footer
+│   │   ├── ui/               ← Shadcn UI / basic elements
+│   │   ├── LazyVideo.tsx     ← Shared video loader
+│   │   └── HeroVideoDelayed.tsx 
+│   ├── features/             ← Modular Sections / Blocks
+│   │   ├── Hero/             ← Hero slider (hero.tsx)
+│   │   ├── Customers/        ← Customers marquee (customers.tsx)
+│   │   ├── Products/         ← Products section
+│   │   ├── Services/         ← Services section
+│   │   └── Verticals/        ← Verticals section
+│   └── data/                 ← Content & Data (TypeScript)
+│       ├── hero.ts           ← Slider text & video links
+│       ├── navigation.ts     ← Navbar links & dropdowns
+│       ├── products-data.ts  
+│       └── startups.ts       
+└── public/images/            ← Static assets (served directly)</div>
+
+      <h2 id="shell">3. The page shell (every URL)</h2>
+      <p>Next.js wraps every page in <code>src/app/layout.tsx</code>. This is where the global fonts (Geist), global CSS, and the main Navbar/Footer are injected.</p>
+      <div class="flow">
+        <div class="step"><b>1. Metadata & Fonts</b> Sets up SEO headers and loads <code>Geist</code> and <code>Geist_Mono</code> fonts.</div>
+        <div class="step"><b>2. Global CSS</b> Imports <code>globals.css</code> which brings in Tailwind CSS v4.</div>
+        <div class="step"><b>3. Page Wrapper</b> Renders the <code>&lt;body&gt;</code>, the Navbar (if placed here or inside pages), the <code>{children}</code> (page content), and the Footer.</div>
+      </div>
+
+      <h2 id="home">4. Homepage — how it is built</h2>
+      <p>File: <code>src/app/page.tsx</code>. It is extremely clean. It simply imports feature sections dynamically and stacks them.</p>
+      <pre>import dynamic from "next/dynamic";
+import Navbar from "@/components/layout/Navbar/navbar";
+import Hero from "@/features/Hero/hero";
+
+<span class="c">// Lazy-loaded to improve initial page load speed</span>
+const Services = dynamic(() => import("@/features/Services/services"), { ... });
+const Startups = dynamic(() => import("@/features/Startups/startups"), { ... });
+
+export default function Home() {
+  return (
+    &lt;&gt;
+      &lt;Navbar /&gt;
+      &lt;Hero /&gt;
+      &lt;Services /&gt;
+      &lt;Startups /&gt;
+      &lt;Products /&gt;
+      &lt;HowItWorks /&gt;
+      &lt;Partners /&gt;
+      &lt;NewsInsights /&gt;
+      &lt;Customers /&gt;
+      &lt;Verticals /&gt;
+      &lt;Footer /&gt;
+    &lt;/&gt;
+  );
+}</pre>
+
+      <h3 id="home-order">How Feature Sections Work</h3>
+      <table>
+        <tr><th>Component (in src/features/)</th><th>What it does</th><th>Data Source (in src/data/)</th></tr>
+        <tr><td><code>Hero/hero.tsx</code></td><td>Video slider card and background video. Uses <code>LazyVideo</code>.</td><td><code>hero.ts</code></td></tr>
+        <tr><td><code>Services/services.tsx</code></td><td>Displays service offerings.</td><td><code>services-data.ts</code></td></tr>
+        <tr><td><code>Startups/startups.tsx</code></td><td>Startup grids & Spinnlabs intro.</td><td><code>startups.ts</code></td></tr>
+        <tr><td><code>Products/products.tsx</code></td><td>Product cards.</td><td><code>products-data.ts</code></td></tr>
+        <tr><td><code>Customers/customers.tsx</code></td><td>Infinite marquee of customer logos.</td><td>Internal array / static</td></tr>
+      </table>
+
+      <h2 id="navbar">5. Navbar & Mobile Menu</h2>
+      <p>File: <code>src/components/layout/Navbar/navbar.tsx</code>.</p>
+      <div class="flow">
+        <div class="step"><b>Client Component</b> Uses <code>"use client"</code> because it needs state to track scroll position and mobile menu open/close events.</div>
+        <div class="step"><b>Desktop vs Mobile</b> Dynamically imports <code>DesktopNav</code> for large screens, and uses Shadcn's <code>Drawer</code> for the mobile off-canvas menu.</div>
+        <div class="step"><b>Data-Driven</b> The links and mega-menus are generated by mapping over <code>NAV</code> imported from <code>src/data/navigation.ts</code>.</div>
+      </div>
+
+      <h2 id="css">6. CSS — how styling works</h2>
+      <p>Instead of old CSS files, this project uses <strong>Tailwind CSS v4</strong> and <strong>CSS variables</strong>.</p>
+      <table>
+        <tr><th>File</th><th>Role</th></tr>
+        <tr><td><code>src/app/globals.css</code></td><td>The brain of styling. Contains <code>@import "tailwindcss"</code>, Shadcn UI base colors, DaisyUI plugin, and custom animations like <code>marquee</code> and <code>fade-in</code>.</td></tr>
+        <tr><td>Tailwind Classes</td><td>Inside <code>.tsx</code> files, you'll see classes like <code>bg-[#031B3D] text-white sm:py-20</code>. This replaces the need for separate CSS files.</td></tr>
+      </table>
+      <p><strong>Note:</strong> Animations like Framer Motion (<code>motion.div</code>) are also heavily used directly in components (e.g. <code>Universities.tsx</code>) for scroll effects.</p>
+
+      <h2 id="data">7. Data — where content lives</h2>
+      <p>To avoid hardcoding text inside UI components, content is stored as TypeScript objects in <code>src/data/</code>.</p>
+      <pre><span class="c">// Example from src/data/hero.ts</span>
+export const HERO_SLIDES = [
+  {
+    id: "what-if",
+    eyebrow: "What If",
+    title: "Your Business",
+    highlight: "Could Do More?",
+    description: "Modernize legacy systems...",
+    video: "/videos/hero-bg3-hero.avif",
+    webmVideo: "/videos/hero-bg3-hero.webm",
+    poster: "/images/posters/hero-bg3.webp",
+    ...
+  }
+];</pre>
+      <p>If you need to change a headline, a video link, or a navbar link, you edit the files in <code>src/data/</code>. The UI components automatically update.</p>
+
+      <h2 id="reuse">8. Component Architecture (Modularity)</h2>
+      <p>The code is strictly separated into <strong>Features</strong>:</p>
+      <ul>
+        <li><strong>Independence:</strong> <code>src/features/Customers/customers.tsx</code> handles its own logic, its own dragging functions, and its own responsive design. It doesn't depend on global JS scripts.</li>
+        <li><strong>Dynamic Loading:</strong> In <code>page.tsx</code>, features are loaded using <code>next/dynamic</code> (e.g. <code>loading: () => &lt;div className="animate-pulse"&gt;</code>). This means JavaScript for the footer or bottom sections isn't downloaded until the user scrolls down, making the site incredibly fast.</li>
+      </ul>
+
+      <h2 id="practice">9. Practice path (do this in order)</h2>
+      <ol>
+        <li>Open <code>src/app/page.tsx</code> and see how the page is just a stack of components.</li>
+        <li>Open <code>src/data/hero.ts</code>, change a headline text, save, and watch it instantly update in the browser.</li>
+        <li>Open <code>src/features/Hero/hero.tsx</code> and trace how it maps over <code>HERO_SLIDES</code>.</li>
+        <li>Open <code>src/app/globals.css</code> to see the Tailwind CSS setup and custom Oklch color variables defining the theme.</li>
+      </ol>
+
+      <div class="ok">
+        <strong>One sentence summary:</strong> Next.js App Router (in <code>src/app</code>) handles the URLs, Feature components (in <code>src/features</code>) build the UI using Tailwind CSS, and Content (in <code>src/data</code>) keeps everything data-driven and easy to update.
+      </div>
+    </main>
+  </div>
+</body>
+</html>

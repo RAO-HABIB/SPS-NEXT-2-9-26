@@ -11,6 +11,24 @@ import HeroVideoDelayed from "@/components/HeroVideoDelayed";
 export default function Hero() {
   const [active, setActive] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [initialDelayPassed, setInitialDelayPassed] = useState(false);
+
+  useEffect(() => {
+    const start = () => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => setInitialDelayPassed(true), { timeout: 3000 });
+      } else {
+        setTimeout(() => setInitialDelayPassed(true), 2500);
+      }
+    };
+    const onLoad = () => setTimeout(start, 1000);
+    if (document.readyState === 'complete') {
+      onLoad();
+    } else {
+      window.addEventListener('load', onLoad, { once: true });
+    }
+    return () => window.removeEventListener('load', onLoad);
+  }, []);
 
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
@@ -59,7 +77,12 @@ export default function Hero() {
               sizes="100vw"
               className="object-cover"
             />
-            <HeroVideoDelayed />
+            <HeroVideoDelayed 
+              onEnded={() => {
+                if (active === 0) nextSlide();
+              }}
+              onTimeUpdate={active === 0 ? handleTimeUpdate : undefined}
+            />
           </div>
         ) : (
           HERO_SLIDES.map((slide, index) =>
@@ -161,7 +184,7 @@ export default function Hero() {
               src={currentSlide.video}
               webmSrc={currentSlide.webmVideo}
               poster={currentSlide.poster}
-              autoPlay={active !== 0}
+              autoPlay={active !== 0 || initialDelayPassed}
               muted
               loop
               playsInline
@@ -233,9 +256,8 @@ export default function Hero() {
                           goToSlide(i);
                         }}
                         aria-label={`Go to ${s.eyebrow}`}
-                        className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                          i === active ? "w-7 bg-cyan-300" : "w-4 bg-white/40 hover:bg-white/60"
-                        }`}
+                        className={`h-1.5 rounded-full transition-all cursor-pointer ${i === active ? "w-7 bg-cyan-300" : "w-4 bg-white/40 hover:bg-white/60"
+                          }`}
                       />
                     ))}
                   </div>

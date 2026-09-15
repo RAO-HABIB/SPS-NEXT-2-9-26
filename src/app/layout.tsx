@@ -42,14 +42,12 @@ export default function RootLayout({
           as="image"
           href="/images/logo/logo-nav.webp"
           fetchPriority="high"
-          {...{ fetchpriority: "high" }}
         />
         <link
           rel="preload"
           as="image"
           href="/images/posters/hero-bg3.webp"
           fetchPriority="high"
-          {...{ fetchpriority: "high" }}
         />
       </head>
       <body className="min-h-screen flex flex-col bg-white overflow-x-hidden w-full m-0 p-0">

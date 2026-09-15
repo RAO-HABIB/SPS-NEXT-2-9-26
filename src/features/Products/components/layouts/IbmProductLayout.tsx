@@ -441,7 +441,7 @@ const PRODUCT_IMAGE_MAP: Record<string, string> = {
   orchestrate: "/images/products/ibm-automation-card.jpg",
   assistant: "/images/products/ai-mesh-face.jpg",
   discovery: "/images/products/powering_ibm.jpg",
-  "code-assistant": "/images/Hero/Hero8.png",
+  "code-assistant": "/images/Hero/Hero8.webp",
 
   // Data & AI
   data: "/images/products/ibm-data-ai-card.jpg",
@@ -452,7 +452,7 @@ const PRODUCT_IMAGE_MAP: Record<string, string> = {
   verify: "/images/products/ibm-security-card.jpg",
   guardium: "/images/products/powering_security.jpg",
   "qradar-siem": "/images/products/ai-mesh-face.jpg",
-  "qradar-soar": "/images/Hero/Hero8.png",
+  "qradar-soar": "/images/Hero/Hero8.webp",
   randori: "/images/products/powering_ibm.jpg",
 
   // Sustainability
@@ -688,7 +688,7 @@ export default function IbmProductLayout({
         {/* Background Image: Identical to CSM Hero */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/Hero/Hero8.png"
+            src="/images/Hero/Hero8.webp"
             alt={`${data.hero.title} Hero Background`}
             fill
             sizes="100vw"

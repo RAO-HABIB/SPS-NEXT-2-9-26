@@ -102,7 +102,7 @@ export default function StartupsLayout({ data }: { data: SpinnLabDetail }) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-full p-2 flex flex-wrap justify-center items-center gap-1 shadow-[0_16px_40px_-10px_rgba(3,27,61,0.12),0_4px_16px_rgba(0,0,0,0.04)] max-w-fit w-full"
+              className="bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-full p-2 flex overflow-x-auto hide-scrollbar sm:justify-center items-center gap-1.5 shadow-[0_16px_40px_-10px_rgba(3,27,61,0.12),0_4px_16px_rgba(0,0,0,0.04)] max-w-fit w-full mx-auto"
             >
               {data.hero.heroSteps.map((step: any, idx: number) => {
                 const isActive = activeTab === idx;
@@ -110,7 +110,7 @@ export default function StartupsLayout({ data }: { data: SpinnLabDetail }) {
                   <div
                     key={idx}
                     onClick={() => setActiveTab(isActive ? null : idx)}
-                    className={`group flex items-center gap-3 cursor-pointer px-5 py-2.5 rounded-full transition-all duration-300 ${isActive ? 'bg-[#031B3D] shadow-md text-white' : 'hover:bg-slate-100/90 text-slate-600 hover:text-slate-900'}`}
+                    className={`group flex items-center gap-3 cursor-pointer px-5 py-2.5 rounded-full transition-all duration-300 shrink-0 ${isActive ? 'bg-[#031B3D] shadow-md text-white' : 'hover:bg-slate-100/90 text-slate-600 hover:text-slate-900'}`}
                   >
                     <div className={`size-8 rounded-full flex items-center justify-center transition-colors shrink-0 ${isActive ? 'bg-white/15 text-white' : 'bg-slate-100 text-slate-600 group-hover:text-[#0057B8] group-hover:bg-[#0057B8]/10'}`}>
                       <IconLoader name={step.icon} className="size-4" />

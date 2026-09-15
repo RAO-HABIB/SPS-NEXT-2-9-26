@@ -44,7 +44,7 @@ const nistPillars: NistPillarItem[] = [
     name: "Identify (ID)",
     category: "Asset Governance & Risk Strategy",
     badge: "Domain 01",
-    image: "/images/services/Vapt1.jpg",
+    image: "/images/services/Vapt1.webp",
     desc: "Develop an organizational understanding to manage cybersecurity risk to systems, people, assets, data, and capabilities.",
     highlights: [
       "Physical and software asset inventory governance",
@@ -93,7 +93,7 @@ const nistPillars: NistPillarItem[] = [
     name: "Respond (RS)",
     category: "Mitigation & Incident Action",
     badge: "Domain 04",
-    image: "/images/services/vapt3.jpg",
+    image: "/images/services/vapt3.webp",
     desc: "Develop and implement appropriate activities to take action regarding a detected cybersecurity incident.",
     highlights: [
       "Dynamic incident response plan execution and containment",
@@ -231,11 +231,10 @@ function NistShowcaseCard({ pillar }: { pillar: NistPillarItem }) {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full mt-3 py-2.5 px-4 rounded-2xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer ${
-          isOpen
-            ? "bg-[#031B3D] text-white shadow-sm hover:bg-[#031B3D]/90"
-            : "bg-slate-100 hover:bg-[#031B3D] text-slate-700 hover:text-white border border-slate-200/70 shadow-xs"
-        }`}
+        className={`w-full mt-3 py-2.5 px-4 rounded-2xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer ${isOpen
+          ? "bg-[#031B3D] text-white shadow-sm hover:bg-[#031B3D]/90"
+          : "bg-slate-100 hover:bg-[#031B3D] text-slate-700 hover:text-white border border-slate-200/70 shadow-xs"
+          }`}
       >
         <span>{isOpen ? "Close Details" : "View Details"}</span>
         {isOpen ? (
@@ -289,7 +288,7 @@ export default function CsmLayout({ data }: { data: ProductDetailData }) {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/Hero/Hero8.png"
+            src="/images/Hero/Hero8.webp"
             alt="CSM Hero Background"
             fill
             sizes="100vw"
@@ -395,11 +394,10 @@ export default function CsmLayout({ data }: { data: ProductDetailData }) {
                       className="bg-white border border-slate-200/80 rounded-2xl p-5 sm:p-6 flex items-start gap-5 hover:border-[#00a7e1]/40 hover:shadow-lg transition-all group"
                     >
                       <div
-                        className={`size-13 rounded-2xl flex items-center justify-center shrink-0 transition-transform group-hover:scale-105 ${
-                          isCyan
-                            ? "bg-[#00a7e1] text-white shadow-md shadow-[#00a7e1]/20"
-                            : "bg-[#031B3D] text-[#00a7e1] shadow-md shadow-[#031B3D]/30"
-                        }`}
+                        className={`size-13 rounded-2xl flex items-center justify-center shrink-0 transition-transform group-hover:scale-105 ${isCyan
+                          ? "bg-[#00a7e1] text-white shadow-md shadow-[#00a7e1]/20"
+                          : "bg-[#031B3D] text-[#00a7e1] shadow-md shadow-[#031B3D]/30"
+                          }`}
                       >
                         <IconComp className="size-6" strokeWidth={2.2} />
                       </div>

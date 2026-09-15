@@ -57,10 +57,9 @@ export default function RountableHero({ roundtable }: HeroProps) {
         fill
         priority
         sizes="100vw"
-        className='object-cover opacity-35 mix-blend-luminosity'
+        className='object-fit opacity-35 mix-blend-luminosity'
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-[#03122F]/90 via-[#03122F]/80 to-[#03122F] z-0" />
 
       <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 items-center">
 
@@ -228,7 +227,7 @@ export default function RountableHero({ roundtable }: HeroProps) {
             </div>
 
             {/* Quick Hero CTA to jump to form */}
-            <a 
+            <a
               href="#register-section"
               className="w-full bg-[#1BA6C7] hover:bg-[#158ca8] text-white font-extrabold text-xs sm:text-sm py-3.5 sm:py-4 px-5 sm:px-6 rounded-xl sm:rounded-2xl transition duration-300 shadow-xl shadow-[#1BA6C7]/20 flex items-center justify-center gap-2 group"
             >
