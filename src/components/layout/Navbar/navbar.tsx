@@ -11,7 +11,10 @@ import {
   DrawerContent,
   DrawerTitle,
   DrawerTrigger,
+  DrawerClose,
 } from "@/components/ui/drawer";
+import { X, MapPin, Mail, Phone } from "lucide-react";
+import { FaLinkedin, FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
 
 const DesktopNav = dynamic(() => import("./DesktopNav"), {
   ssr: false,
@@ -20,6 +23,7 @@ const DesktopNav = dynamic(() => import("./DesktopNav"), {
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const [openMobileItem, setOpenMobileItem] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
@@ -35,6 +39,7 @@ export default function Navbar() {
 
   const closeAll = useCallback(() => {
     setMobileOpen(false);
+    setContactOpen(false);
     setOpenMobileItem(null);
   }, []);
 
@@ -89,13 +94,99 @@ export default function Navbar() {
             >
               Internships
             </Link>
-            <button
-              type="button"
-              aria-label="More information"
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/40 text-white/90 outline-none hover:border-cyan-300 hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-500"
-            >
-              <span aria-hidden="true">i</span>
-            </button>
+
+            <Drawer open={contactOpen} onOpenChange={setContactOpen} swipeDirection="right">
+              <DrawerTrigger
+                aria-label="More information"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/40 text-white/90 outline-none hover:border-cyan-300 hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-500 bg-transparent cursor-pointer"
+              >
+                <span aria-hidden="true">i</span>
+              </DrawerTrigger>
+
+              <DrawerContent className="bg-[#f8f9fa] shadow-2xl border-l border-white/10 text-gray-800 flex flex-col w-[350px] sm:w-[450px] right-0 top-0 bottom-0 mt-0 rounded-none overflow-hidden h-full z-[100] fixed">
+                <DrawerTitle className="sr-only">Contact Us</DrawerTitle>
+                <div className="bg-[#2a52be] text-white p-6 relative">
+                  <DrawerClose className="absolute top-4 right-4 p-1.5 text-white/70 hover:text-white border border-white/20 hover:bg-white/10 rounded-md transition-colors cursor-pointer z-10">
+                    <X className="w-4 h-4" />
+                  </DrawerClose>
+                  <p className="text-[10px] uppercase tracking-widest text-white/70 font-semibold mb-1">Software Productivity Strategists</p>
+                  <h2 className="text-xl font-bold">Get in Touch</h2>
+                </div>
+                
+                <div className="p-6 overflow-y-auto flex-1 flex flex-col gap-6">
+                  {/* Intro card */}
+                  <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                    <Image
+                      src="/images/logo/logo.webp"
+                      alt="SPS Logo"
+                      width={120}
+                      height={40}
+                      className="h-10 w-auto object-contain mb-4"
+                    />
+                    <p className="text-sm text-gray-500 leading-relaxed">
+                      Whether you are an entrepreneur looking for an engineering team or an enterprise pursuing digital transformation, we can help you bring your vision to reality.
+                    </p>
+                  </div>
+
+                  {/* Contact section */}
+                  <div>
+                    <h3 className="text-xs font-bold tracking-wider text-gray-900 mb-4 uppercase">Contact</h3>
+                    <div className="space-y-4">
+                      <div className="flex gap-4">
+                        <div className="mt-1 shrink-0 h-8 w-8 rounded bg-gray-100 flex items-center justify-center text-gray-500">
+                          <MapPin className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-bold text-gray-400 tracking-wider mb-0.5">ADDRESS</p>
+                          <p className="text-sm text-gray-600">2400 Research Blvd, Suite 115, Rockville, MD 20850 USA.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex gap-4">
+                        <div className="mt-1 shrink-0 h-8 w-8 rounded bg-gray-100 flex items-center justify-center text-gray-500">
+                          <Mail className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-bold text-gray-400 tracking-wider mb-0.5">EMAIL</p>
+                          <p className="text-sm text-gray-600">support@spsnet.com</p>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-4">
+                        <div className="mt-1 shrink-0 h-8 w-8 rounded bg-gray-100 flex items-center justify-center text-gray-500">
+                          <Phone className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-bold text-gray-400 tracking-wider mb-0.5">PHONE</p>
+                          <p className="text-sm text-gray-600">+1-301-337-2290</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <Link href="/Contact-Us" onClick={() => setContactOpen(false)} className="mt-6 block w-full bg-[#2a52be] hover:bg-blue-700 text-white text-center py-2.5 rounded-lg text-sm font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                      Request Consultation
+                    </Link>
+                  </div>
+
+                  {/* Hours section */}
+                  <div>
+                    <h3 className="text-xs font-bold tracking-wider text-gray-900 mb-3 uppercase">Hours</h3>
+                    <p className="text-sm text-gray-600">Mon - Sat: 7:00 - 17:00</p>
+                  </div>
+
+                  {/* Follow us section */}
+                  <div>
+                    <h3 className="text-xs font-bold tracking-wider text-gray-900 mb-3 uppercase">Follow Us</h3>
+                    <div className="flex gap-2">
+                      <a href="https://www.linkedin.com/company/spsnet/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="h-9 w-9 rounded border border-gray-200 flex items-center justify-center text-blue-600 hover:bg-gray-50 transition-colors"><FaLinkedin className="w-4 h-4" /></a>
+                      <a href="#" aria-label="Instagram" className="h-9 w-9 rounded border border-gray-200 flex items-center justify-center text-blue-600 hover:bg-gray-50 transition-colors"><FaInstagram className="w-4 h-4" /></a>
+                      <a href="https://www.facebook.com/spsnet" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="h-9 w-9 rounded border border-gray-200 flex items-center justify-center text-blue-600 hover:bg-gray-50 transition-colors"><FaFacebook className="w-4 h-4" /></a>
+                      <a href="https://twitter.com/SPSnet" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="h-9 w-9 rounded border border-gray-200 flex items-center justify-center text-blue-600 hover:bg-gray-50 transition-colors"><FaTwitter className="w-4 h-4" /></a>
+                    </div>
+                  </div>
+                </div>
+              </DrawerContent>
+            </Drawer>
           </div>
 
           {/* Mobile toggle with Shadcn Drawer */}
