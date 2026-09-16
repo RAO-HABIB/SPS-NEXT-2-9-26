@@ -1,19 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
 // Swiper CSS is loaded dynamically by components that use it
 // import { LoadingScreen } from "@/components/ui/loadingscreen";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
   subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -32,7 +27,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}
+      className={`${poppins.variable} scroll-smooth antialiased`}
     >
       <head>
         <meta name="color-scheme" content="light" />
