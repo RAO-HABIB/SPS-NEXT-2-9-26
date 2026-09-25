@@ -5,25 +5,25 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const db = require('./database');
 
+// ✅ Auto-seed on startup (agar DB khaali hai)
+const { seed } = require('./seed');
+seed();
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // ✅ Render/Railway reverse proxy ke liye ZAROORI
-// Iske bina req.protocol = 'http' dikhta hai even on HTTPS,
-// jiski wajah se secure cookies send nahi hote.
 app.set('trust proxy', 1);
 
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
-
-// ✅ CORS — cross-origin cookies support
 app.use(cors({
   origin: process.env.FRONTEND_URL || 'http://localhost:3000',
   credentials: true,
 }));
 
-// ✅ Uploads static path — env-based (Render disk ke liye)
+// ✅ Uploads static path — env-based
 const UPLOAD_DIR = process.env.UPLOAD_DIR || path.join(__dirname, 'uploads');
 app.use('/uploads', express.static(UPLOAD_DIR));
 

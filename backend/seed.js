@@ -105,6 +105,15 @@ const VERTICALS = [
 ];
 
 function seed() {
+  // Check if DB is already seeded — if hero_slides has rows, skip everything
+  const heroCount = db.prepare('SELECT COUNT(*) AS count FROM hero_slides').get();
+  if (heroCount.count > 0) {
+    console.log('[seed] Database already seeded, skipping.');
+    return false;
+  }
+
+  console.log('[seed] Empty database detected — seeding now...');
+
   db.exec('DELETE FROM hero_intro');
   db.exec('DELETE FROM hero_slides');
   db.exec('DELETE FROM services');
@@ -117,11 +126,11 @@ function seed() {
   db.exec('DELETE FROM verticals');
   db.exec('DELETE FROM section_intros');
 
-  // Insert Hero Intro
+  // Hero Intro
   const heroIntro = db.prepare('INSERT INTO hero_intro (id, eyebrow, title, highlight, description, primary_cta_label, primary_cta_href, secondary_cta_label, secondary_cta_href) VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?)');
   heroIntro.run(HERO_SLIDES[0].eyebrow, HERO_SLIDES[0].title, HERO_SLIDES[0].highlight, HERO_SLIDES[0].description, HERO_SLIDES[0].primaryCta.label, HERO_SLIDES[0].primaryCta.href, HERO_SLIDES[0].secondaryCta.label, HERO_SLIDES[0].secondaryCta.href);
 
-  // ✅ Hero Slides — s.video use karo (videos chalengi)
+  // Hero Slides
   const insertHeroSlide = db.prepare('INSERT INTO hero_slides (category_label, title, highlight, description, background_image, order_index) VALUES (?, ?, ?, ?, ?, ?)');
   HERO_SLIDES.forEach((s, i) => {
     insertHeroSlide.run(s.eyebrow, s.title, s.highlight, s.description, s.video, i);
@@ -161,7 +170,7 @@ function seed() {
   const insertVertical = db.prepare('INSERT INTO verticals (icon, title, description, items, href, image, order_index) VALUES (?, ?, ?, ?, ?, ?, ?)');
   VERTICALS.forEach((v, i) => insertVertical.run(v.icon, v.title, v.description, JSON.stringify(v.items), v.href, v.image, i));
 
-  // Section Intros — with stat2 columns
+  // Section Intros
   const insertIntro = db.prepare(`
     INSERT INTO section_intros
       (section, eyebrow, title, highlight, description, stat_value, stat_suffix, stat_label, stat2_value, stat2_suffix, stat2_label, image, cta_label, cta_href)
@@ -176,7 +185,13 @@ function seed() {
   insertIntro.run('customers', CUSTOMERS_INTRO.eyebrow, CUSTOMERS_INTRO.title, CUSTOMERS_INTRO.highlight, CUSTOMERS_INTRO.description, null, null, null, null, null, null, null, null, null);
   insertIntro.run('verticals', VERTICALS_INTRO.eyebrow, VERTICALS_INTRO.title, VERTICALS_INTRO.highlight, VERTICALS_INTRO.description, null, null, null, null, null, null, null, null, null);
 
-  console.log("Database seeded successfully!");
+  console.log('[seed] Database seeded successfully!');
+  return true;
 }
 
-seed();
+// ✅ Auto-run only when executed directly (node seed.js)
+if (require.main === module) {
+  seed();
+}
+
+module.exports = { seed };
