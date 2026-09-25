@@ -8,17 +8,18 @@ import { ShieldCheck, ArrowLeft, ArrowRight } from "lucide-react";
 import { A11y, Autoplay, Keyboard, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperClass } from "swiper";
-import { PRODUCTS, PRODUCTS_INTRO, type Product } from "@/data/products";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-export default function Products() {
+export default function Products({ data }: { data?: any }) {
   const prefersReducedMotion = usePrefersReducedMotion();
   const swiperRef = useRef<SwiperClass | null>(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
+  const intro = data?.intro || {};
+  const items = data?.items || [];
 
   const handlePrev = useCallback(() => {
     swiperRef.current?.slidePrev();
@@ -31,9 +32,9 @@ export default function Products() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": `${PRODUCTS_INTRO.title} ${PRODUCTS_INTRO.highlight}`,
-    "description": PRODUCTS_INTRO.description,
-    "itemListElement": PRODUCTS.map((product, index) => ({
+    "name": `${intro.title} ${intro.highlight}`,
+    "description": intro.description,
+    "itemListElement": items.map((product: any, index: number) => ({
       "@type": "ListItem",
       "position": index + 1,
       "item": {
@@ -81,19 +82,19 @@ export default function Products() {
             <header>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-2.5 sm:px-3 py-1 text-[10px] sm:text-[11px] font-semibold tracking-wide text-cyan-300">
                 <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
-                {PRODUCTS_INTRO.eyebrow.toUpperCase()}
+                {(intro.eyebrow || "PRODUCTS").toUpperCase()}
               </span>
 
               <h2
                 id="products-heading"
                 className="mt-3 sm:mt-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-white"
               >
-                {PRODUCTS_INTRO.title}{" "}
-                <span className="text-cyan-300">{PRODUCTS_INTRO.highlight}</span>
+                {intro.title}{" "}
+                <span className="text-cyan-300">{intro.highlight}</span>
               </h2>
 
               <p className="mt-3 sm:mt-4 max-w-xl text-xs sm:text-sm md:text-base leading-relaxed text-white/90">
-                {PRODUCTS_INTRO.description}
+                {intro.description}
               </p>
             </header>
 
@@ -118,10 +119,10 @@ export default function Products() {
                 spaceBetween={16}
                 slidesPerView={1}
                 speed={600}
-                loop={PRODUCTS.length > 2}
+                loop={items.length > 2}
                 keyboard={{ enabled: true }}
                 autoplay={
-                  prefersReducedMotion || PRODUCTS.length <= 1
+                  prefersReducedMotion || items.length <= 1
                     ? false
                     : {
                       delay: 4000,
@@ -139,9 +140,9 @@ export default function Products() {
                   640: { slidesPerView: 2, spaceBetween: 20 },
                 }}
               >
-                {PRODUCTS.map((product, index) => (
+                {items.map((product: any, index: number) => (
                   <SwiperSlide key={product.id}>
-                    <ProductCard product={product} index={index} total={PRODUCTS.length} />
+                    <ProductCard product={product} index={index} total={items.length} />
                   </SwiperSlide>
                 ))}
               </Swiper>
@@ -150,7 +151,7 @@ export default function Products() {
                 <button
                   type="button"
                   onClick={handlePrev}
-                  disabled={!PRODUCTS.length || (isBeginning && !(PRODUCTS.length > 2))}
+                  disabled={!items.length || (isBeginning && !(items.length > 2))}
                   aria-label="Previous product"
                   className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full border border-white/15 bg-white/5 text-white/90 transition-all duration-200 hover:border-cyan-400/60 hover:bg-cyan-400/10 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#03122F] disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
                 >
@@ -159,7 +160,7 @@ export default function Products() {
                 <button
                   type="button"
                   onClick={handleNext}
-                  disabled={!PRODUCTS.length || (isEnd && !(PRODUCTS.length > 2))}
+                  disabled={!items.length || (isEnd && !(items.length > 2))}
                   aria-label="Next product"
                   className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full border border-white/15 bg-white/5 text-white/90 transition-all duration-200 hover:border-cyan-400/60 hover:bg-cyan-400/10 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#03122F] disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
                 >
@@ -172,16 +173,18 @@ export default function Products() {
           <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
             <div className="relative w-full max-w-[280px] sm:max-w-[380px] lg:max-w-[440px]">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl sm:rounded-3xl ring-1 ring-white/10 sm:h-[480px] sm:aspect-auto lg:h-[560px]">
-                <Image
-                  src={PRODUCTS_INTRO.image}
-                  alt="Products Feature Showcase"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 280px, (max-width: 1024px) 380px, 440px"
-                  quality={60}
-                />
+                {intro.image && (
+                  <Image
+                    src={intro.image}
+                    alt="Products Feature Showcase"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 280px, (max-width: 1024px) 380px, 440px"
+                    quality={60}
+                  />
+                )}
               </div>
-              <StatBadge prefersReducedMotion={prefersReducedMotion} />
+              <StatBadge prefersReducedMotion={prefersReducedMotion} intro={intro} />
             </div>
           </div>
 
@@ -250,13 +253,15 @@ export default function Products() {
 
 function StatBadge({
   prefersReducedMotion,
+  intro,
 }: {
   prefersReducedMotion: boolean;
+  intro: any;
 }) {
   const [count, setCount] = useState(0);
   const [started, setStarted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const target = PRODUCTS_INTRO.stat.value;
+  const target = parseInt(intro.stat_value) || 0;
 
   useEffect(() => {
     const el = ref.current;
@@ -301,20 +306,22 @@ function StatBadge({
     return () => cancelAnimationFrame(rafId);
   }, [started, target, prefersReducedMotion]);
 
+  if (!intro.stat_value) return null;
+
   return (
     <div
       ref={ref}
       className="absolute -bottom-3 left-1 rounded-xl sm:rounded-2xl bg-cyan-400 px-3 sm:px-4 py-2 sm:py-3 text-center shadow-2xl ring-2 sm:ring-4 ring-[#03122F] sm:-bottom-5 sm:-left-5 sm:px-5 sm:py-4 lg:-left-8"
       role="status"
       aria-live="polite"
-      aria-label={`${target}${PRODUCTS_INTRO.stat.suffix} ${PRODUCTS_INTRO.stat.label}`}
+      aria-label={`${target}${intro.stat_suffix} ${intro.stat_label}`}
     >
       <div className="text-xl sm:text-2xl font-extrabold text-[#03122F] sm:text-3xl">
         {count}
-        {PRODUCTS_INTRO.stat.suffix}
+        {intro.stat_suffix}
       </div>
       <div className="mt-0.5 text-[9px] sm:text-[10px] font-bold leading-tight uppercase tracking-wider text-[#03122F]/90 sm:text-[11px]">
-        {PRODUCTS_INTRO.stat.label.split(" ").map((word, i) => (
+        {(intro.stat_label || "").split(" ").map((word: string, i: number) => (
           <div key={i}>{word}</div>
         ))}
       </div>
@@ -327,7 +334,7 @@ function ProductCard({
   index,
   total,
 }: {
-  product: Product;
+  product: any;
   index: number;
   total: number;
 }) {

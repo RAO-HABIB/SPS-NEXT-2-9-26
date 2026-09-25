@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import { PARTNERS, PARTNERS_INTRO } from "@/data/partners";
 
-export default function Partners() {
+export default function Partners({ data }: { data?: any }) {
+  const intro = data?.intro || {};
+  const items = data?.items || [];
+  
   // Continuous scroll: 3x duplication ensures smooth seamless marquee loop
-  const marqueeList = [...PARTNERS, ...PARTNERS, ...PARTNERS];
+  const marqueeList = items.length > 0 ? [...items, ...items, ...items] : [];
 
   return (
     <section className="below-fold relative w-full overflow-hidden bg-[#03122F] py-16 lg:py-20">
@@ -21,13 +23,16 @@ export default function Partners() {
         <div className="mx-auto mb-10 max-w-3xl text-center">
           <div className="mb-3 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-slate-300">
             <span className="h-px w-8 bg-[#0BB4D4]" />
-            <span>{PARTNERS_INTRO.eyebrow}</span>
+            <span>{intro.eyebrow}</span>
             <span className="h-px w-8 bg-[#0BB4D4]" />
           </div>
           <h2 className="text-2xl font-extrabold text-white md:text-3xl lg:text-4xl">
-            {PARTNERS_INTRO.title}{" "}
-            <span className="text-cyan-400">{PARTNERS_INTRO.highlight}</span>
+            {intro.title}{" "}
+            <span className="text-cyan-400">{intro.highlight}</span>
           </h2>
+          {intro.description && (
+             <p className="mt-4 text-slate-300 max-w-2xl mx-auto">{intro.description}</p>
+          )}
         </div>
       </div>
 
@@ -36,20 +41,22 @@ export default function Partners() {
         <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-linear-to-l from-[#03122F] to-transparent lg:w-40" />
 
         <div className="flex w-max animate-marquee gap-5 hover:[animation-play-state:paused]">
-          {marqueeList.map((partner, index) => (
+          {marqueeList.map((partner: any, index: number) => (
             <Link
               key={`${partner.id}-${index}`}
-              href={partner.href}
+              href={partner.href || "#"}
               className="group relative flex w-40 shrink-0 flex-col items-center justify-between rounded-2xl bg-white p-5 shadow-lg ring-1 ring-slate-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#0BB4D4]/20 hover:ring-[#0BB4D4]/60 sm:w-45"
             >
               <div className="relative mb-4 flex h-16 w-full items-center justify-center rounded-xl bg-slate-50 p-2 transition-transform duration-300 group-hover:scale-[1.03]">
-                <Image
-                  src={partner.logo}
-                  alt={`${partner.name} logo`}
-                  fill
-                  className="object-contain"
-                  sizes="120px"
-                />
+                {partner.logo && (
+                  <Image
+                    src={partner.logo}
+                    alt={`${partner.name} logo`}
+                    fill
+                    className="object-contain"
+                    sizes="120px"
+                  />
+                )}
               </div>
 
               <h3 className="w-full truncate text-center text-sm font-normal text-slate-900 group-hover:text-[#0057B8]">

@@ -3,15 +3,16 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { LucideIcon } from "@/components/LucideIcon";
-import { SERVICE_TABS } from "@/data/services";
 
-export default function Services() {
-  const [activeTabId, setActiveTabId] = useState(SERVICE_TABS[0].id);
-  const activeTab = SERVICE_TABS.find((t) => t.id === activeTabId)!;
+export default function Services({ data }: { data?: any }) {
+  const items = data?.items || [];
+  const [activeTabId, setActiveTabId] = useState(items[0]?.id);
+  const activeTab = items.find((t: any) => t.id === activeTabId) || items[0] || { slides: [] };
+  
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = Math.ceil(activeTab.slides.length / 3);
+  const totalPages = Math.ceil((activeTab.slides || []).length / 3);
 
   useEffect(() => {
     setCurrentPage(0);
@@ -72,7 +73,7 @@ export default function Services() {
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="sr-only">Our Services</h2>
         <div className="mb-6 sm:mb-8 md:mb-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-          {SERVICE_TABS.map((tab) => {
+          {items.map((tab: any) => {
             const isActive = tab.id === activeTabId;
             return (
               <button
@@ -82,17 +83,17 @@ export default function Services() {
                 aria-pressed={isActive}
                 className={`inline-flex items-center gap-2 sm:gap-2.5 rounded-xl border px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 text-xs sm:text-sm md:text-base font-semibold transition-all duration-300 cursor-pointer ${
                   isActive
-                    ? tab.id === "cybersecurity"
+                    ? tab.title?.toLowerCase().includes("cyber")
                       ? "bg-[#006699] text-white border-[#006699] shadow-sm"
                       : "bg-[#0077b6] text-white border-[#0077b6] shadow-sm"
                     : "bg-white text-slate-700 border-slate-200 hover:border-[#0077b6] hover:text-[#0077b6]"
                 }`}
               >
                 <LucideIcon
-                  name={tab.icon}
+                  name={tab.icon || "lucide:star"}
                   className={`${isActive ? "text-white" : "text-slate-600"} w-[14px] sm:w-[16px] md:w-[18px] h-[14px] sm:h-[16px] md:h-[18px]`}
                 />
-                {tab.title}
+                {tab.tab_name}
               </button>
             );
           })}
@@ -100,7 +101,7 @@ export default function Services() {
 
         <div className="mb-10 sm:mb-12 lg:mb-16">
           <p className="mx-auto max-w-4xl text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed sm:leading-loose text-slate-600">
-            {activeTab.description}
+            {activeTab.tab_description}
           </p>
         </div>
 
@@ -116,8 +117,8 @@ export default function Services() {
             onScroll={handleScroll}
             className="carousel carousel-center scroll-smooth w-full max-w-[936px] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
-            {activeTab.slides.map((slide, index) => (
-              <div key={`${slide.id}-${index}`} className="carousel-item px-2 sm:px-4 py-6 sm:py-8">
+            {(activeTab.slides || []).map((slide: any, index: number) => (
+              <div key={`${slide.id || slide.title}-${index}`} className="carousel-item px-2 sm:px-4 py-6 sm:py-8">
                 <div
                   className="group relative flex h-[340px] sm:h-[360px] w-[260px] sm:w-[280px] flex-col justify-between rounded-2xl border border-slate-200/70 bg-[#f1f6f8] p-6 sm:p-8 text-left shadow-[0_0_20px_rgba(0,0,0,0.15)] transition-all duration-500 ease-out hover:-translate-y-1 sm:hover:-translate-y-2 hover:bg-[#0077b6] hover:shadow-[0_0_20px_rgba(0,0,0,0.25)]"
                 >

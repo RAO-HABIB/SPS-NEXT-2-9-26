@@ -94,6 +94,13 @@ export default function Navbar() {
             >
               Internships
             </Link>
+            
+            <Link
+              href="/admin/login"
+              className="rounded-lg border-2 border-cyan-500/50 bg-cyan-500/10 px-4 py-1.5 text-sm font-bold text-cyan-300 transition-all hover:bg-cyan-500/20 outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
+            >
+              Admin
+            </Link>
 
             <Drawer open={contactOpen} onOpenChange={setContactOpen} swipeDirection="right">
               <DrawerTrigger
@@ -309,6 +316,14 @@ export default function Navbar() {
                   className="mt-6 block w-full rounded-lg bg-blue-600 px-4 py-3 text-center font-semibold text-white outline-none hover:bg-blue-700 focus-visible:ring-2 focus-visible:ring-cyan-400"
                 >
                   Internship
+                </Link>
+                
+                <Link
+                  href="/admin/login"
+                  onClick={closeAll}
+                  className="mt-3 block w-full rounded-lg border-2 border-cyan-500/50 bg-cyan-500/10 px-4 py-3 text-center font-semibold text-cyan-300 outline-none hover:bg-cyan-500/20 focus-visible:ring-2 focus-visible:ring-cyan-400"
+                >
+                  Admin Panel
                 </Link>
               </div>
             </DrawerContent>

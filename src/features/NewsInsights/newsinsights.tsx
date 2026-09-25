@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { NEWS_ITEMS, NEWS_INTRO } from "@/data/news";
-import type { NewsItem } from "@/data/news";
 
-export default function NewsInsights() {
-  const item1 = NEWS_ITEMS[0];
-  const item2 = NEWS_ITEMS[1];
-  const item3 = NEWS_ITEMS[2];
+export default function NewsInsights({ data }: { data?: any }) {
+  const intro = data?.intro || {};
+  const items = data?.items || [];
+  
+  const item1 = items[0];
+  const item2 = items[1];
+  const item3 = items[2];
 
   return (
     <section className="below-fold relative w-full overflow-hidden bg-[#F8FAFC] px-4 sm:px-6 md:px-8 py-16 sm:py-20 lg:py-28">
@@ -20,38 +21,41 @@ export default function NewsInsights() {
         <div className="mb-8 sm:mb-10 md:mb-12 flex flex-col items-start justify-between gap-4 sm:gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
             <span className="mb-2 sm:mb-3 block text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#0057B8]">
-              {NEWS_INTRO.eyebrow}
+              {intro.eyebrow}
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-semibold tracking-tight text-[#031B3D] leading-tight lg:leading-[1.1]">
-              Stay Updated With Our Latest News & Insights
+              {intro.title}{" "}
+              {intro.highlight && <span className="text-cyan-500">{intro.highlight}</span>}
             </h2>
           </div>
-          <Link
-            href={NEWS_INTRO.cta.href}
-            className="group flex shrink-0 items-center gap-2 sm:gap-3 rounded-xl bg-[#0057B8] py-2 sm:py-2.5 pl-4 sm:pl-5 pr-2 sm:pr-2.5 text-xs sm:text-sm font-bold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#003e85] hover:shadow-lg"
-          >
-            {NEWS_INTRO.cta.label}
-            <span className="flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-lg bg-white text-[#0057B8] transition-transform duration-300 group-hover:translate-x-0.5">
-              <ArrowRight className="w-4 h-4" />
-            </span>
-          </Link>
+          {intro.cta_href && intro.cta_label && (
+            <Link
+              href={intro.cta_href}
+              className="group flex shrink-0 items-center gap-2 sm:gap-3 rounded-xl bg-[#0057B8] py-2 sm:py-2.5 pl-4 sm:pl-5 pr-2 sm:pr-2.5 text-xs sm:text-sm font-bold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#003e85] hover:shadow-lg"
+            >
+              {intro.cta_label}
+              <span className="flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-lg bg-white text-[#0057B8] transition-transform duration-300 group-hover:translate-x-0.5">
+                <ArrowRight className="w-4 h-4" />
+              </span>
+            </Link>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-6">
           <div className="col-span-1 md:col-span-2 lg:col-span-1 min-h-[400px] sm:min-h-[480px] lg:h-[500px]">
-            <LargeCard item={item1} />
+            {item1 && <LargeCard item={item1} />}
           </div>
 
           <div className="col-span-1 lg:col-span-1 min-h-[350px] lg:h-[500px]">
-            <MiddleCard item={item2} />
+            {item2 && <MiddleCard item={item2} />}
           </div>
 
           <div className="col-span-1 lg:col-span-1 flex flex-col gap-4 sm:gap-6 lg:gap-6 min-h-[400px] lg:h-[500px]">
             <div className="flex-1 min-h-[200px]">
-              <SmallImageCard item={item3} />
+              {item3 && <SmallImageCard item={item3} />}
             </div>
             <div className="flex-1 min-h-[160px]">
-              <ExploreCard />
+              <ExploreCard intro={intro} />
             </div>
           </div>
         </div>
@@ -60,10 +64,12 @@ export default function NewsInsights() {
   );
 }
 
-function LargeCard({ item }: { item: NewsItem }) {
+function LargeCard({ item }: { item: any }) {
   return (
     <article className="group relative h-full w-full overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
-      <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 33vw" quality={75} />
+      {item.image && (
+        <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 33vw" quality={75} />
+      )}
       <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent" />
       
       <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-8">
@@ -73,13 +79,13 @@ function LargeCard({ item }: { item: NewsItem }) {
         
         <div>
           <h3 className="mb-6 text-2xl sm:text-[28px] font-bold leading-tight text-white drop-shadow-md">
-            <Link href={item.href} className="focus-visible:outline-none before:absolute before:inset-0">
+            <Link href={item.href || "#"} className="focus-visible:outline-none before:absolute before:inset-0">
               {item.title}
             </Link>
           </h3>
           
           <Link
-            href={item.href}
+            href={item.href || "#"}
             className="group/btn relative z-10 inline-flex items-center gap-3 rounded-xl bg-[#0077b6] py-2.5 pl-5 pr-2.5 text-sm font-bold text-white shadow-md transition-all duration-300 hover:bg-[#005f94] hover:shadow-lg"
           >
             Read More
@@ -93,10 +99,12 @@ function LargeCard({ item }: { item: NewsItem }) {
   );
 }
 
-function MiddleCard({ item }: { item: NewsItem }) {
+function MiddleCard({ item }: { item: any }) {
   return (
     <article className="group relative h-full w-full overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
-      <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 33vw" quality={75} />
+      {item.image && (
+        <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 33vw" quality={75} />
+      )}
       <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent" />
       
       <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-8">
@@ -106,7 +114,7 @@ function MiddleCard({ item }: { item: NewsItem }) {
         
         <div className="flex items-end justify-between gap-4">
           <h3 className="text-lg sm:text-xl font-bold leading-tight text-white drop-shadow-md">
-            <Link href={item.href} className="focus-visible:outline-none before:absolute before:inset-0">
+            <Link href={item.href || "#"} className="focus-visible:outline-none before:absolute before:inset-0">
               {item.title}
             </Link>
           </h3>
@@ -119,10 +127,12 @@ function MiddleCard({ item }: { item: NewsItem }) {
   );
 }
 
-function SmallImageCard({ item }: { item: NewsItem }) {
+function SmallImageCard({ item }: { item: any }) {
   return (
     <article className="group relative h-full w-full overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
-      <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 1024px) 50vw, 33vw" quality={75} />
+      {item.image && (
+        <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" sizes="(max-width: 1024px) 50vw, 33vw" quality={75} />
+      )}
       <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent" />
       
       <div className="absolute inset-0 flex flex-col justify-between p-5 sm:p-6">
@@ -132,7 +142,7 @@ function SmallImageCard({ item }: { item: NewsItem }) {
         
         <div className="flex items-end justify-between gap-4">
           <h3 className="text-base sm:text-lg font-bold leading-tight text-white drop-shadow-md">
-            <Link href={item.href} className="focus-visible:outline-none before:absolute before:inset-0">
+            <Link href={item.href || "#"} className="focus-visible:outline-none before:absolute before:inset-0">
               {item.title}
             </Link>
           </h3>
@@ -145,10 +155,10 @@ function SmallImageCard({ item }: { item: NewsItem }) {
   );
 }
 
-function ExploreCard() {
+function ExploreCard({ intro }: { intro: any }) {
   return (
     <article className="group relative h-full w-full overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] bg-[#03122F] p-6 sm:p-8 flex flex-col justify-between transition-transform duration-300 hover:scale-[1.02] shadow-xl">
-      <Link href="/" className="focus-visible:outline-none before:absolute before:inset-0">
+      <Link href={intro.cta_href || "/"} className="focus-visible:outline-none before:absolute before:inset-0">
         <h3 className="text-xl sm:text-2xl font-bold leading-snug text-white">
           Explore SPS insights and company updates
         </h3>

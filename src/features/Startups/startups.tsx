@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { STARTUPS, STARTUPS_INTRO } from "@/data/startups";
 
-export default function Startups() {
+export default function Startups({ data }: { data?: any }) {
+  const intro = data?.intro || {};
+  const items = data?.items || [];
+
   return (
     <section className="below-fold relative w-full">
       <div className="relative overflow-hidden bg-[#03122F] px-4 sm:px-6 md:px-8 py-12 sm:py-16 lg:py-20 text-white">
@@ -18,20 +20,20 @@ export default function Startups() {
         <div className="pointer-events-none absolute -top-32 left-1/2 h-64 sm:h-96 w-[500px] sm:w-[700px] -translate-x-1/2 rounded-full blur-3xl" />
         <div className="relative mx-auto max-w-4xl text-center">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-            {STARTUPS_INTRO.eyebrow}
+            {intro.eyebrow}
           </h2>
           <p className="mt-2 sm:mt-3 text-base sm:text-lg lg:text-xl font-medium text-white/90">
-            {STARTUPS_INTRO.title}
+            {intro.title}
           </p>
           <p className="mx-auto mt-4 sm:mt-5 max-w-3xl text-xs sm:text-sm lg:text-base leading-relaxed text-white/90">
-            {STARTUPS_INTRO.description}
+            {intro.description}
           </p>
         </div>
       </div>
 
       <div className="relative bg-[#EAF4FB] px-4 sm:px-6 md:px-8 py-12 sm:py-16 lg:py-20">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 sm:gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {STARTUPS.map((s) => (
+          {items.map((s: any) => (
             <StartupCard key={s.id} startup={s} />
           ))}
         </div>
@@ -40,7 +42,7 @@ export default function Startups() {
   );
 }
 
-function StartupCard({ startup }: { startup: (typeof STARTUPS)[number] }) {
+function StartupCard({ startup }: { startup: any }) {
   return (
     <article className="group relative flex h-full min-h-[300px] sm:min-h-[360px] cursor-pointer flex-col justify-between rounded-2xl border border-slate-200/70 bg-[#f1f6f8] p-6 sm:p-8 text-left shadow-[0_0_20px_rgba(0,0,0,0.15)] transition-all duration-500 ease-out hover:-translate-y-1 sm:hover:-translate-y-2 hover:bg-[#0077b6] hover:shadow-[0_0_20px_rgba(0,0,0,0.25)]">
 
