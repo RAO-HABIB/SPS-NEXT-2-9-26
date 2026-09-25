@@ -80,7 +80,8 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                 whileInView="rest"
                 whileHover="hover"
                 viewport={{ once: true }}
-                className={`group bg-[#F8F9FB] rounded-[2rem] p-2 flex flex-col md:flex-row gap-2 transition-all duration-500 overflow-hidden relative shadow-lg ${isFirst ? 'border-2 border-[#00a7e1]' : 'border border-slate-200'} md:h-[500px] w-full`}
+                // FIX: md:h-[500px] ko md:min-h-[500px] kiya gaya hai
+                className={`group bg-[#F8F9FB] rounded-[2rem] p-2 flex flex-col md:flex-row gap-2 transition-all duration-500 overflow-hidden relative shadow-lg ${isFirst ? 'border-2 border-[#00a7e1]' : 'border border-slate-200'} md:min-h-[500px] w-full`}
               >
                 {/* Content Side */}
                 <motion.div
@@ -89,9 +90,10 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                     hover: { flex: 1.6 }
                   }}
                   transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
-                  className={`bg-white rounded-[1.5rem] p-8 lg:p-12 border border-slate-100 flex flex-col justify-center shadow-sm relative overflow-hidden w-full md:w-auto h-auto md:h-full order-2 ${block.reverse ? 'md:order-2' : 'md:order-1'}`}
+                  // FIX: Padding thodi kam ki (p-6 lg:p-10) taaki content fit ho jaye
+                  className={`bg-white rounded-[1.5rem] p-6 lg:p-10 border border-slate-100 flex flex-col justify-center shadow-sm relative overflow-hidden w-full md:w-auto h-auto md:h-full order-2 ${block.reverse ? 'md:order-2' : 'md:order-1'}`}
                 >
-                  <div className="max-w-xl mx-auto w-full">
+                  <div className="max-w-xl mx-auto w-full flex flex-col h-full">
                     {/* Top Pill */}
                     <div className="bg-[#F8F9FB] rounded-xl px-4 py-2 flex items-center gap-3 w-fit text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -151,7 +153,8 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                     </div>
 
                     {/* Button */}
-                    <a href={block.ctaLink || "#"} className="inline-flex items-center justify-center gap-3 bg-[#031B3D] text-white px-7 py-3.5 rounded-xl text-sm font-bold tracking-wide hover:bg-[#02122c] transition-colors shadow-md w-full sm:w-auto">
+                    {/* FIX: mt-auto add kiya taaki button hamesha bottom pe rahe */}
+                    <a href={block.ctaLink || "#"} className="inline-flex items-center justify-center gap-3 bg-[#031B3D] text-white px-7 py-3.5 rounded-xl text-sm font-bold tracking-wide hover:bg-[#02122c] transition-colors shadow-md w-full sm:w-auto mt-auto">
                       Enroll Now & Validate Paths
                       <ArrowRight className="size-4" />
                     </a>
