@@ -1,6 +1,3 @@
-// ✅ Env-based backend URL
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-
 export default function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-50 p-4">
@@ -17,8 +14,9 @@ export default function LoginPage() {
         </div>
 
         <div className="px-8 pb-10 pt-8">
+          {/* ✅ Relative path — Vercel rewrite se Render pe jayega, cookie Vercel domain pe set hogi */}
           <a
-            href={`${API_URL}/api/auth/google`}
+            href="/api/auth/google"
             className="flex h-12 w-full items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-700 transition-all hover:border-cyan-300 hover:bg-cyan-50/40 hover:text-cyan-700"
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5">

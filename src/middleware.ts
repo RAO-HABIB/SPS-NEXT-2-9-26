@@ -1,9 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// ✅ Env-based backend URL
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -16,7 +13,9 @@ export async function middleware(request: NextRequest) {
     }
 
     try {
-      const res = await fetch(`${API_URL}/api/auth/me`, {
+      // ✅ Same-origin request — Vercel rewrite se backend pe forward hoga
+      const origin = request.nextUrl.origin;
+      const res = await fetch(`${origin}/api/auth/me`, {
         headers: {
           Cookie: `token=${token}`,
         },

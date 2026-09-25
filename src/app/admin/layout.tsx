@@ -4,9 +4,6 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-// ✅ Env-based — dev mein localhost, prod mein Render URL
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-
 type AdminUser = { name?: string; email?: string; profile_picture?: string };
 
 const navGroups = [
@@ -44,7 +41,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   useEffect(() => {
     if (isLoginPage) return;
     let cancelled = false;
-    fetch(`${API_URL}/api/auth/me`, { credentials: 'include' })
+    // ✅ Relative path — Vercel rewrites to backend, cookie automatically sent
+    fetch('/api/auth/me', { credentials: 'include' })
       .then((r) => (r.ok ? r.json() : null))
       .then((d) => { if (!cancelled && d?.user) setUser(d.user); })
       .catch(() => { });
@@ -61,7 +59,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const handleLogout = async () => {
     try {
-      await fetch(`${API_URL}/api/auth/logout`, { method: 'POST', credentials: 'include' });
+      // ✅ Relative path
+      await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
     } catch { }
     window.location.href = '/admin/login';
   };
