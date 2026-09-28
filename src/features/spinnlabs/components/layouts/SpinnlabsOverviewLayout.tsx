@@ -58,7 +58,7 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
-                    priority // <--- FIX: LCP Warning ke liye add kiya
+                    priority
                   />
                 </div>
               </motion.div>
@@ -172,7 +172,7 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    priority={isFirst} // <--- FIX: Sirf pehle block ki image ko priority di
+                    priority={isFirst}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </motion.div>
