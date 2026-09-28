@@ -88,7 +88,7 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                     hover: { flexGrow: 1.6 }
                   }}
                   transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
-                  className={`bg-white rounded-[1.5rem] p-6 lg:p-10 border border-slate-100 flex flex-col justify-center shadow-sm relative overflow-hidden w-full md:flex-1 h-auto order-2 ${block.reverse ? 'md:order-2' : 'md:order-1'}`}
+                  className={`bg-white rounded-[1.5rem] p-6 lg:p-10 border border-slate-100 flex flex-col justify-center shadow-sm relative overflow-hidden w-full md:flex-1 md:h-full h-auto order-2 ${block.reverse ? 'md:order-2' : 'md:order-1'}`}
                 >
                   <div className="max-w-xl mx-auto w-full flex flex-col h-full">
                     {/* Top Pill */}
@@ -164,7 +164,7 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                     hover: { flexGrow: 1.1 }
                   }}
                   transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
-                  className={`relative w-full md:flex-1 h-[300px] md:h-auto rounded-[1.5rem] overflow-hidden shadow-sm order-1 bg-slate-100 ${block.reverse ? 'md:order-1' : 'md:order-2'}`}
+                  className={`relative w-full md:flex-1 h-[300px] md:h-full rounded-[1.5rem] overflow-hidden shadow-sm order-1 bg-slate-100 ${block.reverse ? 'md:order-1' : 'md:order-2'}`}
                 >
                   <Image
                     src={block.image}

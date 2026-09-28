@@ -182,8 +182,7 @@ export const spinnLabsData: SpinnLabDetail[] = [
     metaTitle: "SpinnLabs Overview | Tech Hub for Innovators & Entrepreneurs | SPS",
     metaDescription:
       "SPINN Labs serves as a collaborative hub for innovators, entrepreneurs, and students to build breakthrough technologies with expert mentorship and funding.",
-    // FIXED: /images/ add kiya gaya hai taaki baaki paths se match kare
-    openGraphImage: "/images/spinnlabs/hero-bg-hex.jpg",
+    openGraphImage: "/spinnlabs/hero-bg-hex.jpg",
     hero: {
       title: "Overview",
       description:
@@ -251,8 +250,7 @@ export const spinnLabsData: SpinnLabDetail[] = [
     metaTitle: "Academic Outreach Program | SpinnLabs | SPS",
     metaDescription:
       "Bridging the gap between students, faculty, and industry. Explore our Special Interest Groups in AI, Cloud, IoT, and Cybersecurity.",
-    // FIXED: /images/ add kiya gaya hai
-    openGraphImage: "/images/spinnlabs/hero-bg-hex.jpg",
+    openGraphImage: "/spinnlabs/hero-bg-hex.jpg",
     hero: {
       title: "Academia",
       description:
@@ -303,7 +301,7 @@ export const spinnLabsData: SpinnLabDetail[] = [
     },
 
     techHubBanner: {
-      logo: "/images/spinnlabs/1.png",
+      logo: "/spinnlabs/1.png",
       tagline: "Tech Hub for innovators and entrepreneurs",
       collageImage: "/images/spinnlabs/2.jpg",
       collageAlt: "SPINN Labs events and workshops collage",
@@ -325,8 +323,7 @@ export const spinnLabsData: SpinnLabDetail[] = [
     metaTitle: "Industry Outreach Program | SpinnLabs | SPS",
     metaDescription:
       "Collaborate with SpinnLabs to co-develop breakthrough industry solutions in Oil & Gas, Smart Grid, Banking, Textile, and Metaverse technologies.",
-    // FIXED: /images/ add kiya gaya hai
-    openGraphImage: "/images/spinnlabs/hero-bg-hex.jpg",
+    openGraphImage: "/spinnlabs/hero-bg-hex.jpg",
     hero: {
       title: "Industry",
       description:
@@ -385,7 +382,7 @@ export const spinnLabsData: SpinnLabDetail[] = [
     },
 
     techHubBanner: {
-      logo: "/images/spinnlabs/tech-hub-logo.png",
+      logo: "/spinnlabs/tech-hub-logo.png",
       tagline: "Tech Hub for innovators and entrepreneurs",
       collageImage: "/images/spinnlabs/2.jpg",
       collageAlt: "SPINN Labs events and workshops collage",
@@ -398,8 +395,7 @@ export const spinnLabsData: SpinnLabDetail[] = [
     metaTitle: "Global Centers of Expertise | SpinnLabs | SPS",
     metaDescription:
       "Join our fraternity of subject matter experts dedicated to advancing technology, fostering innovation, and shaping industry standards.",
-    // FIXED: /images/ add kiya gaya hai
-    openGraphImage: "/images/spinnlabs/hero-bg-hex.jpg",
+    openGraphImage: "/spinnlabs/hero-bg-hex.jpg",
     hero: {
       title: "Our Global Centers of Expertise",
       description:
@@ -456,8 +452,7 @@ export const spinnLabsData: SpinnLabDetail[] = [
     metaTitle: "Startups Incubation & Acceleration | SpinnLabs | SPS",
     metaDescription:
       "Turn your breakthrough tech idea into a viable startup with our 6-step entrepreneurship journey, hands-on mentorship, and venture acceleration.",
-    // FIXED: /images/ add kiya gaya hai
-    openGraphImage: "/images/spinnlabs/hero-bg-hex.jpg",
+    openGraphImage: "/spinnlabs/hero-bg-hex.jpg",
     hero: {
       title: "Startups",
       description:
@@ -613,7 +608,7 @@ export const spinnLabsData: SpinnLabDetail[] = [
     },
 
     techHubBanner: {
-      logo: "/images/spinnlabs/tech-hub-logo.png",
+      logo: "/spinnlabs/tech-hub-logo.png",
       tagline: "Tech Hub for innovators and entrepreneurs",
       collageImage: "/images/spinnlabs/2.jpg",
       collageAlt: "SPINN Labs events and workshops collage",
@@ -628,13 +623,12 @@ export const startupStepsData: SpinnLabDetail[] = [
     metaTitle: "Propose Your Idea | SpinnLabs Startups Journey | SPS",
     metaDescription:
       "Pitch your tech venture, problem statement, team composition, and market differentiator to the SpinnLabs venture committee.",
-    // FIXED: /images/ add kiya gaya hai
-    openGraphImage: "/images/spinnlabs/hero-bg-hex.jpg",
+    openGraphImage: "/spinnlabs/hero-bg-hex.jpg",
     hero: {
       title: "Propose Idea",
       description:
         "Share your startup's story with us. Describe your idea, how it solves industry challenges, and what sets it apart from the competition.",
-      backgroundImage: "/images/spinnlabs/hero-bg-hex.jpg",
+      backgroundImage: "/spinnlabs/hero-bg-hex.jpg",
     },
   },
 
@@ -644,13 +638,12 @@ export const startupStepsData: SpinnLabDetail[] = [
     metaTitle: "Create Business Plan | SpinnLabs Startups Journey | SPS",
     metaDescription:
       "Craft an exhaustive business and technology roadmap covering product features, architecture, branding, and legal protection.",
-    // FIXED: /images/ add kiya gaya hai
-    openGraphImage: "/images/spinnlabs/hero-bg-hex.jpg",
+    openGraphImage: "/spinnlabs/hero-bg-hex.jpg",
     hero: {
       title: "Create Plan",
       description:
         "Craft a comprehensive business plan that covers every aspect of your venture, from product development to branding and legal protection.",
-      backgroundImage: "/images/spinnlabs/hero-bg-hex.jpg",
+      backgroundImage: "/spinnlabs/hero-bg-hex.jpg",
     },
   },
 
@@ -660,13 +653,12 @@ export const startupStepsData: SpinnLabDetail[] = [
     metaTitle: "Formulate Equity Model | SpinnLabs Startups Journey | SPS",
     metaDescription:
       "Structure founder equity and contributor cap tables dynamically using fair frameworks like the Slicing Pie model.",
-    // FIXED: /images/ add kiya gaya hai
-    openGraphImage: "/images/spinnlabs/hero-bg-hex.jpg",
+    openGraphImage: "/spinnlabs/hero-bg-hex.jpg",
     hero: {
       title: "Equity Model",
       description:
         "The equity model is a financial framework that allocates ownership shares based on each party's contributions to a venture.",
-      backgroundImage: "/images/spinnlabs/hero-bg-hex.jpg",
+      backgroundImage: "/spinnlabs/hero-bg-hex.jpg",
     },
   },
 
@@ -676,13 +668,12 @@ export const startupStepsData: SpinnLabDetail[] = [
     metaTitle: "Sign Entrepreneurship Agreement | SpinnLabs Startups Journey | SPS",
     metaDescription:
       "Formalize commitments, roles, IP protection, and project milestones under the SpinnLabs incubation program.",
-    // FIXED: /images/ add kiya gaya hai
-    openGraphImage: "/images/spinnlabs/hero-bg-hex.jpg",
+    openGraphImage: "/spinnlabs/hero-bg-hex.jpg",
     hero: {
       title: "Sign Agreement",
       description:
         "Please review the terms and conditions carefully before signing the agreement, solidifying commitment to the project.",
-      backgroundImage: "/images/spinnlabs/hero-bg-hex.jpg",
+      backgroundImage: "/spinnlabs/hero-bg-hex.jpg",
     },
   },
 
@@ -692,13 +683,12 @@ export const startupStepsData: SpinnLabDetail[] = [
     metaTitle: "Execute Plan & Track Milestones | SpinnLabs Startups Journey | SPS",
     metaDescription:
       "Accelerate product engineering, user feedback sprints, team expansion, and go-to-market execution with SpinnLabs support.",
-    // FIXED: /images/ add kiya gaya hai
-    openGraphImage: "/images/spinnlabs/hero-bg-hex.jpg",
+    openGraphImage: "/spinnlabs/hero-bg-hex.jpg",
     hero: {
       title: "Execute Plan",
       description:
         "Stay on track with your startup journey. Monitor milestones, timeframes, deliverables, and go-to-market strategies.",
-      backgroundImage: "/images/spinnlabs/hero-bg-hex.jpg",
+      backgroundImage: "/spinnlabs/hero-bg-hex.jpg",
     },
   },
 
@@ -708,13 +698,12 @@ export const startupStepsData: SpinnLabDetail[] = [
     metaTitle: "Launch & Spin-Off Startup | SpinnLabs Startups Journey | SPS",
     metaDescription:
       "Spin off your mature venture into an independent commercial entity equipped for autonomous operations and venture capital rounds.",
-    // FIXED: /images/ add kiya gaya hai
-    openGraphImage: "/images/spinnlabs/hero-bg-hex.jpg",
+    openGraphImage: "/spinnlabs/hero-bg-hex.jpg",
     hero: {
       title: "Launch Startup",
       description:
         "When the time is right, spin off your venture into an independent business unit. Operate autonomously and seize focused growth opportunities.",
-      backgroundImage: "/images/spinnlabs/hero-bg-hex.jpg",
+      backgroundImage: "/spinnlabs/hero-bg-hex.jpg",
     },
   },
 ];
