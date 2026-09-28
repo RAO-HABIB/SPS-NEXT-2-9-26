@@ -12,7 +12,7 @@ interface Props {
 export default function SpinnlabsOverviewLayout({ data }: Props) {
   return (
     <main className="w-full bg-[#FAFAFA] text-slate-900 overflow-hidden">
-      {/* Hero Section — BMS style dark hero */}
+      {/* Hero Section */}
       <section className="relative w-full pt-32 pb-24 md:pt-40 md:pb-32 bg-[#02122c] overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
@@ -23,9 +23,7 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
             className="object-fit object-center"
             priority
           />
-          {/* BMS-style dark navy overlay */}
           <div className="absolute inset-0 bg-[#031B3D]/70 mix-blend-multiply" />
-
         </div>
 
         <div className="container relative z-10 mx-auto px-4 md:px-8 max-w-7xl">
@@ -60,6 +58,7 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
+                    priority // <--- FIX: LCP Warning ke liye add kiya
                   />
                 </div>
               </motion.div>
@@ -68,7 +67,7 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
         </div>
       </section>
 
-      {/* Text Image Blocks (Enterprise Advanced Track) - Framer Testimonial Style */}
+      {/* Text Image Blocks (Enterprise Advanced Track) */}
       <section className="py-20 md:py-28 relative -mt-16 z-20">
         <div className="container mx-auto px-4 md:px-8 max-w-7xl space-y-12">
           {data.textImageBlocks && data.textImageBlocks.map((block, idx) => {
@@ -80,18 +79,18 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                 whileInView="rest"
                 whileHover="hover"
                 viewport={{ once: true }}
-                className={`group bg-[#F8F9FB] rounded-[2rem] p-2 flex flex-col md:flex-row gap-2 transition-all duration-500 overflow-hidden relative shadow-lg ${isFirst ? 'border-2 border-[#00a7e1]' : 'border border-slate-200'} md:h-[500px] w-full`}
+                className={`group bg-[#F8F9FB] rounded-[2rem] p-2 flex flex-col md:flex-row gap-2 transition-all duration-500 overflow-hidden relative shadow-lg ${isFirst ? 'border-2 border-[#00a7e1]' : 'border border-slate-200'} md:min-h-[500px] w-full`}
               >
                 {/* Content Side */}
                 <motion.div
                   variants={{
-                    rest: { flex: 1.2 },
-                    hover: { flex: 1.6 }
+                    rest: { flexGrow: 1.2 },
+                    hover: { flexGrow: 1.6 }
                   }}
                   transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
-                  className={`bg-white rounded-[1.5rem] p-8 lg:p-12 border border-slate-100 flex flex-col justify-center shadow-sm relative overflow-hidden w-full md:w-auto h-auto md:h-full order-2 ${block.reverse ? 'md:order-2' : 'md:order-1'}`}
+                  className={`bg-white rounded-[1.5rem] p-6 lg:p-10 border border-slate-100 flex flex-col justify-center shadow-sm relative overflow-hidden w-full md:flex-1 h-auto order-2 ${block.reverse ? 'md:order-2' : 'md:order-1'}`}
                 >
-                  <div className="max-w-xl mx-auto w-full">
+                  <div className="max-w-xl mx-auto w-full flex flex-col h-full">
                     {/* Top Pill */}
                     <div className="bg-[#F8F9FB] rounded-xl px-4 py-2 flex items-center gap-3 w-fit text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -151,7 +150,7 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                     </div>
 
                     {/* Button */}
-                    <a href={block.ctaLink || "#"} className="inline-flex items-center justify-center gap-3 bg-[#031B3D] text-white px-7 py-3.5 rounded-xl text-sm font-bold tracking-wide hover:bg-[#02122c] transition-colors shadow-md w-full sm:w-auto">
+                    <a href={block.ctaLink || "#"} className="inline-flex items-center justify-center gap-3 bg-[#031B3D] text-white px-7 py-3.5 rounded-xl text-sm font-bold tracking-wide hover:bg-[#02122c] transition-colors shadow-md w-full sm:w-auto mt-auto">
                       Enroll Now & Validate Paths
                       <ArrowRight className="size-4" />
                     </a>
@@ -161,11 +160,11 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                 {/* Image Side */}
                 <motion.div
                   variants={{
-                    rest: { flex: 1.5 },
-                    hover: { flex: 1.1 }
+                    rest: { flexGrow: 1.5 },
+                    hover: { flexGrow: 1.1 }
                   }}
                   transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
-                  className={`relative w-full h-[300px] md:h-full rounded-[1.5rem] overflow-hidden shadow-sm order-1 ${block.reverse ? 'md:order-1' : 'md:order-2'}`}
+                  className={`relative w-full md:flex-1 h-[300px] md:h-auto rounded-[1.5rem] overflow-hidden shadow-sm order-1 bg-slate-100 ${block.reverse ? 'md:order-1' : 'md:order-2'}`}
                 >
                   <Image
                     src={block.image}
@@ -173,6 +172,7 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    priority={isFirst} // <--- FIX: Sirf pehle block ki image ko priority di
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </motion.div>
@@ -275,7 +275,7 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
         </section>
       )}
 
-      {/* 3. CUSTOMERS SECTION (CIRCULAR BADGES STYLE) */}
+      {/* Customers Section */}
       {data.clientsSection && data.clientsSection.clients && (
         <section className="py-20 sm:py-28 bg-[#F8F9FB] text-slate-900 border-t border-slate-200/80">
           <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
@@ -289,7 +289,6 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
               {data.clientsSection.subheading || "Our mission is to deliver compelling narratives, remarkable experiences, and outstanding results for our clients."}
             </p>
 
-            {/* Circular Customer Badges */}
             <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:gap-14 max-w-5xl mx-auto">
               {data.clientsSection.clients.map((customer, idx) => (
                 <motion.div
@@ -300,7 +299,6 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
                   className="group relative flex flex-col items-center cursor-pointer"
                 >
-                  {/* Circular Container */}
                   <div className="relative size-28 sm:size-36 md:size-40 rounded-full bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] border-2 border-slate-200/90 flex items-center justify-center p-5 sm:p-7 transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_14px_40px_rgba(0,167,225,0.22)] group-hover:border-[#00a7e1]">
                     <div className="relative w-full h-full flex items-center justify-center">
                       <Image
@@ -312,8 +310,6 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                       />
                     </div>
                   </div>
-
-                  {/* Customer Brand Name */}
                   <span className="mt-4 text-sm font-bold text-slate-900 tracking-tight group-hover:text-[#00a7e1] transition-colors text-center">
                     {customer.name}
                   </span>
