@@ -88,10 +88,72 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                     hover: { flexGrow: 1.6 }
                   }}
                   transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
-                  className={`bg-white rounded-[1.5rem] p-6 lg:p-10 border border-slate-100 flex flex-col justify-center shadow-sm relative overflow-hidden w-full md:flex-1 h-auto order-2 ${block.reverse ? 'md:order-2' : 'md:order-1'}`}
+                  className={`bg-white rounded-[1.5rem] p-6 lg:p-10 border border-slate-100 flex flex-col justify-center shadow-sm relative overflow-hidden w-full md:flex-1 md:h-full h-auto order-2 ${block.reverse ? 'md:order-2' : 'md:order-1'}`}
                 >
                   <div className="max-w-xl mx-auto w-full flex flex-col h-full">
-                    {/* ... baaki content same rahega ... */}
+                    {/* Top Pill */}
+                    <div className="bg-[#F8F9FB] rounded-xl px-4 py-2 flex items-center gap-3 w-fit text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                      </svg>
+                      COURSE SPECIALIZATION
+                    </div>
+
+                    {/* Title */}
+                    <motion.h3
+                      className={`text-2xl md:text-3xl lg:text-4xl font-black mb-4 ${isFirst ? 'text-[#00a7e1]' : 'text-[#031B3D]'}`}
+                    >
+                      {block.title || "Enterprise Advanced Track"}
+                    </motion.h3>
+
+                    {/* Description */}
+                    <p className="text-slate-600 text-sm md:text-[15px] leading-relaxed mb-8 font-medium">
+                      {block.text}
+                    </p>
+
+                    {/* Meta Info Columns */}
+                    <div className="flex flex-col xl:flex-row xl:items-center gap-6 xl:gap-12 mb-8 border-t border-slate-100 pt-6">
+                      {/* Duration */}
+                      <div className="flex items-center gap-4">
+                        <div className="bg-[#F8F9FB] size-10 rounded-xl flex items-center justify-center shrink-0">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00a7e1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+                          </svg>
+                        </div>
+                        <div>
+                          <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">
+                            DURATION
+                          </div>
+                          <div className="text-sm font-extrabold text-[#031B3D]">
+                            {block.duration || "Self-Paced Learning"}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Schedule */}
+                      <div className="flex items-center gap-4">
+                        <div className="bg-[#F8F9FB] size-10 rounded-xl flex items-center justify-center shrink-0">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00a7e1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
+                          </svg>
+                        </div>
+                        <div>
+                          <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">
+                            SCHEDULE TIERS
+                          </div>
+                          <div className="text-sm font-extrabold text-[#031B3D]">
+                            {block.schedule || "Upcoming Deployment"}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Button */}
+                    <a href={block.ctaLink || "#"} className="inline-flex items-center justify-center gap-3 bg-[#031B3D] text-white px-7 py-3.5 rounded-xl text-sm font-bold tracking-wide hover:bg-[#02122c] transition-colors shadow-md w-full sm:w-auto mt-auto">
+                      Enroll Now & Validate Paths
+                      <ArrowRight className="size-4" />
+                    </a>
                   </div>
                 </motion.div>
 
@@ -102,7 +164,7 @@ export default function SpinnlabsOverviewLayout({ data }: Props) {
                     hover: { flexGrow: 1.1 }
                   }}
                   transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
-                  className={`relative w-full md:flex-1 h-[300px] md:h-auto rounded-[1.5rem] overflow-hidden shadow-sm order-1 bg-slate-100 ${block.reverse ? 'md:order-1' : 'md:order-2'}`}
+                  className={`relative w-full md:flex-1 h-[300px] md:h-full rounded-[1.5rem] overflow-hidden shadow-sm order-1 bg-slate-100 ${block.reverse ? 'md:order-1' : 'md:order-2'}`}
                 >
                   <Image
                     src={block.image}
